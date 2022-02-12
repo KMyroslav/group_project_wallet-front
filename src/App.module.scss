@@ -1,21 +1,18 @@
 @import 'styles/shared';
 
 .container {
-  padding: 10px;
   margin: 0 auto;
 
-  border: 1px solid tomato;
-}
-
-.logo {
-  font-family: $secondaryFont;
-  font-weight: $bold;
+  font-family: $baseFont;
+  font-weight: $regular;
+  font-size: 18px;
+  line-height: 1.5;
 }
 
 //mobile
 @media screen and (min-width: 320px) {
   .container {
-    width: 320px;
+    width: 280px;
   }
 }
 
