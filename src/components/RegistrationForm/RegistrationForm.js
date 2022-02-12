@@ -37,7 +37,7 @@ export default function RegistrationForm() {
                     <Form className="form-register ">
                         <div>
 
-                            <h1>Wallet</h1>
+
 
 
                             <label htmlFor={`email`} className="label" >
