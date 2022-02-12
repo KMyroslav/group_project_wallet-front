@@ -8,9 +8,7 @@ function App() {
     <div className={s.container}>
 
       <Route path='/' component={RegistrationForm} />
-      <header>Header</header>
-      <main>main</main>
-      <footer>footer</footer>
+
     </div>
   );
 }
