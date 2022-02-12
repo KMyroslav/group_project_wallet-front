@@ -1,0 +1,29 @@
+// @import 'styles/shared';
+
+.container {
+  padding: 10px;
+  margin: 0 auto;
+
+  border: 1px solid tomato;
+}
+
+//mobile
+@media screen and (min-width: 320px) {
+  .container {
+    width: 320px;
+  }
+}
+
+//tablet
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+//desktop
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
