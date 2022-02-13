@@ -1,17 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 
 import s from './App.module.scss';
 
-import RegistrationForm from './components/RegistrationForm/RegistrationForm';
+import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
 import Header from 'components/Header';
 
 function App() {
   return (
     <div className={s.container}>
       <Header />
-      <Route path="/" component={RegistrationForm} />
-
+      <Switch>
+        <Route path="/" component={RegistrationPage} />
+      </Switch >
       <main>main</main>
       <footer>footer</footer>
     </div>
