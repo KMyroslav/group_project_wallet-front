@@ -1,11 +1,8 @@
 
-.form-register {
- @media screen and (min-width: 320px) {
-    width: 320px;
-    padding-top: 50px;
-    padding-bottom: 110px;
-    margin: 0 auto;
-  }
+
+ 
+
+
 
 .label {
   display: flex;
@@ -17,7 +14,9 @@
 
   color: #bdbdbd;
   margin-bottom: 25px;
+  
 }
+
 .errors{
     color: red;
     text-align: center;
@@ -49,4 +48,62 @@ border: 1px solid #4A56E2;
 box-sizing: border-box;
 border-radius: 20px;
 }
+
+
+.logo_btn{
+  width: 280px;
+height: 50px;
+background: #24CCA7;
+border-radius: 20px;
+ font-family: Circe;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+text-align: center;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: #FFFFFF;
+}
+.input{
+border: none;
+  font-family: Circe;
+font-style: normal;
+font-weight: normal;
+font-size: 18px;
+line-height: 27px;
+
+color: #BDBDBD
+
+
+}
+
+@media screen and (min-width: 320px) {
+   .form-register {
+width: 320px;
+    padding-top: 50px;
+    padding-bottom: 110px;
+    margin: 0 auto;
+   } 
+
+
+  }
+@media screen and (min-width: 768px){
+.form-register{
+   position: absolute;
+    bottom: 100px;
+    right: 50%;
+    transform: translate(50%);
+    width: 540px;
+    border-radius: 50px;
+    padding-bottom: 50px;
+    margin: auto;
+}
+
+}
+@media screen and (min-width: 1280px) {
+  bottom: 50%;
+    right: 85px;
+    transform: translateY(50%);
+    margin: 0;
 }
