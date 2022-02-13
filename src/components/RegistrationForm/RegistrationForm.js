@@ -36,7 +36,7 @@ export default function RegistrationForm() {
                 {({ values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
 
                     <Form className="form-register ">
-                        <div>
+                        <div className="logo_reg_wrapper">
 
 
 
