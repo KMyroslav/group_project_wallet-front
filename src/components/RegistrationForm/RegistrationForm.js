@@ -7,6 +7,9 @@ import ButtonRegister from "../ButtonRegister/ButtonRegister.js"
 import './RegistrationForm.scss';
 import s from '../Header/Header.module.scss'
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
+import { ReactComponent as IconEmail } from "../../icons/IconEmail.svg"
+import { ReactComponent as IconPass } from '../../icons/IconPass.svg';
+import { ReactComponent as IconName } from '../../icons/IconName.svg';
 
 export default function RegistrationForm() {
 
@@ -47,7 +50,7 @@ export default function RegistrationForm() {
 
 
                         <label htmlFor={`email`} className="label" >
-
+                            <IconEmail />
                             <input type="email"
 
                                 email="email"
@@ -63,6 +66,7 @@ export default function RegistrationForm() {
                         {touched.email && errors.email && <p className="errors">{errors.email}</p>}
 
                         <label htmlFor={`password`} className="label">
+                            <IconPass />
 
                             <input
                                 type="password"
@@ -78,7 +82,7 @@ export default function RegistrationForm() {
                         {touched.password && errors.password && <p className="errors">{errors.password}</p>}
 
                         <label htmlFor={`confirmPassword`} className="label">
-
+                            <IconPass />
                             <input
                                 type="confirmPassword"
                                 name="confirmPassword"
@@ -93,7 +97,7 @@ export default function RegistrationForm() {
                         {touched.confirmPassword && errors.confirmPassword && <p className="errors">{errors.confirmPassword}</p>}
 
                         <label htmlFor={`name`} className="label">
-
+                            <IconName />
                             <input
                                 type="name"
                                 name="name"
