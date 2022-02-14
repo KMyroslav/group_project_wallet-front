@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import s from './App.module.scss';
 
-import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
+import RegistrationPage from "./Pages/RegistrationPage/RegistrationPage.js";
 import Header from 'components/Header';
 
 function App() {
