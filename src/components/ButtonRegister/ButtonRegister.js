@@ -1,7 +1,7 @@
-const ButtonRegister = ({ type, onSubmit = null, text, className, accent }) => (
+const ButtonRegister = ({ type, onSubmit = null, text, className }) => (
 
     <button
-        className={accent ? className + "accent" : className}
+        className={className}
         type={type}
         onSubmit={onSubmit}
     >

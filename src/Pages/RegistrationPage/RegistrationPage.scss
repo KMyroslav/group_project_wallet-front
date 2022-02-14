@@ -1,27 +1,60 @@
+@import "../../styles/shared.scss";
+
 .page_text{
-
-    font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 30px;
-line-height: 45px;
-/* identical to box height */
-
-display: flex;
-align-items: center;
-text-align: center;
-
-color: #000000;
+    display: none;
 }
-.page_container{
+ 
 
 @media screen and (min-width: 768px){
+    .page_container{
+     position: relative;
+     background-color: #E7EAF2;
+ }
+    .page_container{
  width: 768px;
 height: 1024px;
 background-repeat: no-repeat;
-background-image: url(../../images/Frame-tblet-reg.png);
+background-image: 
+url(../../images/elipse-up.png),
+url(../../images/elipse-down.png),
+url(../../images/Frame-tblet-reg.png);
 
+ background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;}
 
+    .page_text{
+
+   position: absolute;
+    top: 163px;
+    right: 153px;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    display: inline-block;
+
+color: $black;
+}
 
 }
+
+
+@media screen and (min-width: 1280px) {
+    .page_container{
+background-color: #E7EAF2;
+    width: 1280px;
+    height: 720px;}
+   .page_container{
+ 
+background-repeat: no-repeat;
+background-image: 
+url(../../images/Frame-desctop.png),
+url(../../images/elipse-up.png),
+url(../../images/elipse-down.png)
+;
+
+ background-repeat: no-repeat;
+    background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
+    }
+  
 }
