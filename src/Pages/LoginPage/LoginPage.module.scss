@@ -1,0 +1,87 @@
+@import '../../styles/shared.scss';
+
+.pageContainer {
+  position: relative;
+  display: flex;
+  outline: red solid 1px;
+  height: 720px;
+  //   width: 1280px;
+  box-sizing: border-box;
+  //   max-width: 1280px;
+}
+
+.leftSide {
+  //   position: relative;
+  //   width: calc(1280px - 720px);
+  //   width: 560px;
+  width: 44%;
+  //   height: 720px;
+  //   padding-top: 150px;
+  //   padding-left: 76px;
+  background-color: #e7eaf2;
+
+  & .ellipse {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    // width: 88.5%;
+  }
+
+  & .image {
+    position: relative;
+    top: 150px;
+    left: 76px;
+    max-width: 435px;
+    // z-index: 10;
+  }
+
+  & .text {
+    position: relative;
+    margin-top: 28px;
+    font-family: $secondaryFont;
+    font-size: 30px;
+    font-weight: $regular;
+    line-height: 45px;
+  }
+}
+
+.rightSide {
+  position: relative;
+  //   width: 720px;
+  //   height: 720px;
+  padding: 136px 85px 116px 95px;
+  background-color: rgba(255, 255, 255, 0.4);
+  //   backdrop-filter: blur(50px);
+
+  & .ellipse {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+.loginForm {
+  position: relative;
+  width: 540px;
+  height: 468px;
+  outline: blue solid 1px;
+}
+
+@media screen and (min-width: 320px) {
+  .pageContainer {
+    width: 280px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageContainer {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1310px) {
+  .pageContainer {
+    width: 1280px;
+  }
+}

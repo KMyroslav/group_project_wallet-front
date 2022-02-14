@@ -4,6 +4,12 @@
   src: url('../fonts/Circe-Bold.otf') format('opentype');
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype'),
+    url('../fonts/Poppins-Bold.ttf') format('truetype');
+}
+
 $baseFont: 'Circe', sans-serif;
 $secondaryFont: 'Poppins', sans-serif;
 
