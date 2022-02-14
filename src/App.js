@@ -12,7 +12,7 @@ function App() {
       <Header />
       <Switch>
         <Route path="/" component={RegistrationPage} />
-      </Switch >
+      </Switch>
       <main>main</main>
       <footer>footer</footer>
     </div>
