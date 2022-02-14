@@ -4,8 +4,9 @@ import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 import { NavLink } from 'react-router-dom';
 import ButtonRegister from '../ButtonRegister/ButtonRegister.js';
+
 import './RegistrationForm.scss';
-import s from '../../pages/Header/Header.module.scss';
+
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
 import { ReactComponent as IconEmail } from '../../icons/IconEmail.svg';
 import { ReactComponent as IconPass } from '../../icons/IconPass.svg';
@@ -60,8 +61,8 @@ export default function RegistrationForm() {
         }) => (
           <Form className="form-register ">
             <div className="logo-container">
-              <IconWallet className={s.logoIcon} />
-              <h1 className={s.logo}>Wallet</h1>
+              <IconWallet className="logo-logoIcon" />
+              <h1 className="logo">Wallet</h1>
             </div>
 
             <label htmlFor={`email`} className="label">
