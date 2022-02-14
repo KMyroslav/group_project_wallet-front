@@ -7,17 +7,14 @@ const LoginPage = () => {
   return (
     <>
       <div className={style.pageContainer}>
-        <div className={style.leftSide}>
-          <img src={greyEllipse} alt="" className={style.ellipse} />
-          <img src={image} alt="" className={style.image} />
-          <p className={style.text}>Finance App</p>
-        </div>
-        <div className={style.rightSide}>
-          <img src={pinkEllipse} alt="" className={style.ellipse} />
-          <div className={style.loginForm}>
-            <h2>Place for Login form</h2>
-          </div>
-        </div>
+        <p className={style.text}>Finance App</p>
+        <div className={style.loginForm}></div>
+
+        {/* <div className={style.leftSide}>
+        </div> */}
+
+        {/* <div className={style.rightSide}>
+        </div> */}
       </div>
     </>
   );
