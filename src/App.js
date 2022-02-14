@@ -11,7 +11,7 @@ function App() {
     <div className={s.container}>
       <Header />
       <Switch>
-        <Route path="/" component={<RegistrationPage />} />
+        <Route path="/" component={RegistrationPage} />
       </Switch>
       <main>main</main>
       <footer>footer</footer>
