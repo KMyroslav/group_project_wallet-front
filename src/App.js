@@ -9,10 +9,11 @@ import Header from './pages/Header/Header';
 function App() {
   return (
     <div className={s.container}>
-      <Header />
       <Switch>
         <Route path="/" component={RegistrationPage} />
       </Switch>
+
+      <Header />
       <main>main</main>
       <footer>footer</footer>
     </div>
