@@ -1,9 +1,9 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+// import { Switch, Route } from 'react-router-dom';
 
 import s from './App.module.scss';
 
-import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
+// import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
 import Header from 'components/Header';
 
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
@@ -13,13 +13,13 @@ function App() {
   return (
     <div className={s.container}>
       <Header />
-      <Switch>
+      {/* <Switch>
         <Route path="/" component={RegistrationPage} />
       </Switch>
-      <main>main</main>
+      <main>main</main> */}
       <ModalAddTransactions />
       <ButtonAddTransactions />
-      <footer>footer</footer>
+      {/* <footer>footer</footer> */}
     </div>
   );
 }
