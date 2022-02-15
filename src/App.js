@@ -1,14 +1,14 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import s from './App.module.scss';
+import './App.scss';
 
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import Header from './pages/Header/Header';
 
 function App() {
   return (
-    <div className={s.container}>
+    <div className="container">
       <Header />
       <Switch>
         <Route path="/" component={RegistrationPage} />
