@@ -1,7 +1,7 @@
 import style from './LoginPage.module.scss';
-import image from '../../images/Frame-desktop-login.png';
-import greyEllipse from '../../images/Ellipse-grey.png';
-import pinkEllipse from '../../images/Ellipse-pink.png';
+// import image from '../../images/Frame-desktop-login.png';
+// import greyEllipse from '../../images/Ellipse-grey.png';
+// import pinkEllipse from '../../images/Ellipse-pink.png';
 
 const LoginPage = () => {
   return (
