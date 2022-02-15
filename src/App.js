@@ -5,9 +5,7 @@ import s from './App.module.scss';
 
 import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
 import Header from 'components/Header';
-import { Table } from './components/Table';
-
-import transactions from './components/Table/mock';
+import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 function App() {
   return (
@@ -16,7 +14,7 @@ function App() {
       <Switch>
         <Route path="/" component={RegistrationPage} />
       </Switch>
-      <Table transactions={transactions} />
+      <DiagramTab />
       <main>main</main>
       <footer>footer</footer>
     </div>
