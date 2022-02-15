@@ -3,9 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import './App.scss';
 
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import Header from './pages/Header/Header';
+import RegistrationPage from './views/RegistrationPage/RegistrationPage';
+import LoginPage from './views/LoginPage/LoginPage';
+import Header from './views/Header/Header';
 
 function App() {
   return (
