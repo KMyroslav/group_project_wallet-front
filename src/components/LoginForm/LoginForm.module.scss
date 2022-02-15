@@ -1,0 +1,35 @@
+.formWrap {
+  //   width: 540px;
+  //   height: 468px;
+  width: 280px;
+  height: 348px;
+  outline: blue solid 0.5px;
+}
+
+.logo {
+  margin-bottom: 50px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+// .input:first-child {
+//   margin-top: 50px;
+//   margin-bottom: 40px;
+// }
+
+.input {
+  width: 280px;
+  height: 34px;
+  margin-bottom: 40px;
+  //   border: none;
+  border-bottom: 1px;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1280px) {
+}
