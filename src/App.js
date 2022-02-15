@@ -1,19 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import LoginForm from './components/LoginForm';
-import styles from './App.module.scss';
 
-import RegistrationPage from '../src/pages/RegistrationPage/RegistrationPage';
-import Header from '../src/pages/Header/Header';
+import './App.scss';
+
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import Header from './pages/Header/Header';
 
 function App() {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Header />
-      {/* <Switch>
-        <Route path="/" component={RegistrationPage} />
-      </Switch> */}
-      <LoginForm />
+
+      <Switch>
+        <Route exact path="/" component={RegistrationPage} />
+        <Route path="/login" component={LoginPage} />
+      </Switch>
+
       <main>main</main>
       <footer>footer</footer>
     </div>
