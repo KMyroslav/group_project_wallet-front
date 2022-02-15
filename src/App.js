@@ -1,15 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import s from './App.module.scss';
+import styles from './App.module.scss';
 
-import RegistrationPage from './Pages/RegistrationPage/RegistrationPage.js';
-import Header from 'components/Header';
+import RegistrationPage from '../src/Pages/RegistrationPage/RegistrationPage';
+import Header from '../src/Pages/Header/Header';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 function App() {
   return (
-    <div className={s.container}>
+    <div className={styles.container}>
       <Header />
       <Switch>
         <Route path="/" component={RegistrationPage} />
