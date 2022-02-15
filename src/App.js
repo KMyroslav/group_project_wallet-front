@@ -10,9 +10,11 @@ function App() {
   return (
     <div className="container">
       <Header />
+
       <Switch>
         <Route path="/" component={RegistrationPage} />
       </Switch>
+
       <main>main</main>
       <footer>footer</footer>
     </div>
