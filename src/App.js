@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-import LoginPage from './pages/LoginPage/LoginPage';
+import LoginPage from './views/LoginPage/LoginPage';
 import Header from './pages/Header/Header';
 
 function App() {
