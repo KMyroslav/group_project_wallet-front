@@ -1,6 +1,6 @@
 @import '../../styles/shared.scss';
 
-.form-register {
+.formRegister {
   background-color: $white;
 }
 
@@ -14,12 +14,12 @@
   font-weight: $bold;
 }
 
-.logo-logoIcon {
+.logoIogoIcon {
   width: 40px;
   height: 40px;
 }
 
-.logo-container {
+.logoContainer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -41,7 +41,7 @@
   color: $red;
   text-align: center;
 }
-.main_btn {
+.mainBtn {
   border-radius: 20px;
   width: 280px;
   background-color: $white;
@@ -57,14 +57,14 @@
   text-transform: uppercase;
   color: #4a56e2;
 }
-.btn-container {
+.btnContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.logo_btn {
+.logoBtn {
   width: 280px;
   padding-top: 13px;
   padding-bottom: 13px;
@@ -92,7 +92,7 @@
 }
 
 @media screen and (min-width: 320px) {
-  .form-register {
+  .formRegister {
     width: 320px;
     padding-top: 36px;
     padding-bottom: 36px;
@@ -100,7 +100,7 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .form-register {
+  .formRegister {
     position: absolute;
     bottom: 50px;
     right: 50%;
@@ -120,7 +120,7 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .form-register {
+  .formRegister {
     bottom: 50%;
     right: 85px;
     transform: translateY(50%);
