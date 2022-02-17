@@ -105,7 +105,7 @@ const LoginForm = () => {
         </Formik>
 
         <div className={style.link}>
-          <Link to="/register">РЕГИСТРАЦИЯ</Link>
+          <Link to="/">РЕГИСТРАЦИЯ</Link>
         </div>
       </div>
     </>
