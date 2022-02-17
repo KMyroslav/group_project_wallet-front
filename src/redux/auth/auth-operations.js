@@ -1,7 +1,7 @@
 import {
-  // registerRequest,
-  // registerSuccess,
-  // registerError,
+  registerRequest,
+  registerSuccess,
+  registerError,
   // repeatEmailVerifyRequest,
   // repeatEmailVerifySuccess,
   // repeatEmailVerifyError,
@@ -19,7 +19,7 @@ import {
 
 import {
   // token,
-  // fetchSignUp,
+  fetchSignUp,
   fetchLogin,
   // fetchLogout,
   // fetchAvatar,
@@ -28,16 +28,16 @@ import {
   // fetchRefreshToken,
 } from 'services/fetchApi';
 
-// const register = (credentials) => async (dispatch) => {
-//   dispatch(registerRequest());
-//   try {
-//     const response = await fetchSignUp(credentials);
-//     dispatch(registerSuccess(response.data));
-//   } catch ({ response }) {
-//     dispatch(registerError(response.data.message));
-//     Alert(response.data.message);
-//   }
-// };
+const register = (credentials) => async (dispatch) => {
+  dispatch(registerRequest());
+  try {
+    const response = await fetchSignUp(credentials);
+    dispatch(registerSuccess(response.data));
+  } catch ({ response }) {
+    dispatch(registerError(response.data.message));
+    // Alert(response.data.message);
+  }
+};
 
 // const repeatVerify = (email) => async (dispatch) => {
 //   dispatch(repeatEmailVerifyRequest());
@@ -138,7 +138,7 @@ const logIn = (credentials) => async (dispatch) => {
 // };
 
 export {
-  // register,
+  register,
   // repeatVerify,
   // logOut,
   // getCurrentUser,
