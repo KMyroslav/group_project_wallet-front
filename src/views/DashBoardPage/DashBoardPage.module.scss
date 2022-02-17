@@ -1,0 +1,95 @@
+@import 'styles/shared';
+
+.wrapper {
+  background-color: #e7eaf2;
+  @media screen and (min-width: 768px) {
+    min-height: 100vh;
+    background-image: url(../../images/elipse-up.png),
+      url(../../images/elipse-down.png);
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 0 right 0;
+
+    .blur {
+      min-height: 100vh;
+      backdrop-filter: blur(50px);
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+
+  font-family: $baseFont;
+  font-weight: $regular;
+  line-height: 1.5;
+}
+@media screen and (min-width: 320px) {
+  .container {
+    width: 280px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+    width: 688px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .container {
+    padding: 0 85px;
+    width: 1110px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .balance {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1279px) {
+  .balance {
+    margin-top: 20px;
+  }
+  .navBalanceCurrencyWrap {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    display: flex;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .navTableWrap {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .navBalanceCurrencyWrap {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: '';
+      top: -40px;
+      right: -50px;
+      height: 100vh;
+      border: 1px solid #e7e5f2;
+      box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+        1px 0px 0px rgba(255, 255, 255, 0.6);
+      //   transform: translateY(-40%);
+    }
+  }
+
+  .balance {
+    margin: 30px 0;
+  }
+}
