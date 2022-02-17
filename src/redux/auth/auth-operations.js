@@ -28,6 +28,17 @@ import {
   // fetchRefreshToken,
 } from 'services/fetchApi';
 
+// const register = (credentials) => async (dispatch) => {
+//   dispatch(registerRequest());
+//   try {
+//     const response = await fetchSignUp(credentials);
+//     dispatch(registerSuccess(response.data));
+//   } catch ({ response }) {
+//     dispatch(registerError(response.data.message));
+//
+//   }
+// };
+
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
