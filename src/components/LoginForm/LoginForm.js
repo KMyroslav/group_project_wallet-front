@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik, useField } from 'formik';
+import { useDispatch } from 'react-redux';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
+
+import { logIn } from '../../redux/auth';
+import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
 
 import logoMobile from '../../icons/logo-mobile.svg';
 import logo from '../../icons/logo.svg';
@@ -20,18 +22,8 @@ const LoginSchema = Yup.object().shape({
     .required('Обязательно для заполнения'),
 });
 
-const URL = 'https://dvf-project-group-2-back.herokuapp.com/api/users/login';
-
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // console.log(password, '<<<<');
-
-  // const resetForm = () => {
-  //   setEmail('');
-  //   setPassword('');
-  // };
-
+  const dispatch = useDispatch();
   return (
     <>
       <div className={style.formWrap}>
@@ -40,24 +32,28 @@ const LoginForm = () => {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            setEmail(values.email);
-            setPassword(values.password);
-            // resetForm();
+          onSubmit={(values, { resetForm, setSubmitting }) => {
+            // console.log({ actions });
+
+            const data = {
+              email: values.email,
+              password: values.password,
+            };
+
+            dispatch(logIn(data));
+            resetForm({ email: '', password: '' });
           }}
-          // onChange={(values) => {
-          //   setEmail(values.email);
-          //   setPassword(values.password);
-          // }}
         >
           {({
             values,
+            setValues,
             errors,
             touched,
             handleChange,
             handleBlur,
             handleSubmit,
             isSubmitting,
+            isValid,
             dirty,
           }) => (
             <form onSubmit={handleSubmit} className={style.form}>
@@ -95,9 +91,15 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              <button type="submit" disabled={null} className={style.button}>
+              <button
+                type="submit"
+                disabled={!dirty || !isValid}
+                className={style.button}
+              >
                 ВХОД
               </button>
+
+              {/* {isSubmitting && <div>Отправка данных...</div>} */}
             </form>
           )}
         </Formik>

@@ -68,6 +68,12 @@
   background-color: #24cca7;
   color: #ffffff;
   cursor: pointer;
+
+  &:disabled {
+    background-color: #24cca893;
+    color: #a8a7a7;
+    cursor: not-allowed;
+  }
 }
 
 .link {
