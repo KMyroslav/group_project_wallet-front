@@ -12,13 +12,6 @@
   margin: 0 auto;
   background-color: #ffffff;
   padding: 110px 20px 0;
-  outline: red solid 0.5px;
-
-  // & .loginForm {
-  //   width: 280px;
-  //   height: 348px;
-  //   outline: blue solid 0.5px;
-  // }
 
   & .text {
     display: none;
@@ -34,7 +27,7 @@
     background-image: url(../../images/Frame-tablet-login.png),
       url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
     background-repeat: no-repeat;
-    background-position: top 60px left 114px, bottom left, top right -190px;
+    background-position: top 60px left 114px, bottom left, top right -170px;
 
     & .text {
       display: block;
@@ -61,9 +54,8 @@
     padding: 0;
     padding-top: 598px;
 
-    // background-image: url(../../images/Frame-desktop-login.png),
-    //   url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
-    // background-repeat: no-repeat;
+    background-image: url(../../images/Frame-desktop-login.png),
+      url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
     background-position: top 150px left 76px, bottom left, top right;
 
     & .text {
@@ -74,88 +66,12 @@
 
     & .wrap {
       position: absolute;
-      // z-index: 10;
       width: 720px;
       height: 720px;
       padding: 136px 85px 116px 95px;
-      // top: 136px;
-      // right: 85px;
       top: 0;
       right: 0;
       background-color: rgba(255, 255, 255, 0.4);
-      // filter: blur(50px);
-      // backdrop-filter: blur(50px);
     }
   }
 }
-
-// .pageContainer {
-//   position: relative;
-//   display: flex;
-//   outline: red solid 0.5px;
-//   height: 720px;
-//   //   width: 1280px;
-//   box-sizing: border-box;
-//   //   max-width: 1280px;
-// }
-
-// .leftSide {
-//   //   position: relative;
-//   //   width: calc(1280px - 720px);
-//   //   width: 560px;
-//   width: 44%;
-//   //   height: 720px;
-//   //   padding-top: 150px;
-//   //   padding-left: 76px;
-//   background-color: #e7eaf2;
-
-//   & .ellipse {
-//     position: absolute;
-//     left: 0;
-//     bottom: 0;
-//     // width: 88.5%;
-//   }
-
-//   & .image {
-//     position: relative;
-//     top: 150px;
-//     left: 76px;
-//     max-width: 435px;
-//     // z-index: 10;
-//   }
-
-//   & .text {
-//     position: relative;
-//     margin-top: 28px;
-//     font-family: $secondaryFont;
-//     font-size: 30px;
-//     font-weight: $regular;
-//     line-height: 45px;
-//   }
-// }
-
-// .rightSide {
-//   position: relative;
-//   //   width: 720px;
-//   //   height: 720px;
-//   padding: 136px 85px 116px 95px;
-//   background-color: rgba(255, 255, 255, 0.4);
-//   //   backdrop-filter: blur(50px);
-//   //   filter: blur(50px);
-//   //   z-index: 10;
-
-//   & .ellipse {
-//     position: absolute;
-//     top: 0;
-//     right: 0;
-//     // filter: blur(50px);
-//   }
-// }
-
-// .loginForm {
-//   position: relative;
-//   width: 540px;
-//   height: 468px;
-//   outline: blue solid 1px;
-//   z-index: 10;
-// }
