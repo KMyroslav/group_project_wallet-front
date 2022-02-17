@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Formik } from 'formik';
+import { Formik, useField } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import logoMobile from '../../icons/logo-mobile.svg';
 import logo from '../../icons/logo.svg';
@@ -19,12 +20,17 @@ const LoginSchema = Yup.object().shape({
     .required('Обязательно для заполнения'),
 });
 
+const URL = 'https://dvf-project-group-2-back.herokuapp.com/api/users/login';
+
 const LoginForm = () => {
-  // const handleSubmit = () => {};
   const [email, setEmail] = useState('');
-  useEffect(() => {
-    console.log(email);
-  }, [email]);
+  const [password, setPassword] = useState('');
+  // console.log(password, '<<<<');
+
+  // const resetForm = () => {
+  //   setEmail('');
+  //   setPassword('');
+  // };
 
   return (
     <>
@@ -34,24 +40,15 @@ const LoginForm = () => {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
-          // validate={(values) => {
-          //   const errors = {};
-          //   if (!values.email) {
-          //     errors.email = 'Заполните поле!';
-          //   } else if (
-          //     !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          //   ) {
-          //     errors.email = 'Неверный адрес электронной почты';
-          //   }
-          //   return errors;
-          // }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+            setEmail(values.email);
+            setPassword(values.password);
+            // resetForm();
           }}
-          onChange={(values) => setEmail(values.email)}
+          // onChange={(values) => {
+          //   setEmail(values.email);
+          //   setPassword(values.password);
+          // }}
         >
           {({
             values,
@@ -61,7 +58,7 @@ const LoginForm = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
+            dirty,
           }) => (
             <form onSubmit={handleSubmit} className={style.form}>
               <div className={style.inputWrap}>
@@ -98,11 +95,7 @@ const LoginForm = () => {
                 </div>
               </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={style.button}
-              >
+              <button type="submit" disabled={null} className={style.button}>
                 ВХОД
               </button>
             </form>
