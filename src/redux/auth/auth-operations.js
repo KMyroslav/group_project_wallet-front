@@ -35,7 +35,7 @@ import {
 //     dispatch(registerSuccess(response.data));
 //   } catch ({ response }) {
 //     dispatch(registerError(response.data.message));
-//     Alert(response.data.message);
+//
 //   }
 // };
 
@@ -46,7 +46,7 @@ import {
 //     dispatch(repeatEmailVerifySuccess(response.data));
 //   } catch ({ response }) {
 //     dispatch(repeatEmailVerifyError(response.data.message));
-//     Alert(response.data.message);
+//
 //   }
 // };
 
@@ -86,7 +86,7 @@ const logIn = (credentials) => async (dispatch) => {
 //       dispatch(uploadAvatarSuccess(response.data.data));
 //     } else {
 //       dispatch(uploadAvatarError(response.data.message));
-//       Alert(response.data.message);
+
 //     }
 //   }
 // };
@@ -110,7 +110,7 @@ const logIn = (credentials) => async (dispatch) => {
 //       return await refresh(dispatch, getState);
 //     }
 //     dispatch(getCurrentUserError(response.data.message));
-//     Alert(response.data.message);
+
 //   }
 // };
 
