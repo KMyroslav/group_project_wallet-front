@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
@@ -9,7 +9,7 @@ import { ReactComponent as IconExit } from '../../icons/exit.svg';
 // import UserInfo from '../Userinfo/Userinfo';
 
 export default function Header() {
-  const [element, setElement] = useState('Выход');
+  const [element] = useState('Выход');
   // рендер по усливию поими что тебе надо сделать
   // ты хочешь уьирать абзац на мобильной разметке если это мобильное устройство тога убрать element если нет тогда покажи его
   // const isHidden = () => {
