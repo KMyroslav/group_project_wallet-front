@@ -1,9 +1,9 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {
-  // registerRequest,
-  // registerSuccess,
-  // registerError,
+  registerRequest,
+  registerSuccess,
+  registerError,
   // repeatEmailVerifyRequest,
   // repeatEmailVerifySuccess,
   // repeatEmailVerifyError,
@@ -21,7 +21,7 @@ import {
 
 import {
   // token,
-  // fetchSignUp,
+  fetchSignUp,
   fetchLogin,
   // fetchLogout,
   // fetchAvatar,
@@ -40,6 +40,17 @@ import {
 //
 //   }
 // };
+
+const register = (credentials) => async (dispatch) => {
+  dispatch(registerRequest());
+  try {
+    const response = await fetchSignUp(credentials);
+    dispatch(registerSuccess(response.data));
+  } catch ({ response }) {
+    dispatch(registerError(response.data.message));
+    // Alert(response.data.message);
+  }
+};
 
 // const repeatVerify = (email) => async (dispatch) => {
 //   dispatch(repeatEmailVerifyRequest());
@@ -152,7 +163,7 @@ const logIn = (credentials) => async (dispatch) => {
 // };
 
 export {
-  // register,
+  register,
   // repeatVerify,
   // logOut,
   // getCurrentUser,
