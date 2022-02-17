@@ -23,10 +23,14 @@ import {
 const initialUserState = { name: null, email: null, balance: 0 };
 
 const user = createReducer(initialUserState, {
+  [registerSuccess]: (_, { payload }) => payload.user,
   [loginSuccess]: (state, { payload }) => ({
     ...state,
     ...payload.user,
   }),
+  // [uploadAvatarSuccess]: (_, { payload }) => payload.user,
+  [logoutSuccess]: () => initialUserState,
+  [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const refreshToken = createReducer(null, {
@@ -42,9 +46,30 @@ const token = createReducer(null, {
 const setError = (_, { payload }) => payload;
 
 const error = createReducer(null, {
+  [registerError]: setError,
+  [registerSuccess]: () => null,
+  [registerRequest]: () => null,
+  [repeatEmailVerifyError]: setError,
+  [repeatEmailVerifySuccess]: () => null,
+  [repeatEmailVerifyRequest]: () => null,
   [loginError]: setError,
   [loginSuccess]: () => null,
   [loginRequest]: () => null,
+  // [uploadAvatarError]: setError,
+  // [uploadAvatarSuccess]: () => null,
+  // [uploadAvatarRequest]: () => null,
+  [logoutError]: setError,
+  [logoutError]: () => null,
+  [logoutRequest]: () => null,
+  [getCurrentUserError]: setError,
+  [getCurrentUserRequest]: () => null,
+  [getCurrentUserSuccess]: () => null,
+  // [loginGoogleError]: setError,
+  // [loginGoogleSuccess]: () => null,
+  // [loginGoogleRequest]: () => null,
+  // [refreshLoginGoogleError]: setError,
+  // [refreshLoginGoogleSuccess]: () => null,
+  // [refreshLoginGoogleRequest]: () => null,
 });
 
 const isLogin = createReducer(false, {
@@ -56,12 +81,26 @@ const isLogin = createReducer(false, {
   [logoutSuccess]: () => false,
 });
 
+const isFetchigCurrentUser = createReducer(false, {
+  [getCurrentUserRequest]: () => true,
+  [getCurrentUserSuccess]: () => false,
+  [getCurrentUserError]: () => false,
+  [logoutSuccess]: () => false,
+});
+
+const isRepeatEmailVerify = createReducer(null, {
+  [repeatEmailVerifySuccess]: (_, { payload }) => payload.data.message,
+  [repeatEmailVerifyOk]: () => null,
+});
+
 const authReducer = combineReducers({
   user,
   isLogin,
   token,
   refreshToken,
   error,
+  isFetchigCurrentUser,
+  isRepeatEmailVerify,
 });
 
 export { authReducer };

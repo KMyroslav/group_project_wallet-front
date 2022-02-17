@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { logIn } from '../../redux/auth';
-import { getIsAuthenticated } from '../../redux/auth/auth-selectors';
 
 import logoMobile from '../../icons/logo-mobile.svg';
 import logo from '../../icons/logo.svg';

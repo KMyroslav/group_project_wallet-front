@@ -1,23 +1,24 @@
 import {
-  registerRequest,
-  registerSuccess,
-  registerError,
-  repeatEmailVerifyRequest,
-  repeatEmailVerifySuccess,
-  repeatEmailVerifyError,
-  logoutRequest,
-  logoutSuccess,
+  // registerRequest,
+  // registerSuccess,
+  // registerError,
+  // repeatEmailVerifyRequest,
+  // repeatEmailVerifySuccess,
+  // repeatEmailVerifyError,
+  // logoutRequest,
+  // logoutSuccess,
   loginRequest,
   loginSuccess,
   loginError,
-  getCurrentUserRequest,
-  getCurrentUserSuccess,
-  getCurrentUserError,
+  // getCurrentUserRequest,
+  // getCurrentUserSuccess,
+  // getCurrentUserError,
 } from './auth-actions';
 
 // import { setTotalBalanceSuccess } from 'redux/transactions';
 
 import {
+  // token,
   // fetchSignUp,
   fetchLogin,
   // fetchLogout,
@@ -140,8 +141,8 @@ export {
   // register,
   // repeatVerify,
   // logOut,
-  logIn,
   // getCurrentUser,
   // refresh,
   // uploadAvatar,
+  logIn,
 };
