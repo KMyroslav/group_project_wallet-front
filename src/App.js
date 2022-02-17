@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
 import './App.scss';
 
 import RegistrationPage from './views/RegistrationPage/RegistrationPage';
@@ -13,6 +13,7 @@ function App() {
         <Route exact path="/" component={RegistrationPage} />
         <Route path="/login" component={LoginPage} />
       </Switch>
+      <ToastContainer />
     </div>
   );
 }

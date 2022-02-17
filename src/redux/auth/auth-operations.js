@@ -1,3 +1,5 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
   // registerRequest,
   // registerSuccess,
@@ -54,10 +56,22 @@ const logIn = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const response = await fetchLogin(credentials);
-    console.log(response);
+    // console.log(response);
     // token.set(response.token);
     dispatch(loginSuccess(response.data));
   } catch (response) {
+    toast.error(
+      response.response.status === 401 && 'Email or password is wrong!',
+      {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      },
+    );
     dispatch(loginError(response.message));
   }
 };
