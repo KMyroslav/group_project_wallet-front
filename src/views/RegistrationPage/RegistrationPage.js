@@ -7,7 +7,7 @@ import style from './RegistrationPage.module.scss';
 const RegistrationPage = () => {
   return (
     <div>
-      <div className={style.container}>
+      <div className={style.PageContainer}>
         <p className={style.pageText}>Finance App</p>
         <RegistrationForm />
       </div>
