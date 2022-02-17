@@ -6,13 +6,17 @@ import { NavLink } from 'react-router-dom';
 import ButtonRegister from '../ButtonRegister/ButtonRegister.js';
 
 import styles from './RegistrationForm.module.scss';
-
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
 import { ReactComponent as IconEmail } from '../../icons/IconEmail.svg';
 import { ReactComponent as IconPass } from '../../icons/IconPass.svg';
 import { ReactComponent as IconName } from '../../icons/IconName.svg';
-
+import { register } from '../../redux/auth/auth-operations.js'
 export default function RegistrationForm() {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
     const validationsSchema = yup.object().shape({
         name: yup
             .string()
@@ -34,6 +38,12 @@ export default function RegistrationForm() {
         email: yup.string().email('Введите верный email').required('Обязательно'),
     });
 
+    const handleRegister = ({ name, email, password }) => {
+
+        dispatch(register({ name, email, password }));
+        history.push("/login");
+    };
+
     return (
         <>
             <Formik
@@ -44,9 +54,7 @@ export default function RegistrationForm() {
                     name: '',
                 }}
                 validateOnBlur
-                onSubmit={(values) => {
-                    console.log(values);
-                }}
+                onSubmit={handleRegister}
                 validationSchema={validationsSchema}
             >
                 {({
