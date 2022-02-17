@@ -1,10 +1,11 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
+import { ToastContainer } from 'react-toastify';
 import './App.scss';
 
 import RegistrationPage from './views/RegistrationPage/RegistrationPage';
 import LoginPage from './views/LoginPage/LoginPage';
+import DashBoardPage from 'views/DashBoardPage';
 
 import Header from 'components/Header';
 
@@ -15,7 +16,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={RegistrationPage} />
         <Route path="/login" component={LoginPage} />
+        <Route path="/home" component={DashBoardPage} />
       </Switch>
+      <ToastContainer />
     </div>
   );
 }
