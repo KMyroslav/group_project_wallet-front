@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -12,16 +12,15 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 
-import { authReducer } from 'redux/auth';
-import { wallet } from 'redux/transactions';
+import { authReducer } from 'redux/auth/auth-reducer';
+// import { wallet } from 'redux/transactions';
 
-const middleware = [
-  ...getDefaultMiddleware({
+const middleware = (getDefaultMiddleware) =>
+  getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }),
-];
+  });
 
 const persistConfig = {
   key: 'token',
@@ -32,7 +31,7 @@ const persistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(persistConfig, authReducer),
-    wallet,
+    // wallet,
   },
   middleware,
   devTools: true,
