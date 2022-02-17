@@ -77,7 +77,7 @@ const columns = [
   {
     id: 'category',
     label: 'Категория',
-    minWidth: 120,
+    minWidth: 100,
     align: 'left',
   },
   {
@@ -89,14 +89,14 @@ const columns = [
   {
     id: 'sum',
     label: 'Сумма',
-    minWidth: 65,
+    // minWidth: 65,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
   {
     id: 'balance',
     label: 'Баланс',
-    minWidth: 70,
+    // minWidth: 70,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
@@ -115,7 +115,8 @@ export default function desktopTable({ data }) {
 
   return (
     <div sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 420 }}>
+      <TableContainer>
+        {/* sx={{ maxHeight: 420 }} */}
         <Table stickyHeader aria-label="sticky table">
           {/* <Table aria-label="table"> */}
           <TableHead>
