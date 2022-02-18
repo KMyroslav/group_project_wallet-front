@@ -14,6 +14,7 @@ export default function Header() {
   // ты хочешь уьирать абзац на мобильной разметке если это мобильное устройство тога убрать element если нет тогда покажи его
 
   const viewPort = useWindowDimensions();
+  console.log(viewPort.width);
 
   return (
     <>
@@ -26,9 +27,8 @@ export default function Header() {
         </Link>
         <div className={styles.userStatus}>
           <p>Имя</p>
-
           <IconExit className={styles.exitIcon} />
-          {viewPort.width >= 320 && <p>Выход</p>}
+          {viewPort.width >= 320 ? <p>Выход</p> : ''}
         </div>
       </header>
     </>
