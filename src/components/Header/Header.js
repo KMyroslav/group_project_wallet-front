@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.scss';
 
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
 import { ReactComponent as IconExit } from '../../icons/exit.svg';
-
+import useWindowDimensions from '../../hooks/useWindowDimensions';
 // import UserInfo from '../Userinfo/Userinfo';
 
 export default function Header() {
-  const [element] = useState('Выход');
   // рендер по усливию поими что тебе надо сделать
   // ты хочешь уьирать абзац на мобильной разметке если это мобильное устройство тога убрать element если нет тогда покажи его
-  // const isHidden = () => {
-  //   if () {setElement(!element); }
 
-  // };
+  const viewPort = useWindowDimensions();
+  console.log(viewPort.width);
 
   return (
     <>
@@ -28,11 +27,8 @@ export default function Header() {
         </Link>
         <div className={styles.userStatus}>
           <p>Имя</p>
-          {/* <UserInfo /> */}
-
           <IconExit className={styles.exitIcon} />
-          <p>{element}</p>
-          {/* <UserLogout /> */}
+          {viewPort.width >= 320 ? <p>Выход</p> : ''}
         </div>
       </header>
     </>

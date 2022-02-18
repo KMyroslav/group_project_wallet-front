@@ -1,7 +1,9 @@
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  // registerRequest,
-  // registerSuccess,
-  // registerError,
+  registerRequest,
+  registerSuccess,
+  registerError,
   // repeatEmailVerifyRequest,
   // repeatEmailVerifySuccess,
   // repeatEmailVerifyError,
@@ -19,7 +21,7 @@ import {
 
 import {
   // token,
-  // fetchSignUp,
+  fetchSignUp,
   fetchLogin,
   // fetchLogout,
   // fetchAvatar,
@@ -35,9 +37,20 @@ import {
 //     dispatch(registerSuccess(response.data));
 //   } catch ({ response }) {
 //     dispatch(registerError(response.data.message));
-//     Alert(response.data.message);
+//
 //   }
 // };
+
+const register = (credentials) => async (dispatch) => {
+  dispatch(registerRequest());
+  try {
+    const response = await fetchSignUp(credentials);
+    dispatch(registerSuccess(response.data));
+  } catch ({ response }) {
+    dispatch(registerError(response.data.message));
+    // Alert(response.data.message);
+  }
+};
 
 // const repeatVerify = (email) => async (dispatch) => {
 //   dispatch(repeatEmailVerifyRequest());
@@ -46,7 +59,7 @@ import {
 //     dispatch(repeatEmailVerifySuccess(response.data));
 //   } catch ({ response }) {
 //     dispatch(repeatEmailVerifyError(response.data.message));
-//     Alert(response.data.message);
+//
 //   }
 // };
 
@@ -54,10 +67,22 @@ const logIn = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const response = await fetchLogin(credentials);
-    console.log(response);
+    // console.log(response);
     // token.set(response.token);
     dispatch(loginSuccess(response.data));
   } catch (response) {
+    toast.error(
+      response.response.status === 401 && 'Email or password is wrong!',
+      {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      },
+    );
     dispatch(loginError(response.message));
   }
 };
@@ -86,7 +111,7 @@ const logIn = (credentials) => async (dispatch) => {
 //       dispatch(uploadAvatarSuccess(response.data.data));
 //     } else {
 //       dispatch(uploadAvatarError(response.data.message));
-//       Alert(response.data.message);
+
 //     }
 //   }
 // };
@@ -110,7 +135,7 @@ const logIn = (credentials) => async (dispatch) => {
 //       return await refresh(dispatch, getState);
 //     }
 //     dispatch(getCurrentUserError(response.data.message));
-//     Alert(response.data.message);
+
 //   }
 // };
 
@@ -138,7 +163,7 @@ const logIn = (credentials) => async (dispatch) => {
 // };
 
 export {
-  // register,
+  register,
   // repeatVerify,
   // logOut,
   // getCurrentUser,
