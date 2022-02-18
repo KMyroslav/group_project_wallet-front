@@ -11,7 +11,7 @@ const sumToString = (sum) => {
 
 const headers = ['Категория', 'Сумма'];
 
-const Table = ({ transactions, totalProfit = 0, totalLoose = 0 }) => {
+const Table = ({ transactions, income, expense }) => {
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -53,13 +53,13 @@ const Table = ({ transactions, totalProfit = 0, totalLoose = 0 }) => {
             <th className={styles.tfoot_th} colSpan="2">
               Расходы:
             </th>
-            <td className={styles.tfoot_td}>{sumToString(totalLoose, '')}</td>
+            <td className={styles.tfoot_td}>{income}</td>
           </tr>
           <tr className={styles.tfoot_tr}>
             <th className={styles.tfoot_th} colSpan="2">
               Доходы:
             </th>
-            <td className={styles.tfoot_td}>{sumToString(totalProfit, '')}</td>
+            <td className={styles.tfoot_td}>{expense}</td>
           </tr>
         </tfoot>
       </table>

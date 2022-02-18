@@ -1,7 +1,8 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { logger } from 'redux-logger';
-import contactsReducer from './contacts/contacts-reducer';
+// import contactsReducer from './contacts/contacts-reducer';
 import authReducer from '../redux/auth/auth-reducer';
+import transactionsReducer from './transactions/transactionsSlice';
 import {
   persistStore,
   persistReducer,
@@ -32,8 +33,9 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    contacts: contactsReducer,
+    // contacts: contactsReducer,
     auth: persistReducer(authPersistConfigs, authReducer),
+    transactions: transactionsReducer,
   },
   middleware,
   devTools: true,

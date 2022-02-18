@@ -3,32 +3,44 @@ import Table from '../Table';
 import Selector from '../Selector/Selector';
 import Chart from '../Chart/Chart';
 // import sumToString from '../../helpers/numberToStringCurrency';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-// import {
-//   monthChange,
-//   yearChange,
-// } from '../../redux/transactions/transactionsSlice';
+import { setMonth, setYear } from '../../redux/transactions/transactionsSlice';
 
-// import selectors from '../../redux/transactions/transactionsSelectors';
+import selectors from '../../redux/transactions/transactionsSelectors';
 // import categoriesSelectors from '../../redux/categories/categoriesSelectors';
-// import transactionsOperations from '../../redux/transactions/transactionsOperations';
+import {
+  getUser,
+  getStatistics,
+  getCategories,
+} from '../../redux/transactions/transactionsOperations';
 // import categoriesOperations from '../../redux/categories/categoriesOperations';
-
-import transactions from '../Table/mock';
+import transactionsDetails from '../Table/mock';
 
 const DiagramTab = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(transactionsOperations.getTransactions());
-  //   dispatch(categoriesOperations.getCategories());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
 
-  // const transactions = useSelector(selectors.getAllTransactions);
-  // const monthFilter = useSelector(selectors.getMonthFilter);
-  // const yearFilter = useSelector(selectors.getYearFilter);
+  const transactions = useSelector(selectors.getTransactionsStatisticsList);
+  const month = useSelector(selectors.getMonth);
+  const year = useSelector(selectors.getYear);
+  const token = useSelector(selectors.getToken);
+  const categories = useSelector(selectors.getCategoriesList);
+  const balance = transactions[transactions.length - 1]?.balance;
+
+  useEffect(() => {
+    token && dispatch(getCategories());
+    token && dispatch(getStatistics({ month, year }));
+  }, [dispatch, month, token, year]);
+
+  useEffect(() => {
+    transactions && console.log('transactions :>> ', transactions);
+  }, [transactions]);
+
   // const categories = useSelector(categoriesSelectors.getCategories);
 
   // const filteredTransactions = transactions.filter(
@@ -49,14 +61,14 @@ const DiagramTab = () => {
   //   return [...acc, item.category.name];
   // }, []);
 
-  const labels = transactions.map((item) => item.category);
+  const labels = transactionsDetails.map((item) => item.category);
 
   // const colors = labels.reduce((acc, item) => {
   //   const color = categories.find(({ name }) => name === item)?.color;
   //   return [...acc, color];
   // }, []);
 
-  const colors = transactions.map((item) => item.color);
+  const colors = transactionsDetails.map((item) => item.color);
 
   // const totals = labels.reduce((acc, item) => {
   //   const total = filteredTransactions.reduce((sum, transaction) => {
@@ -70,13 +82,15 @@ const DiagramTab = () => {
   //   return { category: item, total: totals[index], color: colors[index] };
   // });
 
-  // const onMonthSelect = (e) => {
-  //   dispatch(monthChange(e.value));
-  // };
+  const onMonthSelect = (e) => {
+    dispatch(setMonth(e.value));
+    dispatch(getStatistics({ month: e.value, year }));
+  };
 
-  // const onYearSelect = (e) => {
-  //   dispatch(yearChange(e.value));
-  // };
+  const onYearSelect = (e) => {
+    dispatch(setYear(e.value));
+    dispatch(getStatistics({ month, year: e.value }));
+  };
 
   // const { totalProfit, totalLoose } = filteredTransactions.reduce(
   //   (acc, item) => {
@@ -93,6 +107,20 @@ const DiagramTab = () => {
   //   },
   //   { totalProfit: 0, totalLoose: 0 },
   // );
+
+  const income = transactions.reduce((acc, transaction) => {
+    if (transaction.typeTX === 'income') {
+      return acc + transaction.sum;
+    }
+    return acc;
+  }, 0);
+
+  const expense = transactions.reduce((acc, transaction) => {
+    if (transaction.typeTX === 'expense') {
+      return acc + transaction.sum;
+    }
+    return acc;
+  }, 0);
 
   const months = [
     { value: '01', label: 'Январь' },
@@ -126,15 +154,17 @@ const DiagramTab = () => {
   ];
 
   // const total = totalProfit - totalLoose;
-  // const selectedMonth = months.filter(({ value }) => value === monthFilter);
-  // const selectedYear = { value: yearFilter, label: yearFilter };
+  const selectedMonth = months.filter(({ value }) => value === month);
+  const selectedYear = { value: year, label: year };
 
   return (
     <section className={styles.section}>
       <h2 className={styles.title}>Статистика</h2>
       <div className={styles.stat_wrapper}>
         <div className={styles.chart_wrapper}>
-          <span className={styles.balance}>24000</span>
+          <span className={styles.balance}>
+            {transactions.length > 0 ? balance : 0}
+          </span>
           {/* <span className={styles.balance}>{strBalance}</span> */}
           {/* <Chart labels={labels} colors={colors} totals={totals} /> */}
           <Chart
@@ -147,27 +177,25 @@ const DiagramTab = () => {
           <div className={styles.selects_wrapper}>
             <Selector
               options={months}
-              // selected={selectedMonth}
-              selected={[{ value: '02', label: 'Февраль' }]}
+              selected={selectedMonth}
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={onMonthSelect}
+              onChange={onMonthSelect}
             />
             <Selector
               options={years}
-              // selected={selectedYear}
-              selected={{ value: '2022', label: '2022' }}
+              selected={selectedYear}
               className="react-select-container"
               classNamePrefix="react-select"
-              // onChange={onYearSelect}
+              onChange={onYearSelect}
             />
           </div>
           <Table
-            transactions={transactions}
+            transactions={transactionsDetails}
             // totalProfit={totalProfit}
-            totalProfit={0}
+            income={income}
             // totalLoose={totalLoose}
-            totalLoose={0}
+            expense={expense}
           />
         </div>
       </div>

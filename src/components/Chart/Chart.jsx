@@ -2,7 +2,6 @@ import 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 
 const Chart = ({ labels, colors, totals }) => {
-  console.log(labels);
   const data = {
     labels: labels,
     datasets: [
