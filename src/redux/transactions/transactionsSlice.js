@@ -5,7 +5,6 @@ const initialState = {
   categories: [],
   month: (new Date().getMonth() + 1).toString().padStart(2, '0'),
   year: new Date().getFullYear().toString(),
-  token: '',
 };
 
 const { reducer, actions } = createSlice({
@@ -23,9 +22,6 @@ const { reducer, actions } = createSlice({
     },
     setYear: (state, { payload }) => {
       state.year = payload;
-    },
-    setToken: (state, { payload }) => {
-      state.token = payload;
     },
   },
 });

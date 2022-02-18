@@ -29,7 +29,7 @@ export const years = [
   { value: '2022', label: '2022' },
 ];
 
-export const sheme = {
+export const colorSheme = {
   '620f7522df1b4c0baaed1e51': '#FED057',
   '62091d56a2ad0a81fada858b': '#FFD8D0',
   '62091cfea2ad0a81fada8589': '#FD9498',

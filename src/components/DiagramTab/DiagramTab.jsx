@@ -2,7 +2,6 @@ import styles from './DiagramTab.module.css';
 import Table from '../Table';
 import Selector from '../Selector/Selector';
 import Chart from '../Chart/Chart';
-// import sumToString from '../../helpers/numberToStringCurrency';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -13,7 +12,7 @@ import {
   getStatistics,
   getCategories,
 } from '../../redux/transactions/transactionsOperations';
-import { months, years, sheme } from './constants';
+import { months, years, colorSheme } from './constants';
 
 const DiagramTab = () => {
   const dispatch = useDispatch();
@@ -24,11 +23,14 @@ const DiagramTab = () => {
   const balance = transactions[transactions.length - 1]?.balance;
 
   const transactionsDetails = transactions?.reduce((acc, transaction) => {
-    if (!sheme[transaction.categoryId] || transaction.typeTx === 'income') {
+    if (
+      !colorSheme[transaction.categoryId] ||
+      transaction.typeTx === 'income'
+    ) {
       return acc;
     }
 
-    const color = sheme[transaction.categoryId];
+    const color = colorSheme[transaction.categoryId];
     const category = categories.find((el) => el._id === transaction.categoryId);
 
     const isNotUnique = acc.some(
