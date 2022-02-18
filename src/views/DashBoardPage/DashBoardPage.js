@@ -8,34 +8,38 @@ import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
 import { Route } from 'react-router-dom';
+import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 export default function DashBoardPage() {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.blur}>
-        <div className={styles.container}>
-          <Header />
-          <div className={styles.navTableWrap}>
-            <div className={styles.navBalanceCurrencyWrap}>
-              <div className={styles.navBalanceWrap}>
-                <div className={styles.navigation}>
-                  <Navigation />
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.blur}>
+          <div className={styles.container}>
+            <Header />
+            <div className={styles.navTableWrap}>
+              <div className={styles.navBalanceCurrencyWrap}>
+                <div className={styles.navBalanceWrap}>
+                  <div className={styles.navigation}>
+                    <Navigation />
+                  </div>
+                  <Route path="/home/currency">
+                    <Currency />
+                  </Route>
+                  <div className={styles.balance}>
+                    <Balance />
+                  </div>
                 </div>
-                <Route path="/home/currency">
+                <Media query="(min-width: 768px)">
                   <Currency />
-                </Route>
-                <div className={styles.balance}>
-                  <Balance />
-                </div>
+                </Media>
               </div>
-              <Media query="(min-width: 768px)">
-                <Currency />
-              </Media>
+              <TableHome />
             </div>
-            <TableHome />
           </div>
         </div>
       </div>
-    </div>
+      <DiagramTab />
+    </>
   );
 }
