@@ -1,22 +1,24 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import './App.scss';
 
-import styles from './App.module.scss';
+import RegistrationPage from './views/RegistrationPage/RegistrationPage';
+import LoginPage from './views/LoginPage/LoginPage';
+import DashBoardPage from 'views/DashBoardPage';
 
-import RegistrationPage from '../src/Pages/RegistrationPage/RegistrationPage';
-import Header from '../src/Pages/Header/Header';
-import DiagramTab from 'components/DiagramTab/DiagramTab';
+import Header from 'components/Header';
 
 function App() {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Header />
       <Switch>
-        <Route path="/" component={RegistrationPage} />
+        <Route exact path="/" component={RegistrationPage} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/home" component={DashBoardPage} />
       </Switch>
-      <DiagramTab />
-      <main>main</main>
-      <footer>footer</footer>
+      <ToastContainer />
     </div>
   );
 }

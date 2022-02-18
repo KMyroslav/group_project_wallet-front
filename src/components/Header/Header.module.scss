@@ -26,13 +26,16 @@
 
 .userStatus {
   & p {
-    margin-right: 10px;
+    color: $light-gray;
   }
 }
 
 .exitIcon {
   width: 18px;
   height: 18px;
+
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .logoIcon {

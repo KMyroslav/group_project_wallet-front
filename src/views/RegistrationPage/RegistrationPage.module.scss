@@ -5,11 +5,10 @@
 }
 
 @media screen and (min-width: 768px) {
-  .page_container {
+  .PageContainer {
     position: relative;
     background-color: #e7eaf2;
-  }
-  .page_container {
+
     width: 768px;
     height: 1024px;
     background-repeat: no-repeat;
@@ -20,7 +19,7 @@
     background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
   }
 
-  .page_text {
+  .pageText {
     position: absolute;
     top: 163px;
     right: 153px;
@@ -35,12 +34,12 @@
 }
 
 @media screen and (min-width: 1280px) {
-  .page_container {
+  .PageContainer {
     background-color: #e7eaf2;
     width: 1280px;
     height: 720px;
   }
-  .page_container {
+  .PageContainer {
     background-repeat: no-repeat;
     background-image: url(../../images/Frame-desctop.png),
       url(../../images/elipse-up.png), url(../../images/elipse-down.png);
