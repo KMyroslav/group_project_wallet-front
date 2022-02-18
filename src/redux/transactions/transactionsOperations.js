@@ -1,6 +1,5 @@
 import axios from 'axios';
 import {
-  setToken,
   setTransactionsStatisticsList,
   setCategories,
 } from './transactionsSlice';
@@ -9,18 +8,11 @@ const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
 
 axios.defaults.baseURL = BASE_URL;
 
-export const getUser = () => async (dispatch) => {
-  const response = await axios.post('/api/users/login', {
-    email: 'testing123@gmail.com',
-    password: 'asDF1234$',
-  });
-  dispatch(setToken(response.data.token));
-};
+const retrievedStoreStr = localStorage.getItem('persist:token');
+const retrievedStore = JSON.parse(retrievedStoreStr);
+const token = retrievedStore.token.slice(1, retrievedStore.token.length - 1);
 
-export const getStatistics = (query) => async (dispatch, getState) => {
-  const { transactions } = getState();
-  const token = transactions.token;
-
+export const getStatistics = (query) => async (dispatch) => {
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: { Authorization: 'Bearer ' + token },
@@ -31,16 +23,12 @@ export const getStatistics = (query) => async (dispatch, getState) => {
       params: { month: query.month, year: query.year },
     })
     .then(({ data }) => {
-      console.log(data);
       dispatch(setTransactionsStatisticsList(data));
     })
     .catch((err) => console.log(err));
 };
 
-export const getCategories = (query) => async (dispatch, getState) => {
-  const { transactions } = getState();
-  const token = transactions.token;
-
+export const getCategories = () => async (dispatch) => {
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: { Authorization: 'Bearer ' + token },

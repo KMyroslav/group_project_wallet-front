@@ -1,17 +1,8 @@
 import styles from './Table.module.css';
 
-const sumToString = (sum) => {
-  const [intPart, floatPart] = sum
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ' ')
-    .split('.');
-  const floatString = floatPart ? '.' + floatPart.padEnd(2, '0') : '.00';
-  return intPart + floatString;
-};
-
 const headers = ['Категория', 'Сумма'];
 
-const Table = ({ transactions, income, expense }) => {
+const Table = ({ transactions = [], income = 0, expense = 0 }) => {
   return (
     <div className={styles.tableWrapper}>
       <table className={styles.table}>
@@ -35,7 +26,7 @@ const Table = ({ transactions, income, expense }) => {
         </thead>
 
         <tbody>
-          {transactions.map(({ color, category, total }) => (
+          {transactions.map(({ color, category, total = 0 }) => (
             <tr key={category} className={styles.tr}>
               <td className={styles.td}>
                 <div
@@ -44,7 +35,7 @@ const Table = ({ transactions, income, expense }) => {
                 ></div>
               </td>
               <td className={styles.td}>{category}</td>
-              <td className={styles.td}>{sumToString(total, '')}</td>
+              <td className={styles.td}>{total}</td>
             </tr>
           ))}
         </tbody>
