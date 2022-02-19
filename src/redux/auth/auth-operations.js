@@ -8,15 +8,15 @@ import {
   loginRequest,
   loginSuccess,
   loginError,
-} from './auth-actions';
-
-import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
-
-import {
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
   getCurrentUserError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
 } from './auth-actions';
+
+import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
 
 import axios from 'axios';
 
@@ -91,6 +91,18 @@ const getCurrentUser = () => (dispatch, getState) => {
     .get('users/current')
     .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
     .catch((err) => getCurrentUserError(err.message));
+};
+
+export const logout = () => async (dispatch) => {
+  dispatch(logoutRequest());
+  await axios.post('/users/logout');
+
+  try {
+    token.unset();
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error.message));
+  }
 };
 
 export { register, logIn, getCurrentUser };
