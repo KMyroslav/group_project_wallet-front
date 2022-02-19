@@ -1,11 +1,10 @@
 @import '../../styles/shared.scss';
 
+//  .pageText {
+//   display: none;
+// }
 
- .pageText {
-  display: none;
-}
 @media screen and (min-width: 768px) {
- 
   .PageContainer {
     position: relative;
     background-color: #e7eaf2;
@@ -49,10 +48,8 @@
     background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
   }
 
-  .pageText{
-    
-top:600px;
-right: 900px;
-    
+  .pageText {
+    top: 600px;
+    right: 900px;
   }
 }

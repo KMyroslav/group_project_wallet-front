@@ -1,9 +1,5 @@
 @import '../../styles/shared.scss';
 
-
-
-
-
 .formRegister {
   background-color: $white;
 }
@@ -39,8 +35,6 @@
   border-bottom: 1px solid #e0e0e0;
   color: #bdbdbd;
   margin-bottom: 40px;
-
-  
 }
 
 .errors {
@@ -63,11 +57,10 @@
   text-transform: uppercase;
   color: #4a56e2;
   cursor: pointer;
-&:hover{
-  background-color: $indigo-accent;
-  color: $white;
-}
-  
+  &:hover {
+    background-color: $indigo-accent;
+    color: $white;
+  }
 }
 .btnContainer {
   display: flex;
@@ -91,35 +84,31 @@
   text-transform: uppercase;
   color: $white;
   margin-bottom: 20px;
-cursor: pointer;
+  cursor: pointer;
 
-&:hover{
-
-  background-color: #21b393;
-}
-   
+  &:hover {
+    background-color: #21b393;
+  }
 }
 
 .input {
   border: none;
-    outline-style: none;
-    padding-left: 25px;
-    width: 250px;
-    height: 35px;
-    font-family: "Circe";
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
-    position: relative;
-
+  outline-style: none;
+  padding-left: 25px;
+  width: 250px;
+  height: 35px;
+  font-family: 'Circe';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  position: relative;
 }
-.progress{  
-    width: 280px;
-    height: 4px;
-    transform: translate(0, -21px);
-    background-color:  #E5F1EF;
-    margin-left: 20px;  
-      
+.progress {
+  width: 280px;
+  height: 4px;
+  transform: translate(0, -21px);
+  background-color: #e5f1ef;
+  margin-left: 20px;
 }
 
 @media screen and (min-width: 320px) {
@@ -129,18 +118,12 @@ cursor: pointer;
     padding-bottom: 36px;
     margin: 0 auto;
   }
-  
-.progressBar{  
- 
-    height: 4px;    
+
+  .progressBar {
+    height: 4px;
     background-color: #4a56e2;
     border-radius: 4px;
-
-    
-}
-
-
-
+  }
 }
 @media screen and (min-width: 768px) {
   .formRegister {
@@ -153,11 +136,9 @@ cursor: pointer;
     padding-bottom: 60px;
     padding-top: 36px;
     margin: auto;
-   
-    
   }
-  .progress{
-     bottom: 310px;
+  .progress {
+    bottom: 310px;
   }
   .label {
     margin-right: 65px;
@@ -166,7 +147,7 @@ cursor: pointer;
   .input {
     margin-left: 22px;
   }
-  .progress{
+  .progress {
     width: 409px;
     margin-left: 65px;
   }
