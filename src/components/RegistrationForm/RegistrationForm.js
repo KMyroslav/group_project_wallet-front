@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
-import { NavLink } from 'react-router-dom';
+
 import ButtonRegister from '../ButtonRegister/ButtonRegister.js';
 
 import styles from './RegistrationForm.module.scss';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
 import { ReactComponent as IconEmail } from '../../icons/IconEmail.svg';
 import { ReactComponent as IconPass } from '../../icons/IconPass.svg';
 import { ReactComponent as IconName } from '../../icons/IconName.svg';
-import { register } from '../../redux/auth/auth-operations.js'
-import RegistrationPrgressBar from './RegistrationProressBar.js';
-import { useState } from "react";
-export default function RegistrationForm() {
 
+import { register } from '../../redux/auth/auth-operations.js';
+
+import RegistrationPrgressBar from './RegistrationProressBar.js';
+
+export default function RegistrationForm() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const validationsSchema = yup.object().shape({
     name: yup
       .string()
@@ -42,9 +44,8 @@ export default function RegistrationForm() {
   });
 
   const handleRegister = ({ name, email, password }) => {
-
     dispatch(register({ name, email, password }));
-    history.push("/login");
+    history.push('/login');
   };
 
   return (
@@ -124,7 +125,6 @@ export default function RegistrationForm() {
                 placeholder=" Подтвердите пароль"
                 className={styles.input}
               />
-
             </label>
             <RegistrationPrgressBar password={password} />
             {touched.confirmPassword && errors.confirmPassword && (

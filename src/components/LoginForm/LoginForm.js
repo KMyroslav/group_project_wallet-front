@@ -3,12 +3,14 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import { logIn } from '../../redux/auth';
+import { logIn } from '../../redux/auth/auth-operations';
 
 import logoMobile from '../../icons/logo-mobile.svg';
 import logo from '../../icons/logo.svg';
+
 import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 import { ReactComponent as PasswordIcon } from '../../icons/lock.svg';
+
 import style from './LoginForm.module.scss';
 
 const LoginSchema = Yup.object().shape({
@@ -23,11 +25,13 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+
   return (
     <>
       <div className={style.formWrap}>
         <img src={logoMobile} alt="" className={style.logoMobile} />
         <img src={logo} alt="" className={style.logo} />
+
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}

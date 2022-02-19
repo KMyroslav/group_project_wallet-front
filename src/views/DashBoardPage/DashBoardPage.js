@@ -15,8 +15,8 @@ export default function DashBoardPage() {
     <>
       <div className={styles.wrapper}>
         <div className={styles.blur}>
+          <Header />
           <div className={styles.container}>
-            <Header />
             <div className={styles.navTableWrap}>
               <div className={styles.navBalanceCurrencyWrap}>
                 <div className={styles.navBalanceWrap}>

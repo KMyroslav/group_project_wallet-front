@@ -1,45 +1,24 @@
 import { toast } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import {
   registerRequest,
   registerSuccess,
   registerError,
-  // repeatEmailVerifyRequest,
-  // repeatEmailVerifySuccess,
-  // repeatEmailVerifyError,
-  // logoutRequest,
-  // logoutSuccess,
   loginRequest,
   loginSuccess,
   loginError,
-  // getCurrentUserRequest,
-  // getCurrentUserSuccess,
-  // getCurrentUserError,
 } from './auth-actions';
 
-// import { setTotalBalanceSuccess } from 'redux/transactions';
+import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
 
 import {
-  // token,
-  fetchSignUp,
-  fetchLogin,
-  // fetchLogout,
-  // fetchAvatar,
-  // fetchCurrent,
-  // fetchRepeatVerify,
-  // fetchRefreshToken,
-} from 'services/fetchApi';
+  getCurrentUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+} from './auth-actions';
 
-// const register = (credentials) => async (dispatch) => {
-//   dispatch(registerRequest());
-//   try {
-//     const response = await fetchSignUp(credentials);
-//     dispatch(registerSuccess(response.data));
-//   } catch ({ response }) {
-//     dispatch(registerError(response.data.message));
-//
-//   }
-// };
+import axios from 'axios';
 
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
@@ -57,23 +36,11 @@ const register = (credentials) => async (dispatch) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      }
-
+      },
     );
     dispatch(registerError(response.message));
   }
-}
-
-// const repeatVerify = (email) => async (dispatch) => {
-//   dispatch(repeatEmailVerifyRequest());
-//   try {
-//     const response = await fetchRepeatVerify(email);
-//     dispatch(repeatEmailVerifySuccess(response.data));
-//   } catch ({ response }) {
-//     dispatch(repeatEmailVerifyError(response.data.message));
-//
-//   }
-// };
+};
 
 const logIn = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
@@ -99,87 +66,31 @@ const logIn = (credentials) => async (dispatch) => {
   }
 };
 
-// const logOut = () => async (dispatch) => {
-//   dispatch(logoutRequest());
-//   try {
-//     await fetchLogout();
-//     token.unset();
-//     dispatch(logoutSuccess());
-//   } catch ({ response }) {
-//     token.unset();
-//     dispatch(logoutSuccess());
-//   }
-// };
-
-// const uploadAvatar = (formData) => async (dispatch, getState) => {
-//   dispatch(uploadAvatarRequest());
-//   try {
-//     const response = await fetchAvatar(formData);
-//     dispatch(uploadAvatarSuccess(response.data.data));
-//   } catch ({ response }) {
-//     if (response.data.message === 'Unvalid token') {
-//       await refresh(dispatch, getState);
-//       const response = await fetchAvatar(formData);
-//       dispatch(uploadAvatarSuccess(response.data.data));
-//     } else {
-//       dispatch(uploadAvatarError(response.data.message));
-
-//     }
-//   }
-// };
-
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
-
-//   if (!persistedToken) {
-//     return;
-//   }
-//   token.set(persistedToken);
-//   dispatch(getCurrentUserRequest());
-//   try {
-//     const response = await fetchCurrent();
-//     dispatch(getCurrentUserSuccess(response.data.user));
-//     dispatch(setTotalBalanceSuccess(response.data.user.balance));
-//   } catch ({ response }) {
-//     if (response.data.message === 'Unvalid token') {
-//       return await refresh(dispatch, getState);
-//     }
-//     dispatch(getCurrentUserError(response.data.message));
-
-//   }
-// };
-
-// const refresh = async (dispatch, getState) => {
-//   const {
-//     auth: { refreshToken: persistedRefreshToken },
-//   } = getState();
-//   token.set(persistedRefreshToken);
-//   try {
-//     const response = await fetchRefreshToken();
-//     token.set(response.data.data.token);
-//     dispatch(getCurrentUserSuccess(response.data.data.user));
-//     dispatch(setTotalBalanceSuccess(response.data.data.user.balance));
-//     dispatch(
-//       loginSuccess({
-//         token: response.data.data.token,
-//         refreshToken: response.data.data.refreshToken,
-//       }),
-//     );
-//   } catch (error) {
-//     dispatch(logoutSuccess());
-//     token.unset();
-//     console.log(error.message);
-//   }
-// };
-
-export {
-  register,
-  // repeatVerify,
-  // logOut,
-  // getCurrentUser,
-  // refresh,
-  // uploadAvatar,
-  logIn,
+const token = {
+  set(token) {
+    fetchCurrentUser.common.Authorization = `Bearer &{token}`;
+  },
+  unset() {
+    fetchCurrentUser.common.Authorization = '';
+  },
 };
+
+const getCurrentUser = () => (dispatch, getState) => {
+  const {
+    auth: { token: prsistedToken },
+  } = getState();
+
+  if (!prsistedToken) {
+    return;
+  }
+  token.set(prsistedToken);
+
+  dispatch(getCurrentUserRequest);
+
+  axios
+    .get('users/current')
+    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
+    .catch((err) => getCurrentUserError(err.message));
+};
+
+export { register, logIn, getCurrentUser };

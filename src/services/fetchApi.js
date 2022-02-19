@@ -9,3 +9,10 @@ export const fetchLogin = async (credentials) => {
 export const fetchSignUp = async (credentials) => {
   return await axios.post(`${BASE_URL}/users/signup`, credentials);
 };
+
+// users data
+export const fetchCurrentUser = async () => {
+  const { data } = await axios.get(`${BASE_URL}/users/current`);
+
+  return data;
+};
