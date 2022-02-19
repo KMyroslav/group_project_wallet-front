@@ -13,29 +13,27 @@ import DiagramTab from 'components/DiagramTab/DiagramTab';
 export default function DashBoardPage() {
   return (
     <>
-      <div className={styles.wrapper}>
-        <div className={styles.blur}>
-          <div className={styles.container}>
-            <Header />
-            <div className={styles.navTableWrap}>
-              <div className={styles.navBalanceCurrencyWrap}>
-                <div className={styles.navBalanceWrap}>
-                  <div className={styles.navigation}>
-                    <Navigation />
-                  </div>
-                  <Route path="/home/currency">
-                    <Currency />
-                  </Route>
-                  <div className={styles.balance}>
-                    <Balance />
-                  </div>
+      <div className={styles.blur}>
+        <div className="container">
+          <Header />
+          <div className={styles.navTableWrap}>
+            <div className={styles.navBalanceCurrencyWrap}>
+              <div className={styles.navBalanceWrap}>
+                <div className={styles.navigation}>
+                  <Navigation />
                 </div>
-                <Media query="(min-width: 768px)">
+                <Route path="/home/currency">
                   <Currency />
-                </Media>
+                </Route>
+                <div className={styles.balance}>
+                  <Balance />
+                </div>
               </div>
-              <TableHome />
+              <Media query="(min-width: 768px)">
+                <Currency />
+              </Media>
             </div>
+            <TableHome />
           </div>
         </div>
       </div>

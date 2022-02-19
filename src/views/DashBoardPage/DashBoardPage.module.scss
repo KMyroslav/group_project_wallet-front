@@ -1,45 +1,9 @@
 @import 'styles/shared';
 
-.wrapper {
-  background-color: #e7eaf2;
-  @media screen and (min-width: 768px) {
-    min-height: 100vh;
-    background-image: url(../../images/elipse-up.png),
-      url(../../images/elipse-down.png);
-    overflow: hidden;
-    background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 0 right 0;
-
-    .blur {
-      min-height: 100vh;
-      backdrop-filter: blur(50px);
-    }
-  }
-}
-
-.container {
-  margin: 0 auto;
-  padding: 0 20px;
-
-  font-family: $baseFont;
-  font-weight: $regular;
-  line-height: 1.5;
-}
-@media screen and (min-width: 320px) {
-  .container {
-    width: 280px;
-  }
-}
 @media screen and (min-width: 768px) {
-  .container {
-    padding: 0 40px;
-    width: 688px;
-  }
-}
-@media screen and (min-width: 1280px) {
-  .container {
-    padding: 0 85px;
-    width: 1110px;
+  .blur {
+    min-height: 100vh;
+    backdrop-filter: blur(50px);
   }
 }
 
