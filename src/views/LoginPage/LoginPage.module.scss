@@ -1,77 +1,136 @@
 @import '../../styles/shared.scss';
-
-.pageContainer {
-  & div {
-    box-sizing: border-box;
+@media screen and (max-width: 768px) {
+  .pageWrapper {
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 100vh;
   }
-
-  box-sizing: border-box;
-  display: block;
-  width: 320px;
-  height: 100vh;
-  margin: 0 auto;
-  background-color: #ffffff;
-  padding: 110px 20px 0;
-
-  & .text {
-    display: none;
+  .mainWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .pageContainer {
-    padding: 167px 114px 0;
-    width: 768px;
-    height: 1024px;
-    background-color: #e7eaf2;
-    background-image: url(../../images/Frame-tablet-login.png),
-      url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
-    background-repeat: no-repeat;
-    background-position: top 60px left 114px, bottom left, top right -170px;
-
-    & .text {
-      display: block;
-      font-family: $secondaryFont;
-      font-size: 30px;
-      font-weight: $regular;
-      line-height: 45px;
-      padding-left: 300px;
-      margin-bottom: 148px;
-    }
-
-    & .loginForm {
-      width: 540px;
-      height: 468px;
-    }
+  .mainWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+  .logo {
+    display: inline-block;
+    width: 250px;
+    height: 260px;
+  }
+  .logoWrapper {
+    display: flex;
+    align-items: center;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .pageContainer {
+  .logo {
+    display: inline-block;
+    width: 420px;
+    height: 435px;
+  }
+  .mainWrapper {
+    flex-direction: row;
+  }
+  .logoWrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .formWrapper {
     position: relative;
-    width: 1280px;
-    height: 720px;
-    padding: 0;
-    padding-top: 598px;
-
-    background-image: url(../../images/Frame-desktop-login.png),
-      url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
-    background-position: top 150px left 76px, bottom left, top right;
-
-    & .text {
-      display: block;
-      padding-left: 200px;
-      margin-bottom: 0;
-    }
-
-    & .wrap {
-      position: absolute;
-      width: 720px;
-      height: 720px;
-      padding: 136px 85px 116px 95px;
-      top: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, 0.4);
-    }
+  }
+  .blur {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 150vh;
+    height: 100vh;
+    transform: translateY(-50%);
+    backdrop-filter: blur(50px);
   }
 }
+
+// .pageContainer {
+//   & div {
+//     box-sizing: border-box;
+//   }
+
+//   box-sizing: border-box;
+//   display: block;
+//   width: 320px;
+//   height: 100vh;
+//   margin: 0 auto;
+//   background-color: #ffffff;
+//   padding: 110px 20px 0;
+
+//   & .text {
+//     display: none;
+//   }
+// }
+
+// @media screen and (min-width: 768px) {
+//   .pageContainer {
+//     padding: 167px 114px 0;
+//     width: 768px;
+//     height: 1024px;
+//     background-image: url(../../images/Frame-tablet-login.png);
+//     background-repeat: no-repeat;
+//     background-position: top 60px left 114px
+
+//     & .text {
+//       display: block;
+//       font-family: $secondaryFont;
+//       font-size: 30px;
+//       font-weight: $regular;
+//       line-height: 45px;
+//       padding-left: 300px;
+//       margin-bottom: 148px;
+//     }
+
+//     & .loginForm {
+//       width: 540px;
+//       height: 468px;
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 1280px) {
+//   .pageContainer {
+//     position: relative;
+//     width: 1280px;
+//     height: 720px;
+//     padding: 0;
+//     padding-top: 598px;
+
+//     background-image: url(../../images/Frame-desktop-login.png),
+//       url(../../images/Ellipse-grey.png), url(../../images/Ellipse-pink.png);
+//     background-position: top 150px left 76px, bottom left, top right;
+
+//     & .text {
+//       display: block;
+//       padding-left: 200px;
+//       margin-bottom: 0;
+//     }
+
+//     & .wrap {
+//       position: absolute;
+//       width: 720px;
+//       height: 720px;
+//       padding: 136px 85px 116px 95px;
+//       top: 0;
+//       right: 0;
+//       background-color: rgba(255, 255, 255, 0.4);
+//     }
+//   }
+// }
