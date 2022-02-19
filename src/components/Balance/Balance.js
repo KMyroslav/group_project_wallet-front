@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchBalance } from 'redux/balance/balanceOperations';
 import getBalance from 'redux/balance/balanceSelectors';
 import styles from './Balance.module.scss';
@@ -9,7 +8,6 @@ export default function Balance() {
   const dispatch = useDispatch();
   const balance = useSelector(getBalance);
   useEffect(() => {
-    console.log('useEffect dispatch');
     dispatch(fetchBalance());
   }, [dispatch]);
   return (

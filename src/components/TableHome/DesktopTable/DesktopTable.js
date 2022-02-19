@@ -10,13 +10,13 @@ import styles from './DesktopTable.module.scss';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.root}`]: {
     '&:nth-of-type(6n-5)': {
-      paddingLeft: 20,
+      // paddingLeft: 20,
     },
     '&:nth-of-type(6n)': {
-      paddingRight: 20,
+      // paddingRight: 20,
     },
     '&:nth-of-type(6n-4)': {
-      paddingRight: 45,
+      // paddingRight: 45,
     },
   },
   [`&.${tableCellClasses.head}`]: {
@@ -56,7 +56,7 @@ const columns = [
     label: 'Дата',
     align: 'left',
     pl: 20,
-    minWidth: 55,
+    // maxWidth: 55,
     format: (value) => {
       const date = new Date(value);
       const [month, day, year] = [
@@ -71,19 +71,20 @@ const columns = [
     id: 'typeTx',
     label: 'Тип',
     align: 'center',
-    minWidth: 35,
+    // minWidth: 35,
+    // maxWidth: 45,
     format: (value) => (value === 'income' ? '+' : '-'),
   },
   {
     id: 'category',
     label: 'Категория',
-    minWidth: 100,
+    // maxWidth: 115,
     align: 'left',
   },
   {
     id: 'comment',
     label: 'Комментарий',
-    minWidth: 115,
+    // maxWidth: 120,
     align: 'left',
   },
   {
@@ -107,18 +108,17 @@ export default function desktopTable({ data }) {
     _id,
     date,
     typeTx,
-    category: 'категория',
+    maxWidth: 55,
+    category: 'Нерегулярний доход',
     comment,
     sum,
     balance,
   }));
 
   return (
-    <div sx={{ width: '100%', overflow: 'hidden' }}>
-      <TableContainer>
-        {/* sx={{ maxHeight: 420 }} */}
+    <div sx={{ overflow: 'hidden' }}>
+      <TableContainer sx={{ maxHeight: 420, maxWidth: 700 }}>
         <Table stickyHeader aria-label="sticky table">
-          {/* <Table aria-label="table"> */}
           <TableHead>
             <TableRow>
               {columns.map((column) => (
