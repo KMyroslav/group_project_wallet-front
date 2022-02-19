@@ -33,6 +33,9 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .pageWrapper {
+    overflow: hidden;
+  }
   .logo {
     display: inline-block;
     width: 420px;
