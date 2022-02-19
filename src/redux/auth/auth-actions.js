@@ -12,9 +12,9 @@ export const registrationRequest = createAction('auth/registrationRequest');
 export const registrationSuccess = createAction('auth/registrationSuccess');
 export const registrationError = createAction('auth/registrationError');
 
-// export const logoutRequest = createAction('auth/logoutRequest');
-// export const logoutSuccess = createAction('auth/logoutSuccess');
-// export const logoutError = createAction('auth/logoutError');
+export const logoutRequest = createAction('auth/logoutRequest');
+export const logoutSuccess = createAction('auth/logoutSuccess');
+export const logoutError = createAction('auth/logoutError');
 
 export const repeatEmailVerifyRequest = createAction(
   'auth/repeatEmailVerifyRequest',
