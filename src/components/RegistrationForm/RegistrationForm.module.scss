@@ -113,16 +113,13 @@ cursor: pointer;
     position: relative;
 
 }
-.progress{
-  position: absolute;
-
-width: 280px;
+.progress{  
+    width: 280px;
     height: 4px;
-    margin-top: -20px;
+    transform: translate(0, -21px);
     background-color:  #E5F1EF;
     margin-left: 20px;  
-    //  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
-    
+      
 }
 
 @media screen and (min-width: 320px) {
@@ -138,7 +135,11 @@ width: 280px;
     height: 4px;    
     background-color: #4a56e2;
     border-radius: 4px;
+
+    
 }
+
+
 
 }
 @media screen and (min-width: 768px) {
