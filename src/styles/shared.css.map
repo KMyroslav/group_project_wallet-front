@@ -1,0 +1,13 @@
+{
+    "version": 3,
+    "mappings": "AIAA,UAAU;EACR,WAAW,EAAE,OAAO;EACpB,GAAG,EAAE,iCAAiC,CAAC,kBAAkB;EACzD,GAAG,EAAE,8BAA8B,CAAC,kBAAkB",
+    "sources": [
+        "shared.scss",
+        "_variables.scss",
+        "_colors.scss",
+        "_placeholders.scss",
+        "_fonts.scss"
+    ],
+    "names": [],
+    "file": "shared.css"
+}
