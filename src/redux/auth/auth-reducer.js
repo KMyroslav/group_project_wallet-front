@@ -8,16 +8,16 @@ import {
   repeatEmailVerifySuccess,
   repeatEmailVerifyOk,
   repeatEmailVerifyError,
-  logoutSuccess,
-  logoutError,
+  // logoutRequest,
+  // logoutSuccess,
+  // logoutError,
+  loginRequest,
   loginSuccess,
   loginError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
   registerRequest,
-  logoutRequest,
-  loginRequest,
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null, balance: 0 };
@@ -28,19 +28,19 @@ const user = createReducer(initialUserState, {
     ...state,
     ...payload.user,
   }),
-  // [uploadAvatarSuccess]: (_, { payload }) => payload.user,
-  [logoutSuccess]: () => initialUserState,
+
+  // [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const refreshToken = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.refreshToken,
-  [logoutSuccess]: () => null,
+  // [logoutSuccess]: () => null,
 });
 
 const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.token,
-  [logoutSuccess]: () => null,
+  // [logoutSuccess]: () => null,
 });
 
 const setError = (_, { payload }) => payload;
@@ -55,21 +55,12 @@ const error = createReducer(null, {
   [loginError]: setError,
   [loginSuccess]: () => null,
   [loginRequest]: () => null,
-  // [uploadAvatarError]: setError,
-  // [uploadAvatarSuccess]: () => null,
-  // [uploadAvatarRequest]: () => null,
-  [logoutError]: setError,
-  [logoutError]: () => null,
-  [logoutRequest]: () => null,
+  // [logoutError]: setError,
+  // [logoutError]: () => null,
+  // [logoutRequest]: () => null,
   [getCurrentUserError]: setError,
   [getCurrentUserRequest]: () => null,
   [getCurrentUserSuccess]: () => null,
-  // [loginGoogleError]: setError,
-  // [loginGoogleSuccess]: () => null,
-  // [loginGoogleRequest]: () => null,
-  // [refreshLoginGoogleError]: setError,
-  // [refreshLoginGoogleSuccess]: () => null,
-  // [refreshLoginGoogleRequest]: () => null,
 });
 
 const isLogin = createReducer(false, {
@@ -78,14 +69,13 @@ const isLogin = createReducer(false, {
   [registerError]: () => false,
   [loginError]: () => false,
   [getCurrentUserError]: () => false,
-  [logoutSuccess]: () => false,
+  // [logoutSuccess]: () => false,
 });
 
 const isFetchigCurrentUser = createReducer(false, {
   [getCurrentUserRequest]: () => true,
   [getCurrentUserSuccess]: () => false,
   [getCurrentUserError]: () => false,
-  [logoutSuccess]: () => false,
 });
 
 const isRepeatEmailVerify = createReducer(null, {

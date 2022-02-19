@@ -8,12 +8,12 @@ import LoginPage from './views/LoginPage/LoginPage';
 import DashBoardPage from 'views/DashBoardPage';
 import CurrencyPage from 'views/CurrencyPage';
 
-import Header from 'components/Header';
+// import Header from 'components/Header';
 
 function App() {
   return (
-    <div className="container">
-      <Header />
+    <div>
+      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={RegistrationPage} />
         <Route path="/login" component={LoginPage} />

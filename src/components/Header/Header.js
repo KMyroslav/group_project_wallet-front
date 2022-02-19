@@ -1,34 +1,43 @@
 import React from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useWindowSize } from '@react-hook/window-size';
+
+import { getUserName, getIsAuth } from '../../redux/auth/auth-selectors';
+// import { logout } from 'redux/auth/auth-operations';
 
 import styles from './Header.module.scss';
 
 import { ReactComponent as IconWallet } from '../../icons/IconWallet.svg';
 import { ReactComponent as IconExit } from '../../icons/exit.svg';
-import useWindowDimensions from '../../hooks/useWindowDimensions';
-// import UserInfo from '../Userinfo/Userinfo';
 
 export default function Header() {
-  // рендер по усливию поими что тебе надо сделать
-  // ты хочешь уьирать абзац на мобильной разметке если это мобильное устройство тога убрать element если нет тогда покажи его
+  const isAuthUser = useSelector(getIsAuth);
+  const userName = useSelector(getUserName);
 
-  const viewPort = useWindowDimensions();
-  console.log(viewPort.width);
+  // const dispatch = useDispatch();
+
+  console.log('name', userName);
+
+  const [width] = useWindowSize();
 
   return (
     <>
       <header className={styles.container}>
-        <Link to="/" alt="homepage">
+        <Link to="/home" alt="homepage">
           <div>
             <IconWallet className={styles.logoIcon} />
             <h1 className={styles.logo}>Wallet</h1>
           </div>
         </Link>
         <div className={styles.userStatus}>
-          <p>Имя</p>
+          {isAuthUser !== userName ? <p>Имя</p> : <p>{userName}</p>}
           <IconExit className={styles.exitIcon} />
-          {viewPort.width >= 320 ? <p>Выход</p> : ''}
+
+          {width >= 768 && <p>Выход</p>}
+          {/* {width >= 768 && (
+            <button onClick={() => dispatch(logout())}>Выход</button>
+          )} */}
         </div>
       </header>
     </>
