@@ -12,21 +12,21 @@ export default function Navigation() {
         matches ? (
           <div className={styles.navWrapper}>
             <NavLink
-              to="/home"
+              to="/home/main"
               className={styles.homeLink}
               activeClassName={styles.active}
             >
               <IconHome className={styles.homeIcon} />
             </NavLink>
             <NavLink
-              to="/statistics"
+              to="/home/statistics"
               className={styles.statsLink}
               activeClassName={styles.active}
             >
               <IconStats className={styles.statsIcon} />
             </NavLink>
             <NavLink
-              to="/currency"
+              to="/home/currency"
               className={styles.currencyLink}
               activeClassName={styles.active}
             >
@@ -36,9 +36,10 @@ export default function Navigation() {
         ) : (
           <div className={styles.navWrapper}>
             <NavLink
-              to="/home/currency"
+              to="/home/main"
               className={styles.homeLink}
               activeClassName={styles.active}
+              defaultValue={'/home'}
             >
               <IconHome className={styles.homeIcon} /> Главная
             </NavLink>
