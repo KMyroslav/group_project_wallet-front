@@ -36,14 +36,14 @@ export default function Navigation() {
         ) : (
           <div className={styles.navWrapper}>
             <NavLink
-              to="/home"
+              to="/home/currency"
               className={styles.homeLink}
               activeClassName={styles.active}
             >
               <IconHome className={styles.homeIcon} /> Главная
             </NavLink>
             <NavLink
-              to="/statistics"
+              to="/home/statistics"
               className={styles.statsLink}
               activeClassName={styles.active}
             >

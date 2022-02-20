@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <>
       <header className={styles.container}>
-        <Link to="/home" alt="homepage">
+        <Link to="/home/currency" alt="homepage">
           <div>
             <IconWallet className={styles.logoIcon} />
             <h1 className={styles.logo}>Wallet</h1>

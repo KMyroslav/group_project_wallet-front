@@ -7,10 +7,12 @@ import Balance from 'components/Balance';
 import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
-import { Route } from 'react-router-dom';
+import { Route, useRouteMatch } from 'react-router-dom';
 import DiagramTab from 'components/DiagramTab/DiagramTab';
 
 export default function DashBoardPage() {
+  const { url } = useRouteMatch();
+
   return (
     <>
       <div className={styles.blur}>
@@ -22,22 +24,24 @@ export default function DashBoardPage() {
                 <div className={styles.navigation}>
                   <Navigation />
                 </div>
-                <Route path="/home/currency">
-                  <Currency />
-                </Route>
+
                 <div className={styles.balance}>
                   <Balance />
                 </div>
+                <Media query="(min-width: 768px)">
+                  <Currency />
+                </Media>
               </div>
-              <Media query="(min-width: 768px)">
-                <Currency />
-              </Media>
             </div>
-            <TableHome />
+            <Route path={`${url}/currency`}>
+              <TableHome />
+            </Route>
+            <Route path={`${url}/statistics`}>
+              <DiagramTab />
+            </Route>
           </div>
         </div>
       </div>
-      <DiagramTab />
     </>
   );
 }
