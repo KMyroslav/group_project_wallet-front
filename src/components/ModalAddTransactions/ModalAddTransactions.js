@@ -5,6 +5,8 @@ import { ReactComponent as CloseModalIcon } from 'icons/CloseModalIcon.svg';
 import { ReactComponent as DateRangeIcon } from 'icons/DateRangeIcon.svg';
 import { ReactComponent as OpenSelectIcon } from 'icons/OpenSelectIcon.svg';
 
+import { useFormik } from 'formik';
+// import * as Yup from 'yup';
 import DateAdapter from '@mui/lab/AdapterDateFns';
 import ruLocale from 'date-fns/locale/ru';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -19,8 +21,19 @@ const ModalAddTransactions = () => {
   const [timestamp, setTimestamp] = useState(new Date());
   const [amount, setAmount] = useState(null);
 
-  // const [selected, setSelected] = useState(null);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+  const initial = { toggled, timestamp, amount };
+
+  const formik = useFormik({
+    initialValues: {
+      ...initial,
+    },
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
 
   const locale = ruLocale;
   const mask = '__.__.___';
@@ -40,7 +53,7 @@ const ModalAddTransactions = () => {
         <CloseModalIcon />
       </button>
       <p className={styles.formCall}>Добавить транзакцию</p>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         <Toggler selected={toggled} toggleSelected={handleToggle} />
         <div className={styles.selectWrapper}>
           <input
