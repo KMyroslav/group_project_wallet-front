@@ -21,7 +21,6 @@ function App() {
       {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={RegistrationPage} />
-        {/* <Route path="/login" component={LoginPage} /> */}
         <Route path="/login">
           {isLoggedIn ? <Redirect to="/home" /> : <LoginPage />}
         </Route>
