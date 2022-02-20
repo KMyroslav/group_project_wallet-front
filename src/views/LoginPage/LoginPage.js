@@ -18,6 +18,7 @@ const LoginPage = () => {
               <p className={style.text}>Finance App</p>
             </div>
           </Media>
+
           <div className={style.formWrapper}>
             <LoginForm />
             <div className={style.blur}></div>

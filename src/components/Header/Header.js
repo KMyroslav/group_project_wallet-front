@@ -1,9 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useWindowSize } from '@react-hook/window-size';
 
-import { getUserName, getIsAuth } from '../../redux/auth/auth-selectors';
+import {
+  getUserName,
+  getIsAuth,
+  getUserEmail,
+} from '../../redux/auth/auth-selectors';
 import { logout } from 'redux/auth/auth-operations';
 
 import styles from './Header.module.scss';
@@ -14,10 +18,11 @@ import { ReactComponent as IconExit } from '../../icons/exit.svg';
 export default function Header() {
   const isAuthUser = useSelector(getIsAuth);
   const userName = useSelector(getUserName);
+  const userEmail = useSelector(getUserEmail);
 
   const dispatch = useDispatch();
 
-  console.log('name', userName);
+  console.log('name', userEmail);
 
   const [width] = useWindowSize();
 
@@ -33,15 +38,23 @@ export default function Header() {
         <div className={styles.userStatus}>
           {(isAuthUser && <p>{userName}</p>) || <p>Имя</p>}
 
-          {/* {width >= 768 && <p>Выход</p>} */}
-
-          <button
+          <NavLink
+            to="/"
             onClick={() => dispatch(logout())}
             className={styles.headerBtn}
           >
             <IconExit className={styles.exitIcon} />
+
             {width >= 768 && 'Выход'}
-          </button>
+          </NavLink>
+          {/* <button
+            onClick={() => dispatch(logout())}
+            className={styles.headerBtn}
+          >
+            <IconExit className={styles.exitIcon} />
+
+            {width >= 768 && 'Выход'}
+          </button> */}
         </div>
       </header>
     </>
