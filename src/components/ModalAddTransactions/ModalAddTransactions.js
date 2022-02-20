@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import styles from './ModalAddTransactions.module.scss';
+
 import 'styles/globalMUI.scss';
+
 import { ReactComponent as CloseModalIcon } from 'icons/CloseModalIcon.svg';
 import { ReactComponent as DateRangeIcon } from 'icons/DateRangeIcon.svg';
 import { ReactComponent as OpenSelectIcon } from 'icons/OpenSelectIcon.svg';

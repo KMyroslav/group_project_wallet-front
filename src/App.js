@@ -11,14 +11,11 @@ import CurrencyPage from 'views/CurrencyPage';
 import { useSelector } from 'react-redux';
 import { getIsAuth } from './redux/auth/auth-selectors';
 
-// import Header from 'components/Header';
-
 function App() {
   const isLoggedIn = useSelector(getIsAuth);
 
   return (
     <div>
-      {/* <Header /> */}
       <Switch>
         <Route exact path="/" component={RegistrationPage} />
         <Route path="/login">

@@ -8,9 +8,9 @@ import {
   repeatEmailVerifySuccess,
   repeatEmailVerifyOk,
   repeatEmailVerifyError,
-  // logoutRequest,
-  // logoutSuccess,
-  // logoutError,
+  logoutRequest,
+  logoutSuccess,
+  logoutError,
   loginRequest,
   loginSuccess,
   loginError,
@@ -29,18 +29,18 @@ const user = createReducer(initialUserState, {
     ...payload.user,
   }),
 
-  // [logoutSuccess]: () => initialUserState,
+  [logoutSuccess]: () => initialUserState,
   [getCurrentUserSuccess]: (_, { payload }) => payload,
 });
 
 const refreshToken = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.refreshToken,
-  // [logoutSuccess]: () => null,
+  [logoutSuccess]: () => null,
 });
 
 const token = createReducer(null, {
   [loginSuccess]: (_, { payload }) => payload.token,
-  // [logoutSuccess]: () => null,
+  [logoutSuccess]: () => null,
 });
 
 const setError = (_, { payload }) => payload;
@@ -49,15 +49,19 @@ const error = createReducer(null, {
   [registerError]: setError,
   [registerSuccess]: () => null,
   [registerRequest]: () => null,
+
   [repeatEmailVerifyError]: setError,
   [repeatEmailVerifySuccess]: () => null,
   [repeatEmailVerifyRequest]: () => null,
+
   [loginError]: setError,
   [loginSuccess]: () => null,
   [loginRequest]: () => null,
-  // [logoutError]: setError,
-  // [logoutError]: () => null,
-  // [logoutRequest]: () => null,
+
+  [logoutError]: setError,
+  [logoutError]: () => null,
+  [logoutRequest]: () => null,
+
   [getCurrentUserError]: setError,
   [getCurrentUserRequest]: () => null,
   [getCurrentUserSuccess]: () => null,
@@ -66,10 +70,12 @@ const error = createReducer(null, {
 const isLogin = createReducer(false, {
   [loginSuccess]: () => true,
   [getCurrentUserSuccess]: () => true,
+
   [registerError]: () => false,
   [loginError]: () => false,
   [getCurrentUserError]: () => false,
-  // [logoutSuccess]: () => false,
+
+  [logoutSuccess]: () => false,
 });
 
 const isFetchigCurrentUser = createReducer(false, {
