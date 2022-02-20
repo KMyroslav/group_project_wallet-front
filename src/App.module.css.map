@@ -1,0 +1,14 @@
+{
+    "version": 3,
+    "mappings": "AKAA,UAAU;EACR,WAAW,EAAE,OAAO;EACpB,GAAG,EAAE,iCAAiC,CAAC,kBAAkB;EACzD,GAAG,EAAE,8BAA8B,CAAC,kBAAkB;;;ALDxD,AAAA,UAAU,CAAC;EACT,MAAM,EAAE,MAAM;EAEd,WAAW,EKCF,OAAO,EAAE,UAAU;ELA5B,WAAW,EKIH,GAAG;ELHX,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;CACjB;;AAGD,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,UAAU,CAAC;IACT,KAAK,EAAE,KAAK;GACb;;;AAIH,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EACjC,AAAA,UAAU,CAAC;IACT,KAAK,EAAE,KAAK;GACb;;;AAIH,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,MAAM;EAClC,AAAA,UAAU,CAAC;IACT,KAAK,EAAE,MAAM;GACd",
+    "sources": [
+        "App.module.scss",
+        "styles/shared.scss",
+        "styles/_variables.scss",
+        "styles/_colors.scss",
+        "styles/_placeholders.scss",
+        "styles/_fonts.scss"
+    ],
+    "names": [],
+    "file": "App.module.css"
+}
