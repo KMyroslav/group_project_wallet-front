@@ -1,4 +1,7 @@
-import { Link, useHistory } from 'react-router-dom';
+import {
+  Link,
+  // useHistory
+} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -25,7 +28,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   return (
     <>
