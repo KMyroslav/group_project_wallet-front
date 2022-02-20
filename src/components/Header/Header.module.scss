@@ -1,9 +1,18 @@
 @import 'styles/shared';
 
 .container {
-  border: 1px solid tomato;
+  display: flex;
+  justify-content: space-between;
 
   background-color: $white;
+
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: $baseFont;
+  font-weight: $regular;
+  color: $light-gray;
+
+  // border: 1px solid tomato;
 
   & div {
     display: flex;
@@ -12,17 +21,18 @@
 }
 
 .logo {
-  margin-left: 22px;
+  margin-left: 16px;
 
+  color: $black;
   font-size: 25px;
   line-height: 1.5;
-
   font-family: $secondaryFont;
   font-weight: $bold;
 }
 
 .userStatus {
   & p {
+    color: $light-gray;
     margin-right: 10px;
   }
 }
@@ -30,20 +40,39 @@
 .exitIcon {
   width: 18px;
   height: 18px;
+
+  margin-right: 10px;
+}
+
+.logoIcon {
+  width: 30px;
+  height: 30px;
+}
+
+.headerBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // padding: 2px 4px;
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 18px;
+  line-height: 1.5;
+  font-family: $baseFont;
+  font-weight: $regular;
+  color: $light-gray;
 }
 
 //mobile
 @media screen and (min-width: 320px) {
   .container {
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
 
     padding: 20px 20px;
-  }
-
-  .logoIcon {
-    width: 30px;
-    height: 30px;
   }
 }
 

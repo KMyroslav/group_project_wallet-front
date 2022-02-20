@@ -1,52 +1,96 @@
-import axios from 'axios';
+import { toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 import {
-  registrationError,
-  registrationSuccess,
-  registrationRequest,
-  loginSuccess,
+  registerRequest,
+  registerSuccess,
+  registerError,
   loginRequest,
+  loginSuccess,
   loginError,
   logoutRequest,
   logoutSuccess,
   logoutError,
+  getCurrentUserError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
-  getCurrentUserError,
 } from './auth-actions';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
+import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
+
+import axios from 'axios';
+
+const register = (credentials) => async (dispatch) => {
+  dispatch(registerRequest());
+  try {
+    const response = await fetchSignUp(credentials);
+    dispatch(registerSuccess(response.data));
+  } catch (response) {
+    toast.error(
+      response.response.status === 409 && '"Вы уже зарегистрированы"',
+      {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      },
+    );
+    dispatch(registerError(response.message));
+  }
+};
+
+const logIn = (credentials) => async (dispatch) => {
+  dispatch(loginRequest());
+  try {
+    const response = await fetchLogin(credentials);
+    // console.log(response);
+    // token.set(response.token);
+    dispatch(loginSuccess(response.data));
+  } catch (response) {
+    toast.error(
+      response.response.status === 401 && 'Email or password is wrong!',
+      {
+        position: 'top-center',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      },
+    );
+    dispatch(loginError(response.message));
+  }
+};
 
 const token = {
   set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    fetchCurrentUser.common.Authorization = `Bearer &{token}`;
   },
   unset() {
-    axios.defaults.headers.common.Authorization = '';
+    fetchCurrentUser.common.Authorization = '';
   },
 };
 
-export const register = (credentials) => async (dispatch) => {
-  dispatch(registrationRequest());
-  const resp = await axios.post('/users/signup', credentials);
+const getCurrentUser = () => (dispatch, getState) => {
+  const {
+    auth: { token: prsistedToken },
+  } = getState();
 
-  try {
-    dispatch(registrationSuccess(resp.data));
-    token.set(resp.data.token);
-  } catch (error) {
-    dispatch(registrationError(error.message));
+  if (!prsistedToken) {
+    return;
   }
-};
+  token.set(prsistedToken);
 
-export const login = (credentials) => async (dispatch) => {
-  dispatch(loginRequest());
-  const resp = await axios.post('/users/login', credentials);
+  dispatch(getCurrentUserRequest);
 
-  try {
-    dispatch(loginSuccess(resp.data));
-    token.set(resp.data.token);
-  } catch (error) {
-    dispatch(loginError(error.message));
-  }
+  axios
+    .get('users/current')
+    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
+    .catch((err) => getCurrentUserError(err.message));
 };
 
 export const logout = () => async (dispatch) => {
@@ -61,19 +105,4 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-export const getCurrentUser = () => (dispatch, getState) => {
-  const {
-    auth: { token: persistedToken },
-  } = getState();
-  if (!persistedToken) {
-    return;
-  }
-  token.set(persistedToken);
-
-  dispatch(getCurrentUserRequest());
-
-  axios
-    .get('/users/current')
-    .then(({ data }) => dispatch(getCurrentUserSuccess(data)))
-    .catch((err) => dispatch(getCurrentUserError(err.message)));
-};
+export { register, logIn, getCurrentUser };

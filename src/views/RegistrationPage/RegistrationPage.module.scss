@@ -1,0 +1,55 @@
+@import '../../styles/shared.scss';
+
+//  .pageText {
+//   display: none;
+// }
+
+@media screen and (min-width: 768px) {
+  .PageContainer {
+    position: relative;
+    background-color: #e7eaf2;
+
+    width: 768px;
+    height: 1024px;
+    background-repeat: no-repeat;
+    background-image: url(../../images/elipse-up.png),
+      url(../../images/elipse-down.png), url(../../images/Frame-tblet-reg.png);
+
+    background-repeat: no-repeat;
+    background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
+  }
+
+  .pageText {
+    position: absolute;
+    top: 163px;
+    right: 153px;
+    font-family: Poppins;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 45px;
+    display: inline-block;
+
+    color: $black;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .PageContainer {
+    background-color: #e7eaf2;
+    width: 1280px;
+    height: 720px;
+  }
+  .PageContainer {
+    background-repeat: no-repeat;
+    background-image: url(../../images/Frame-desctop.png),
+      url(../../images/elipse-up.png), url(../../images/Rectangle.png);
+
+    background-repeat: no-repeat;
+    background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
+  }
+
+  .pageText {
+    top: 600px;
+    right: 900px;
+  }
+}

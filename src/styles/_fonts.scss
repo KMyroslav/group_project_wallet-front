@@ -1,7 +1,19 @@
 @font-face {
   font-family: 'Circe';
   src: url('../fonts/Circe-Regular.otf') format('opentype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Circe';
   src: url('../fonts/Circe-Bold.otf') format('opentype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype'),
+    url('../fonts/Poppins-Bold.ttf') format('truetype');
 }
 
 $baseFont: 'Circe', sans-serif;

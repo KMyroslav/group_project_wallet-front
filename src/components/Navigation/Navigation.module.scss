@@ -1,0 +1,85 @@
+@import 'styles/shared';
+
+.navWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.homeLink,
+.statsLink,
+.currencyLink {
+  .homeIcon,
+  .statsIcon,
+  .currencyIcon {
+    fill: #6e78e8;
+    @media screen and (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &:hover svg,
+  &:active svg,
+  &:focus svg {
+    background-color: #fff;
+    border-radius: 6px;
+    fill: #4a56e2;
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+}
+
+.active {
+  .homeIcon,
+  .statsIcon,
+  .currencyIcon {
+    background-color: #fff;
+    border-radius: 6px;
+    fill: #4a56e2;
+    filter: drop-shadow(0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .navWrapper {
+    display: block;
+  }
+
+  .homeLink {
+    margin-bottom: 10px;
+  }
+
+  .homeLink,
+  .statsLink {
+    display: flex;
+    align-items: center;
+
+    font-family: $secondaryFont;
+    font-size: 18px;
+    line-height: 27px;
+    color: #000000;
+
+    &:hover svg,
+    &:active svg,
+    &:focus svg {
+      border-radius: 2px;
+      fill: #4a56e2;
+    }
+  }
+
+  .homeIcon,
+  .statsIcon {
+    width: 18px;
+    height: 18px;
+    margin-right: 23px;
+    border-radius: 2px;
+  }
+
+  .active {
+    font-weight: 700;
+    .homeIcon,
+    .statsIcon,
+    .currencyIcon {
+      border-radius: 2px;
+    }
+  }
+}

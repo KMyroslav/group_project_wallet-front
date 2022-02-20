@@ -1,0 +1,44 @@
+@import 'styles/shared';
+
+.tableWrapper {
+  background: #ffffff;
+  border-radius: 10px;
+  border-left: 5px solid #ff6596;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.wrapperIncome {
+  border-left: 5px solid #24cca7;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px 15px;
+  &:not(:last-child) {
+    border-bottom: 1px solid #dcdcdf;
+  }
+}
+
+.listKey {
+  font-weight: $bold;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.listValue {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.outcome {
+  color: #ff6596;
+}
+
+.income {
+  color: #24cca7;
+}
