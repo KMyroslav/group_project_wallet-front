@@ -8,11 +8,14 @@ import LoginPage from './views/LoginPage/LoginPage';
 import DashBoardPage from 'views/DashBoardPage';
 import CurrencyPage from 'views/CurrencyPage';
 
+import { useSelector } from 'react-redux';
 import { getIsAuth } from './redux/auth/auth-selectors';
 
 // import Header from 'components/Header';
 
 function App() {
+  const isLoggedIn = useSelector(getIsAuth);
+
   return (
     <div>
       {/* <Header /> */}
@@ -20,7 +23,7 @@ function App() {
         <Route exact path="/" component={RegistrationPage} />
         {/* <Route path="/login" component={LoginPage} /> */}
         <Route path="/login">
-          {!getIsAuth ? <Redirect to="/home" /> : <LoginPage />}
+          {isLoggedIn ? <Redirect to="/home" /> : <LoginPage />}
         </Route>
         <Route path="/home" component={DashBoardPage} />
         <Route path="/currency" component={CurrencyPage} />
