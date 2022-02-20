@@ -31,7 +31,7 @@ export default function Header() {
           </div>
         </Link>
         <div className={styles.userStatus}>
-          {isAuthUser !== userName ? <p>Имя</p> : <p>{userName}</p>}
+          {(isAuthUser && <p>{userName}</p>) || <p>Имя</p>}
 
           {/* {width >= 768 && <p>Выход</p>} */}
 
