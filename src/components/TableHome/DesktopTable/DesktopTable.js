@@ -117,7 +117,7 @@ export default function desktopTable({ data }) {
 
   return (
     <div sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 420, maxWidth: 700 }}>
+      <TableContainer sx={{ maxHeight: 420, width: 688 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
