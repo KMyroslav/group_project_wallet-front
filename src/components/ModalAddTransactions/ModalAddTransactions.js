@@ -1,4 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCategories } from 'redux/categories/categoriesOperations';
+import categoriesActions from 'redux/categories/categoriesSelectors';
 import styles from './ModalAddTransactions.module.scss';
 import 'styles/globalMUI.scss';
 import { ReactComponent as CloseModalIcon } from 'icons/CloseModalIcon.svg';
@@ -20,10 +23,17 @@ const ModalAddTransactions = () => {
   const [toggled, setToggled] = useState('expenses');
   const [timestamp, setTimestamp] = useState(new Date());
   const [amount, setAmount] = useState(null);
-
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [selected, setSelected] = useState(null);
 
-  const initial = { toggled, timestamp, amount };
+  const initial = { toggled, timestamp, amount, selected };
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  const categories = useSelector(categoriesActions.getCategories);
 
   const formik = useFormik({
     initialValues: {
@@ -75,7 +85,21 @@ const ModalAddTransactions = () => {
           </button>
           {isSelectOpen && (
             <div className={styles.selectListWrapper}>
-              <ul className={styles.selectList}>{}</ul>
+              <ul className={styles.selectList}>
+                {categories &&
+                  categories.map((category) => (
+                    <li
+                      className={styles.selectListItem}
+                      key={category._id}
+                      onClick={() => {
+                        setSelected(category.nameCategory);
+                        setIsSelectOpen(false);
+                      }}
+                    >
+                      <p className={styles.option}>{category.nameCategory}</p>
+                    </li>
+                  ))}
+              </ul>
             </div>
           )}
         </div>
