@@ -1,27 +1,10 @@
 @import '../../styles/shared.scss';
-// .pageWrapper {
-//   position: relative;
-// }
 
 .mainWrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-}
-
-.pageText {
-  position: absolute;
-  top: 163px;
-  right: 153px;
-
-  font-family: Poppins;
-  font-weight: 400;
-  font-size: 30px;
-  line-height: 45px;
-  display: inline-block;
-
-  color: $black;
 }
 
 @media screen and (min-width: 768px) {

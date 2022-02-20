@@ -19,9 +19,10 @@ const LoginPage = () => {
             </div>
           </Media>
 
-          <div className={style.formWrapper}>
-            <LoginForm />
-            <div className={style.blur}></div>
+          <div className={style.blur}>
+            <div className={style.formWrapper}>
+              <LoginForm />
+            </div>
           </div>
         </div>
       </div>
