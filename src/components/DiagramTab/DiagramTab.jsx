@@ -5,13 +5,13 @@ import Chart from '../Chart/Chart';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { setMonth, setYear } from '../../redux/transactions/transactionsSlice';
+import { setMonth, setYear } from '../../redux/statistics/statisticsSlice';
 
-import selectors from '../../redux/transactions/transactionsSelectors';
+import selectors from '../../redux/statistics/statisticsSelectors';
 import {
   getStatistics,
   getCategories,
-} from '../../redux/transactions/transactionsOperations';
+} from '../../redux/statistics/statisticsOperations';
 import { months, years, colorSheme } from './constants';
 
 const DiagramTab = () => {

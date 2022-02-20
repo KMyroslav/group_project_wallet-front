@@ -7,10 +7,14 @@ import Balance from 'components/Balance';
 import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
-import { Route } from 'react-router-dom';
-import DiagramTab from 'components/DiagramTab/DiagramTab';
+import { Route, useRouteMatch, useLocation } from 'react-router-dom';
+import DiagramTab from '../../components/DiagramTab/DiagramTab';
 
 export default function DashBoardPage() {
+  const { url } = useRouteMatch();
+
+  const { pathname } = useLocation();
+
   return (
     <>
       <div className={styles.blur}>
@@ -22,22 +26,57 @@ export default function DashBoardPage() {
                 <div className={styles.navigation}>
                   <Navigation />
                 </div>
-                <Route path="/home/currency">
-                  <Currency />
-                </Route>
-                <div className={styles.balance}>
-                  <Balance />
-                </div>
+
+                <Media
+                  queries={{
+                    small: '(max-width: 767px)',
+                    other: '(min-width: 768px)',
+                  }}
+                >
+                  {(matches) => (
+                    <>
+                      {matches.small && pathname === '/home/main' && (
+                        <div className={styles.balance}>
+                          <Balance />
+                        </div>
+                      )}
+
+                      {matches.other && (
+                        <div className={styles.balance}>
+                          <Balance />
+                        </div>
+                      )}
+                    </>
+                  )}
+                </Media>
+
+                <Media
+                  queries={{
+                    small: '(max-width: 767px)',
+                    other: '(min-width: 768px)',
+                  }}
+                >
+                  {(matches) => (
+                    <>
+                      {matches.small && pathname === '/home/currency' && (
+                        <Currency />
+                      )}
+
+                      {matches.other && <Currency />}
+                    </>
+                  )}
+                </Media>
               </div>
-              <Media query="(min-width: 768px)">
-                <Currency />
-              </Media>
             </div>
-            <TableHome />
+            <Route exact path={`${url}/main`}>
+              <TableHome />
+            </Route>
+            <Route path={`${url}/statistics`}>
+              <DiagramTab />
+            </Route>
           </div>
         </div>
       </div>
-      <DiagramTab />
     </>
   );
 }

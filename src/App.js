@@ -17,9 +17,13 @@ function App() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" component={RegistrationPage} />
+        <Route
+          exact
+          path="/"
+          component={isLoggedIn ? DashBoardPage : RegistrationPage}
+        />
         <Route path="/login">
-          {isLoggedIn ? <Redirect to="/home" /> : <LoginPage />}
+          {isLoggedIn ? <Redirect to="/home/main" /> : <LoginPage />}
         </Route>
         <Route path="/home" component={DashBoardPage} />
         <Route path="/currency" component={CurrencyPage} />
