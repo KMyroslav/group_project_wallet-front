@@ -26,8 +26,10 @@
 
 .formWrap {
   box-sizing: border-box;
-  width: 280px;
-  height: 348px;
+  width: 320px;
+
+  padding: 110px 20px;
+  background-color: #ffffff;
 }
 
 .inputWrap {
@@ -99,7 +101,6 @@
     width: 540px;
     height: 468px;
     padding: 40px 0 60px;
-    background-color: #ffffff;
     border-radius: 20px;
   }
 
