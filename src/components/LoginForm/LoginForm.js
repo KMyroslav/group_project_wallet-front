@@ -1,4 +1,7 @@
-import { Link } from 'react-router-dom';
+import {
+  Link,
+  // useHistory
+} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -25,6 +28,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  // const history = useHistory();
 
   return (
     <>
@@ -35,7 +39,7 @@ const LoginForm = () => {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
-          onSubmit={(values, { resetForm, setSubmitting }) => {
+          onSubmit={(values, { resetForm }) => {
             // console.log({ actions });
 
             const data = {
@@ -45,6 +49,7 @@ const LoginForm = () => {
 
             dispatch(logIn(data));
             resetForm({ email: '', password: '' });
+            // history.push('/home');
           }}
         >
           {({
@@ -101,8 +106,6 @@ const LoginForm = () => {
               >
                 ВХОД
               </button>
-
-              {/* {isSubmitting && <div>Отправка данных...</div>} */}
             </form>
           )}
         </Formik>

@@ -68,7 +68,7 @@ const logIn = (credentials) => async (dispatch) => {
 
 const token = {
   set(token) {
-    fetchCurrentUser.common.Authorization = `Bearer &{token}`;
+    fetchCurrentUser.common.Authorization = `Bearer ${token}`;
   },
   unset() {
     fetchCurrentUser.common.Authorization = '';
