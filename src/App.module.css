@@ -1,0 +1,32 @@
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-Regular.otf") format("opentype");
+  src: url("../fonts/Circe-Bold.otf") format("opentype");
+}
+
+.container {
+  margin: 0 auto;
+  font-family: "Circe", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 320px) {
+  .container {
+    width: 280px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+  }
+}
+/*# sourceMappingURL=App.module.css.map */
