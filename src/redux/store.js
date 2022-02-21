@@ -15,6 +15,10 @@ import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from 'redux/auth/auth-reducer';
 // import { wallet } from 'redux/transactions';
+
+import transactionReducer from './transaction/transactionSlice';
+import categoriesReducer from './categories/categoriesSlice';
+
 import transactionsReducer from './statistics/statisticsSlice';
 import transactionsTableReducer from './transactionsTable/transactionsTableSlice';
 import balanceReducer from './balance/balanceSlice';
@@ -39,6 +43,8 @@ const store = configureStore({
     transactions: transactionsReducer,
     transactionsTable: transactionsTableReducer,
     balance: balanceReducer,
+    transaction: transactionReducer,
+    categories: categoriesReducer,
   },
   middleware,
   devTools: true,
