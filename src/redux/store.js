@@ -20,6 +20,7 @@ import categoriesReducer from './categories/categoriesSlice';
 import transactionsReducer from './transactions/transactionsSlice';
 import transactionsTableReducer from './transactionsTable/transactionsTableSlice';
 import balanceReducer from './balance/balanceSlice';
+import isModalOpenReducer from './isModalOpen/isModalOpenSlice';
 
 const middleware = (getDefaultMiddleware) =>
   getDefaultMiddleware({
@@ -43,6 +44,7 @@ const store = configureStore({
     balance: balanceReducer,
     transaction: transactionReducer,
     categories: categoriesReducer,
+    modal: isModalOpenReducer,
   },
   middleware,
   devTools: true,
