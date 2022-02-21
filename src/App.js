@@ -11,12 +11,12 @@ import CurrencyPage from 'views/CurrencyPage';
 
 // import Header from 'components/Header';
 import ModalAddTransactions from 'components/ModalAddTransactions';
-import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
+// import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import { getIsAuth } from 'redux/auth/auth-selectors';
 
 function App() {
-  const isModalOpen = useSelector(modalSelectors.getIsModalOpen);
+  // const isModalOpen = useSelector(modalSelectors.getIsModalOpen);
   const isLoggedIn = useSelector(getIsAuth);
 
   return (
@@ -28,7 +28,8 @@ function App() {
         <Route path="/home" component={DashBoardPage} />
         <Route path="/currency" component={CurrencyPage} />
       </Switch>
-      {isModalOpen && <ModalAddTransactions />}
+      {/* {isModalOpen && <ModalAddTransactions />} */}
+      <ModalAddTransactions />
       {isLoggedIn && <ButtonAddTransactions />}
       <ToastContainer />
     </div>

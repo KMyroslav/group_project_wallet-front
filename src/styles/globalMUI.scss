@@ -9,15 +9,14 @@
   border: none;
 }
 
-// .MuiInputBase-root.MuiInput-root {
-//   border-width: 1px;
-//   border-color: #bdbdbd;
-// }
+.MuiInputBase-root.MuiInput-root {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 12px;
+}
 
 .MuiInputBase-input.MuiInput-input {
   padding: 0;
   padding-left: 20px;
-  padding-bottom: 10px;
   font-family: $baseFont;
   font-size: 18px;
   font-weight: 700;
@@ -25,8 +24,10 @@
   color: #bdbdbd;
 }
 
-.MuiInputBase-input.MuiInput-input:focus {
-  border-color: red;
+.MuiButtonBase-root.MuiIconButton-root {
+  position: absolute;
+  bottom: 17px;
+  right: 0;
 }
 
 .MuiInputAdornment-root {
@@ -34,8 +35,9 @@
 }
 
 @media screen and (min-width: 768px) {
-  .MuiOutlinedInput-input.MuiInputBase-input {
+  .MuiInputBase-input.MuiInput-input {
     text-align: center;
+    width: 100%;
   }
 }
 
