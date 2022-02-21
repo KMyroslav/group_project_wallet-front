@@ -1,10 +1,14 @@
 @import 'styles/shared';
 
+.header {
+  background-color: $white;
+}
+
 .container {
   display: flex;
   justify-content: space-between;
 
-  background-color: $white;
+  margin: 0 auto;
 
   font-size: 18px;
   line-height: 1.5;
@@ -69,6 +73,7 @@
 //mobile
 @media screen and (min-width: 320px) {
   .container {
+    width: 320px;
     // display: flex;
     // justify-content: space-between;
 
@@ -79,6 +84,8 @@
 //tablet
 @media screen and (min-width: 768px) {
   .container {
+    width: 768px;
+
     padding: 20px 40px;
   }
 
@@ -94,8 +101,9 @@
 }
 
 //desktop
-// @media screen and (min-width: 1280px) {
-//   .container {
-//     width: 1280px;
-//   }
-// }
+@media screen and (min-width: 1280px) {
+  .container {
+    width: 1280px;
+    padding: 20px 85px;
+  }
+}

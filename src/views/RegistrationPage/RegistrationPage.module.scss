@@ -8,6 +8,10 @@
   min-height: 100vh;
 }
 
+.overflow {
+  overflow: visible;
+}
+
 @media screen and (min-width: 768px) {
   .mainWrapper {
     flex-wrap: wrap;
@@ -39,6 +43,10 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .pageWrapper {
+    overflow: hidden;
+  }
+
   .mainWrapper {
     flex-wrap: nowrap;
 
@@ -65,6 +73,7 @@
   }
 
   .formWrapper {
+    position: relative;
     padding-top: 52px;
     padding-bottom: 52px;
     padding-left: 95px;
@@ -72,7 +81,14 @@
   }
 
   .blur {
+    position: absolute;
     background-color: rgba(255, 255, 255, 0.4);
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 150vh;
+    height: 150vh;
+    transform: translateY(-50%);
     backdrop-filter: blur(50px);
   }
 }

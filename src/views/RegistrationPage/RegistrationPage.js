@@ -14,24 +14,25 @@ const RegistrationPage = () => {
   const [width] = useWindowSize();
 
   return (
-    <div className="container">
-      <div className={styles.mainWrapper}>
-        <Media query="(min-width: 768px)">
-          <div className={styles.logoWrapper}>
-            {width >= 768 && (
-              <img
-                src={LoginLogo2x}
-                alt="finance app logo"
-                className={styles.logo}
-              />
-            )}
-            {width >= 768 && <p className={styles.text}>Finance App</p>}
-          </div>
-        </Media>
+    <div className={styles.pageWrapper}>
+      <div className={`container ${styles.overflow}`}>
+        <div className={styles.mainWrapper}>
+          <Media query="(min-width: 768px)">
+            <div className={styles.logoWrapper}>
+              {width >= 768 && (
+                <img
+                  src={LoginLogo2x}
+                  alt="finance app logo"
+                  className={styles.logo}
+                />
+              )}
+              {width >= 768 && <p className={styles.text}>Finance App</p>}
+            </div>
+          </Media>
 
-        <div className={styles.blur}>
           <div className={styles.formWrapper}>
             <RegistrationForm />
+            <div className={styles.blur}></div>
           </div>
         </div>
       </div>
