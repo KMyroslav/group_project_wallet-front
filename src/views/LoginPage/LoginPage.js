@@ -6,7 +6,7 @@ import LoginLogo from '../../images/Frame-desktop-login.png';
 const LoginPage = () => {
   return (
     <div className={style.pageWrapper}>
-      <div className="container">
+      <div className={`container ${style.overflow}`}>
         <div className={style.mainWrapper}>
           <Media query="(min-width: 768px)">
             <div className={style.logoWrapper}>
@@ -19,10 +19,9 @@ const LoginPage = () => {
             </div>
           </Media>
 
-          <div className={style.blur}>
-            <div className={style.formWrapper}>
-              <LoginForm />
-            </div>
+          <div className={style.formWrapper}>
+            <LoginForm />
+            <div className={style.blur}></div>
           </div>
         </div>
       </div>

@@ -7,9 +7,12 @@
   min-height: 100vh;
 }
 
+.overflow {
+  overflow: visible;
+}
+
 @media screen and (min-width: 768px) {
   .pageWrapper {
-    width: 100%;
     min-height: 100vh;
   }
 
@@ -63,6 +66,7 @@
 
   .logoWrapper {
     flex-direction: column;
+    margin-right: 48px;
     margin-bottom: 0;
 
     & .text {
@@ -71,6 +75,7 @@
   }
 
   .formWrapper {
+    position: relative;
     padding-top: 136px;
     padding-bottom: 116px;
     padding-left: 95px;
@@ -78,10 +83,14 @@
   }
 
   .blur {
+    position: absolute;
     background-color: rgba(255, 255, 255, 0.4);
-
-    width: 720px;
-
+    z-index: -1;
+    top: 50%;
+    left: 0;
+    width: 150vh;
+    height: 150vh;
+    transform: translateY(-50%);
     backdrop-filter: blur(50px);
   }
 }
