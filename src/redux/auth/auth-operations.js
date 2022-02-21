@@ -32,29 +32,27 @@ const token = {
     axios.defaults.headers.common.Authorization = '';
   },
 };
-
+// registration
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
     const response = await fetchSignUp(credentials);
     dispatch(registerSuccess(response.data));
   } catch (response) {
-    toast.error(
-      response.response.status === 409 && '"Вы уже зарегистрированы"',
-      {
-        position: 'top-center',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      },
-    );
+    toast.error(response.response.status === 409 && 'Вы уже зарегистрированы', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
     dispatch(registerError(response.message));
   }
 };
 
+// set login
 const logIn = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
@@ -63,7 +61,7 @@ const logIn = (credentials) => async (dispatch) => {
     dispatch(loginSuccess(response.data));
   } catch (response) {
     toast.error(
-      response.response.status === 401 && 'Email or password is wrong!',
+      response.response.status === 401 && 'Неверно набраный пароль или имаил!',
       {
         position: 'top-center',
         autoClose: 5000,
@@ -78,15 +76,7 @@ const logIn = (credentials) => async (dispatch) => {
   }
 };
 
-// const token = {
-//   set(token) {
-//     fetchCurrentUser.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     fetchCurrentUser.common.Authorization = '';
-//   },
-// };
-
+// get user
 const getCurrentUser = () => (dispatch, getState) => {
   const {
     auth: { token: prsistedToken },
@@ -105,6 +95,7 @@ const getCurrentUser = () => (dispatch, getState) => {
     .catch((err) => getCurrentUserError(err.message));
 };
 
+// exit
 export const logout = () => async (dispatch) => {
   dispatch(logoutRequest());
   await axios.post('/users/logout');
@@ -112,8 +103,18 @@ export const logout = () => async (dispatch) => {
   try {
     token.unset();
     dispatch(logoutSuccess());
-  } catch (error) {
-    dispatch(logoutError(error.message));
+  } catch (response) {
+    toast.error(response.response.status === 401 && 'Вы уже уходите!?', {
+      position: 'top-center',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+
+    dispatch(logoutError(response.message));
   }
 };
 
