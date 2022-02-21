@@ -41,6 +41,7 @@
   color: $red;
   text-align: center;
 }
+
 .mainBtn {
   border-radius: 20px;
   width: 280px;
@@ -62,6 +63,7 @@
     color: $white;
   }
 }
+
 .btnContainer {
   display: flex;
   flex-direction: column;
@@ -103,6 +105,7 @@
   line-height: 27px;
   position: relative;
 }
+
 .progress {
   width: 280px;
   height: 4px;
@@ -125,12 +128,9 @@
     border-radius: 4px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .formRegister {
-    position: absolute;
-    bottom: 50px;
-    right: 50%;
-    transform: translate(50%);
     width: 540px;
     border-radius: 50px;
     padding-bottom: 60px;
@@ -154,9 +154,6 @@
 }
 @media screen and (min-width: 1280px) {
   .formRegister {
-    bottom: 50%;
-    right: 85px;
-    transform: translateY(50%);
-    margin: 0;
+    margin: 0 auto;
   }
 }

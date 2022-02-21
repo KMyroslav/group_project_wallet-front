@@ -5,7 +5,6 @@ body {
   @media screen and (min-width: 768px) {
     min-height: 100vh;
     background-image: url(./images/elipse-up.png), url(./images/elipse-down.png);
-    overflow: hidden;
     background-repeat: no-repeat;
     background-position: bottom 0 left 0, top 0 right 0;
   }
@@ -13,7 +12,7 @@ body {
 
 .container {
   margin: 0 auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   min-height: 100vh;
 
@@ -23,18 +22,18 @@ body {
 }
 @media screen and (min-width: 320px) {
   .container {
-    width: 280px;
+    width: 320px;
   }
 }
 @media screen and (min-width: 768px) {
   .container {
     padding: 0 40px;
-    width: 688px;
+    width: 768px;
   }
 }
 @media screen and (min-width: 1280px) {
   .container {
     padding: 0 85px;
-    width: 1110px;
+    width: 1280px;
   }
 }

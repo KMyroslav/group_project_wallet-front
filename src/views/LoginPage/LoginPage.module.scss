@@ -1,34 +1,45 @@
 @import '../../styles/shared.scss';
-@media screen and (max-width: 768px) {
-  .pageWrapper {
-    background-color: #ffffff;
-    width: 100%;
-    min-height: 100vh;
-  }
-  .mainWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-  }
+
+.mainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 @media screen and (min-width: 768px) {
+  .pageWrapper {
+    width: 100%;
+    min-height: 100vh;
+  }
+
   .mainWrapper {
     display: flex;
     flex-direction: column;
+    margin-top: 60px;
+
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     min-height: 100vh;
   }
+
   .logo {
     display: inline-block;
-    width: 250px;
-    height: 260px;
+    width: 260px;
+    height: 250px;
   }
+
   .logoWrapper {
     display: flex;
     align-items: center;
+    margin-bottom: 50px;
+
+    & .text {
+      font-family: $secondaryFont;
+      font-size: 30px;
+      line-height: 45px;
+      margin-left: 40px;
+    }
   }
 }
 
@@ -36,30 +47,41 @@
   .pageWrapper {
     overflow: hidden;
   }
+
   .logo {
     display: inline-block;
-    width: 420px;
-    height: 435px;
+    width: 435px;
+    height: 420px;
   }
+
   .mainWrapper {
     flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: 0;
   }
+
   .logoWrapper {
     flex-direction: column;
-    align-items: center;
+    margin-bottom: 0;
+
+    & .text {
+      margin-top: 28px;
+    }
   }
+
   .formWrapper {
-    position: relative;
+    padding-top: 136px;
+    padding-bottom: 116px;
+    padding-left: 95px;
+    padding-right: 85px;
   }
+
   .blur {
-    position: absolute;
     background-color: rgba(255, 255, 255, 0.4);
-    z-index: -1;
-    top: 50%;
-    left: 0;
-    width: 150vh;
-    height: 100vh;
-    transform: translateY(-50%);
+
+    width: 720px;
+
     backdrop-filter: blur(50px);
   }
 }
@@ -91,15 +113,15 @@
 //     background-repeat: no-repeat;
 //     background-position: top 60px left 114px
 
-//     & .text {
-//       display: block;
-//       font-family: $secondaryFont;
-//       font-size: 30px;
-//       font-weight: $regular;
-//       line-height: 45px;
-//       padding-left: 300px;
-//       margin-bottom: 148px;
-//     }
+// & .text {
+//   display: block;
+//   font-family: $secondaryFont;
+//   font-size: 30px;
+//   font-weight: $regular;
+//   line-height: 45px;
+//   padding-left: 300px;
+//   margin-bottom: 148px;
+// }
 
 //     & .loginForm {
 //       width: 540px;

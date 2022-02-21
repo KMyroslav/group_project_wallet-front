@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.scss';
 
@@ -8,15 +8,23 @@ import LoginPage from './views/LoginPage/LoginPage';
 import DashBoardPage from 'views/DashBoardPage';
 import CurrencyPage from 'views/CurrencyPage';
 
-// import Header from 'components/Header';
+import { useSelector } from 'react-redux';
+import { getIsAuth } from './redux/auth/auth-selectors';
 
 function App() {
+  const isLoggedIn = useSelector(getIsAuth);
+
   return (
     <div>
-      {/* <Header /> */}
       <Switch>
-        <Route exact path="/" component={RegistrationPage} />
-        <Route path="/login" component={LoginPage} />
+        <Route
+          exact
+          path="/"
+          component={isLoggedIn ? DashBoardPage : RegistrationPage}
+        />
+        <Route path="/login">
+          {isLoggedIn ? <Redirect to="/home/main" /> : <LoginPage />}
+        </Route>
         <Route path="/home" component={DashBoardPage} />
         <Route path="/currency" component={CurrencyPage} />
       </Switch>

@@ -76,7 +76,7 @@ const columns = [
     format: (value) => (value === 'income' ? '+' : '-'),
   },
   {
-    id: 'category',
+    id: 'categoryId',
     label: 'Категория',
     // maxWidth: 115,
     align: 'left',
@@ -103,21 +103,25 @@ const columns = [
   },
 ];
 
-export default function desktopTable({ data }) {
-  const rows = data.map(({ _id, date, typeTx, comment, sum, balance }) => ({
-    _id,
-    date,
-    typeTx,
-    maxWidth: 55,
-    category: 'Нерегулярний доход',
-    comment,
-    sum,
-    balance,
-  }));
+export default function desktopTable({ data, categories }) {
+  const rows = data.map(
+    ({ _id, date, typeTx, categoryId, comment, sum, balance }) => {
+      const { nameCategory } = categories.find((el) => el._id === categoryId);
+      return {
+        _id,
+        date,
+        typeTx,
+        categoryId: nameCategory,
+        comment,
+        sum,
+        balance,
+      };
+    },
+  );
 
   return (
     <div sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 420, maxWidth: 700 }}>
+      <TableContainer sx={{ maxHeight: 420, width: 688 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>

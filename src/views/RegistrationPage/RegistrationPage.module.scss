@@ -1,55 +1,79 @@
 @import '../../styles/shared.scss';
 
-//  .pageText {
-//   display: none;
-// }
+.mainWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
 
 @media screen and (min-width: 768px) {
-  .PageContainer {
-    position: relative;
-    background-color: #e7eaf2;
-
-    width: 768px;
-    height: 1024px;
-    background-repeat: no-repeat;
-    background-image: url(../../images/elipse-up.png),
-      url(../../images/elipse-down.png), url(../../images/Frame-tblet-reg.png);
-
-    background-repeat: no-repeat;
-    background-position: bottom 0 left 0, top 0 right 0, top 60px left 114px;
+  .pageWrapper {
+    width: 100%;
+    min-height: 100vh;
   }
 
-  .pageText {
-    position: absolute;
-    top: 163px;
-    right: 153px;
-    font-family: Poppins;
-    font-weight: 400;
-    font-size: 30px;
-    line-height: 45px;
-    display: inline-block;
+  .mainWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
 
-    color: $black;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+  }
+
+  .logoWrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+
+    & .text {
+      font-family: $secondaryFont;
+      font-size: 30px;
+      line-height: 45px;
+      margin-left: 40px;
+    }
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .PageContainer {
-    background-color: #e7eaf2;
-    width: 1280px;
-    height: 720px;
-  }
-  .PageContainer {
-    background-repeat: no-repeat;
-    background-image: url(../../images/Frame-desctop.png),
-      url(../../images/elipse-up.png), url(../../images/Rectangle.png);
-
-    background-repeat: no-repeat;
-    background-position: top 153px left 66px, bottom 0 left 0, top 0 right 0;
+  .pageWrapper {
+    overflow: hidden;
   }
 
-  .pageText {
-    top: 600px;
-    right: 900px;
+  .logo {
+    display: inline-block;
+    width: 435px;
+    height: 420px;
+  }
+
+  .mainWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-top: 0;
+  }
+
+  .logoWrapper {
+    flex-direction: column;
+    margin-bottom: 0;
+
+    & .text {
+      margin-top: 28px;
+    }
+  }
+
+  .formWrapper {
+    padding-top: 52px;
+    padding-bottom: 52px;
+    padding-left: 95px;
+    padding-right: 85px;
+  }
+
+  .blur {
+    background-color: rgba(255, 255, 255, 0.4);
+    width: 720px;
+    backdrop-filter: blur(50px);
   }
 }

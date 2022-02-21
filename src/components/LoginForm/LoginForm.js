@@ -35,7 +35,7 @@ const LoginForm = () => {
         <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
-          onSubmit={(values, { resetForm, setSubmitting }) => {
+          onSubmit={(values, { resetForm }) => {
             // console.log({ actions });
 
             const data = {
@@ -101,14 +101,12 @@ const LoginForm = () => {
               >
                 ВХОД
               </button>
-
-              {/* {isSubmitting && <div>Отправка данных...</div>} */}
             </form>
           )}
         </Formik>
 
         <div className={style.link}>
-          <Link to="/register">РЕГИСТРАЦИЯ</Link>
+          <Link to="/">РЕГИСТРАЦИЯ</Link>
         </div>
       </div>
     </>

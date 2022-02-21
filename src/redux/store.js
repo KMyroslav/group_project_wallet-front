@@ -15,9 +15,11 @@ import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from 'redux/auth/auth-reducer';
 // import { wallet } from 'redux/transactions';
+
 import transactionReducer from './transaction/transactionSlice';
 import categoriesReducer from './categories/categoriesSlice';
-import transactionsReducer from './transactions/transactionsSlice';
+
+import transactionsReducer from './statistics/statisticsSlice';
 import transactionsTableReducer from './transactionsTable/transactionsTableSlice';
 import balanceReducer from './balance/balanceSlice';
 

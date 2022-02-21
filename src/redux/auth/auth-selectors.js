@@ -1,4 +1,5 @@
 const getIsAuth = (state) => state.auth.isLogin;
+
 const getUserName = (state) => state.auth.user.name;
 
 const getUserEmail = (state) => state.auth.user.email;

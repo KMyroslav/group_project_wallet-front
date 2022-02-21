@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   setTransactionsStatisticsList,
   setCategories,
-} from './transactionsSlice';
+} from './statisticsSlice';
 
 const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
 
