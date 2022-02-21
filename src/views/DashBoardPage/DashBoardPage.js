@@ -1,19 +1,25 @@
+import { Route, useRouteMatch, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCategories } from 'redux/statistics/statisticsOperations';
 import Media from 'react-media';
 
 import styles from './DashBoardPage.module.scss';
-
 import Navigation from 'components/Navigation';
 import Balance from 'components/Balance';
 import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
-import { Route, useRouteMatch, useLocation } from 'react-router-dom';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
 
 export default function DashBoardPage() {
+  const dispatch = useDispatch();
   const { url } = useRouteMatch();
-
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   return (
     <>
