@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from 'redux/categories/categoriesOperations';
 import categoriesActions from 'redux/categories/categoriesSelectors';
+import modalActions from 'redux/isModalOpen/isModalOpenActions';
 import styles from './ModalAddTransactions.module.scss';
 
 import 'styles/globalMUI.scss';
@@ -11,7 +12,6 @@ import { ReactComponent as DateRangeIcon } from 'icons/DateRangeIcon.svg';
 import { ReactComponent as OpenSelectIcon } from 'icons/OpenSelectIcon.svg';
 
 import { useFormik } from 'formik';
-// import * as Yup from 'yup';
 import DateAdapter from '@mui/lab/AdapterDateFns';
 import ruLocale from 'date-fns/locale/ru';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
@@ -20,6 +20,9 @@ import TextField from '@mui/material/TextField';
 
 import Toggler from 'components/Toggler';
 import CustomNumberFormat from 'components/CustomNumberFormat';
+import Box from '@mui/material/Box';
+
+// const transactionCreationValidation = Yup.object().shape({});
 
 const ModalAddTransactions = () => {
   const [toggled, setToggled] = useState('expenses');
@@ -38,9 +41,7 @@ const ModalAddTransactions = () => {
   const categories = useSelector(categoriesActions.getCategories);
 
   const formik = useFormik({
-    initialValues: {
-      ...initial,
-    },
+    initialValues: initial,
     enableReinitialize: true,
     onSubmit: (values) => {
       console.log(values);
@@ -61,7 +62,10 @@ const ModalAddTransactions = () => {
 
   return (
     <div className={styles.formWrapper}>
-      <button className={styles.closeModalButton}>
+      <button
+        className={styles.closeModalButton}
+        onClick={() => dispatch(modalActions.hide())}
+      >
         <CloseModalIcon />
       </button>
       <p className={styles.formCall}>Добавить транзакцию</p>
@@ -107,7 +111,7 @@ const ModalAddTransactions = () => {
         </div>
         <div className={styles.neighborInputsWrapper}>
           <TextField
-            variant="outlined"
+            variant="standard"
             label=""
             placeholder="0.00"
             value={amount === null ? '' : amount}
@@ -117,6 +121,7 @@ const ModalAddTransactions = () => {
             InputProps={{
               inputComponent: CustomNumberFormat,
               classes: { notchedOutline: styles.noBorder },
+              disableUnderline: true,
             }}
           />
           <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
@@ -130,17 +135,26 @@ const ModalAddTransactions = () => {
               onChange={(date) => {
                 setTimestamp(date);
               }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  helperText={null}
-                  sx={{
-                    '& .MuiInputBase-input': {
-                      color: '#000000;',
-                      fontWeight: 'regular',
-                    },
-                  }}
-                />
+              renderInput={({ inputRef, InputProps, inputProps }) => (
+                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                  <input ref={inputRef} {...inputProps} />
+                  {InputProps?.endAdornment}
+                </Box>
+                // <TextField
+                //   variant="standard"
+                //   label=""
+                //   {...params}
+                //   helperText={null}
+                //   sx={{
+                //     '& .MuiInputBase-input': {
+                //       color: '#000000;',
+                //       fontWeight: 'regular',
+                //     },
+                //   }}
+                // InputProps={{
+                //   disableUnderline: true,
+                // }}
+                // />
               )}
             />
           </LocalizationProvider>
