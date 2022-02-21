@@ -1,7 +1,7 @@
 import { Route, useRouteMatch, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getCategories } from 'redux/statistics/statisticsOperations';
+import { fetchCategories } from 'redux/categories/categoriesOperations';
 import Media from 'react-media';
 
 import styles from './DashBoardPage.module.scss';
@@ -18,7 +18,7 @@ export default function DashBoardPage() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    dispatch(getCategories());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   return (
