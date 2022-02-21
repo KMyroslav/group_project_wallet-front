@@ -28,26 +28,27 @@ export default function Header() {
 
   return (
     <>
-      <header className={styles.container}>
-        <Link to="/home/main" alt="homepage">
-          <div>
-            <IconWallet className={styles.logoIcon} />
-            <h1 className={styles.logo}>Wallet</h1>
-          </div>
-        </Link>
-        <div className={styles.userStatus}>
-          {(isAuthUser && <p>{userName}</p>) || <p>Имя</p>}
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <Link to="/home/main" alt="homepage">
+            <div>
+              <IconWallet className={styles.logoIcon} />
+              <h1 className={styles.logo}>Wallet</h1>
+            </div>
+          </Link>
+          <div className={styles.userStatus}>
+            {(isAuthUser && <p>{userName}</p>) || <p>Имя</p>}
 
-          <NavLink
-            to="/"
-            onClick={() => dispatch(logout())}
-            className={styles.headerBtn}
-          >
-            <IconExit className={styles.exitIcon} />
+            <NavLink
+              to="/"
+              onClick={() => dispatch(logout())}
+              className={styles.headerBtn}
+            >
+              <IconExit className={styles.exitIcon} />
 
-            {width >= 768 && 'Выход'}
-          </NavLink>
-          {/* <button
+              {width >= 768 && 'Выход'}
+            </NavLink>
+            {/* <button
             onClick={() => dispatch(logout())}
             className={styles.headerBtn}
           >
@@ -55,6 +56,7 @@ export default function Header() {
 
             {width >= 768 && 'Выход'}
           </button> */}
+          </div>
         </div>
       </header>
     </>
