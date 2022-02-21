@@ -11,7 +11,7 @@ import CurrencyPage from 'views/CurrencyPage';
 
 // import Header from 'components/Header';
 import ModalAddTransactions from 'components/ModalAddTransactions';
-// import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
+import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import { getIsAuth } from 'redux/auth/auth-selectors';
 
