@@ -19,8 +19,6 @@ import TextField from '@mui/material/TextField';
 import Toggler from 'components/Toggler';
 import CustomNumberFormat from 'components/CustomNumberFormat';
 
-// const transactionCreationValidation = Yup.object().shape({});
-
 const ModalAddTransactions = () => {
   const [toggled, setToggled] = useState('expenses');
   const [timestamp, setTimestamp] = useState(new Date());
@@ -143,21 +141,6 @@ const ModalAddTransactions = () => {
                   />
                   {InputProps?.endAdornment}
                 </div>
-                // <TextField
-                //   variant="standard"
-                //   label=""
-                //   {...params}
-                //   helperText={null}
-                //   sx={{
-                //     '& .MuiInputBase-input': {
-                //       color: '#000000;',
-                //       fontWeight: 'regular',
-                //     },
-                //   }}
-                // InputProps={{
-                //   disableUnderline: true,
-                // }}
-                // />
               )}
             />
           </LocalizationProvider>

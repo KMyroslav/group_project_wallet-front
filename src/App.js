@@ -16,7 +16,7 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions';
 import { getIsAuth } from 'redux/auth/auth-selectors';
 
 function App() {
-  // const isModalOpen = useSelector(modalSelectors.getIsModalOpen);
+  const isModalOpen = useSelector(modalSelectors.getIsModalOpen);
   const isLoggedIn = useSelector(getIsAuth);
 
   return (
@@ -28,8 +28,7 @@ function App() {
         <Route path="/home" component={DashBoardPage} />
         <Route path="/currency" component={CurrencyPage} />
       </Switch>
-      {/* {isModalOpen && <ModalAddTransactions />} */}
-      <ModalAddTransactions />
+      {isModalOpen && <ModalAddTransactions />}
       {isLoggedIn && <ButtonAddTransactions />}
       <ToastContainer />
     </div>
