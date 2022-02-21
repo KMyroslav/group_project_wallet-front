@@ -36,10 +36,12 @@ export default function RegistrationForm() {
       .max(14, 'Пароль должен состоять максимум из 12 символов')
       .typeError('Должно быть строкой')
       .required('Обязательно'),
+
     confirmPassword: yup
       .string()
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Обязательно'),
+
     email: yup.string().email('Введите верный email').required('Обязательно'),
   });
 
