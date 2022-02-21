@@ -20,6 +20,19 @@ import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
 
 import axios from 'axios';
 
+const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
+
+axios.defaults.baseURL = BASE_URL;
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
+
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
   try {
@@ -46,8 +59,7 @@ const logIn = (credentials) => async (dispatch) => {
   dispatch(loginRequest());
   try {
     const response = await fetchLogin(credentials);
-    // console.log(response);
-    // token.set(response.token);
+    token.set(response.data.token);
     dispatch(loginSuccess(response.data));
   } catch (response) {
     toast.error(
@@ -66,14 +78,14 @@ const logIn = (credentials) => async (dispatch) => {
   }
 };
 
-const token = {
-  set(token) {
-    fetchCurrentUser.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    fetchCurrentUser.common.Authorization = '';
-  },
-};
+// const token = {
+//   set(token) {
+//     fetchCurrentUser.common.Authorization = `Bearer ${token}`;
+//   },
+//   unset() {
+//     fetchCurrentUser.common.Authorization = '';
+//   },
+// };
 
 const getCurrentUser = () => (dispatch, getState) => {
   const {
