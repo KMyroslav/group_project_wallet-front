@@ -1,4 +1,4 @@
-<h1 align="center"> :technologist: :books: :fire: Team project :rocket: :rocket: :rocket:</h1>
+<h1 align="center"> :rocket: Team project :rocket: </h1>
 
 # Developers
 
