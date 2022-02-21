@@ -3,7 +3,7 @@ import Table from '../Table';
 import Selector from '../Selector/Selector';
 import Chart from '../Chart/Chart';
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 
 import { setMonth, setYear } from '../../redux/statistics/statisticsSlice';
 
@@ -21,6 +21,9 @@ const DiagramTab = () => {
   const year = useSelector(selectors.getYear);
   const categories = useSelector(selectors.getCategoriesList);
   const balance = transactions[transactions.length - 1]?.balance;
+  const { getState } = useStore();
+  const { auth } = getState();
+  const token = auth.token;
 
   const transactionsDetails = transactions?.reduce((acc, transaction) => {
     if (
@@ -55,18 +58,18 @@ const DiagramTab = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(getCategories());
-    dispatch(getStatistics({ month, year }));
-  }, [dispatch, month, year]);
+    dispatch(getCategories(token));
+    dispatch(getStatistics({ month, year }, token));
+  }, [dispatch, month, token, year]);
 
   const onMonthSelect = (e) => {
     dispatch(setMonth(e.value));
-    dispatch(getStatistics({ month: e.value, year }));
+    dispatch(getStatistics({ month: e.value, year }, token));
   };
 
   const onYearSelect = (e) => {
     dispatch(setYear(e.value));
-    dispatch(getStatistics({ month, year: e.value }));
+    dispatch(getStatistics({ month, year: e.value }, token));
   };
 
   const income = transactions.reduce((acc, transaction) => {

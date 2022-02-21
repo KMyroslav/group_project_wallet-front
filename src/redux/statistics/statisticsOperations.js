@@ -8,11 +8,11 @@ const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
 
 axios.defaults.baseURL = BASE_URL;
 
-const retrievedStoreStr = localStorage.getItem('persist:token');
-const retrievedStore = JSON.parse(retrievedStoreStr);
-const token = retrievedStore.token.slice(1, retrievedStore.token.length - 1);
+// const retrievedStoreStr = localStorage.getItem('persist:token');
+// const retrievedStore = JSON.parse(retrievedStoreStr);
+// const token = retrievedStore.token.slice(1, retrievedStore.token.length - 1);
 
-export const getStatistics = (query) => async (dispatch) => {
+export const getStatistics = (query, token) => async (dispatch) => {
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: { Authorization: 'Bearer ' + token },
@@ -28,7 +28,7 @@ export const getStatistics = (query) => async (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const getCategories = () => async (dispatch) => {
+export const getCategories = (token) => async (dispatch) => {
   const instance = axios.create({
     baseURL: BASE_URL,
     headers: { Authorization: 'Bearer ' + token },
