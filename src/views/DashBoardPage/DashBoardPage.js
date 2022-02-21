@@ -49,24 +49,24 @@ export default function DashBoardPage() {
                     </>
                   )}
                 </Media>
-
-                <Media
-                  queries={{
-                    small: '(max-width: 767px)',
-                    other: '(min-width: 768px)',
-                  }}
-                >
-                  {(matches) => (
-                    <>
-                      {matches.small && pathname === '/home/currency' && (
-                        <Currency />
-                      )}
-
-                      {matches.other && <Currency />}
-                    </>
-                  )}
-                </Media>
               </div>
+
+              <Media
+                queries={{
+                  small: '(max-width: 767px)',
+                  other: '(min-width: 768px)',
+                }}
+              >
+                {(matches) => (
+                  <>
+                    {matches.small && pathname === '/home/currency' && (
+                      <Currency />
+                    )}
+
+                    {matches.other && <Currency />}
+                  </>
+                )}
+              </Media>
             </div>
             <Route exact path={`${url}/main`}>
               <TableHome />
