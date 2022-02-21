@@ -89,6 +89,20 @@
   margin-top: 0;
 }
 
+.transactionCategory:disabled {
+  @extend .transactionCategory;
+  background: transparent;
+}
+
+.datepickerWrapper {
+  position: relative;
+}
+
+.datepickerInput {
+  @extend .input;
+  margin-top: 0;
+}
+
 .openSelectButton {
   // padding: 0;
 
@@ -112,7 +126,6 @@
 
 .transactionComment {
   @extend .input;
-  margin-top: 0;
   padding-bottom: 50px;
 
   height: 72px;
@@ -199,7 +212,7 @@
 
   .neighborInputsWrapper {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
   }
 
   .transactionComment {
@@ -227,4 +240,8 @@
 .noBorder {
   border: none;
   outline: none;
+}
+
+.datepickerWrapper {
+  width: 100%;
 }

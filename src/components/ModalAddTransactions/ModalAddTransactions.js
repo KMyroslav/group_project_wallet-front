@@ -20,9 +20,6 @@ import TextField from '@mui/material/TextField';
 
 import Toggler from 'components/Toggler';
 import CustomNumberFormat from 'components/CustomNumberFormat';
-import Box from '@mui/material/Box';
-
-// const transactionCreationValidation = Yup.object().shape({});
 
 const ModalAddTransactions = () => {
   const [toggled, setToggled] = useState('expenses');
@@ -78,7 +75,9 @@ const ModalAddTransactions = () => {
                 ? styles.transactionCategory
                 : styles.hidden
             }
+            value={selected ? selected : ''}
             placeholder="Выберите категорию"
+            disabled
           />
           <button
             className={
@@ -136,25 +135,14 @@ const ModalAddTransactions = () => {
                 setTimestamp(date);
               }}
               renderInput={({ inputRef, InputProps, inputProps }) => (
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <input ref={inputRef} {...inputProps} />
+                <div className={styles.datepickerWrapper}>
+                  <input
+                    className={styles.datepickerInput}
+                    ref={inputRef}
+                    {...inputProps}
+                  />
                   {InputProps?.endAdornment}
-                </Box>
-                // <TextField
-                //   variant="standard"
-                //   label=""
-                //   {...params}
-                //   helperText={null}
-                //   sx={{
-                //     '& .MuiInputBase-input': {
-                //       color: '#000000;',
-                //       fontWeight: 'regular',
-                //     },
-                //   }}
-                // InputProps={{
-                //   disableUnderline: true,
-                // }}
-                // />
+                </div>
               )}
             />
           </LocalizationProvider>
