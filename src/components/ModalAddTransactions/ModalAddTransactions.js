@@ -10,7 +10,6 @@ import { ReactComponent as DateRangeIcon } from 'icons/DateRangeIcon.svg';
 import { ReactComponent as OpenSelectIcon } from 'icons/OpenSelectIcon.svg';
 
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import DateAdapter from '@mui/lab/AdapterDateFns';
 import ruLocale from 'date-fns/locale/ru';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';

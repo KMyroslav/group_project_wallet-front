@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import actions from './isModalOpenActions';
 
 const initialState = { isOpen: false };
 
