@@ -16,7 +16,7 @@ import {
   getCurrentUserSuccess,
 } from './auth-actions';
 
-import { fetchSignUp, fetchLogin, fetchCurrentUser } from 'services/fetchApi';
+import { fetchSignUp, fetchLogin } from 'services/fetchApi'; // fetchCurrentUser
 
 import axios from 'axios';
 
