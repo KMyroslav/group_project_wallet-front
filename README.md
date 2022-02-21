@@ -8,7 +8,7 @@
   **Team Lead**
 
 - [<img src="https://img.shields.io/badge/-Miroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
-  **Transactions**
+  **Transactions component**
 
 ## BACK-END
 
