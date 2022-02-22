@@ -1,4 +1,5 @@
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 import 'react-toastify/dist/ReactToastify.css';
 import {
@@ -10,28 +11,27 @@ import {
   loginError,
   logoutRequest,
   logoutSuccess,
-  logoutError,
+  // logoutError,
   getCurrentUserError,
   getCurrentUserRequest,
   getCurrentUserSuccess,
 } from './auth-actions';
 
-import { fetchSignUp, fetchLogin } from 'services/fetchApi'; // fetchCurrentUser
+import { token, fetchSignUp, fetchLogin, fetchLogout } from 'services/fetchApi';
 
-import axios from 'axios';
+// const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/api';
 
-const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
+// axios.defaults.baseURL = BASE_URL;
 
-axios.defaults.baseURL = BASE_URL;
+// const token = {
+//   set(token) {
+//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+//   },
+//   unset() {
+//     axios.defaults.headers.common.Authorization = '';
+//   },
+// };
 
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
 // registration
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
@@ -76,7 +76,7 @@ const logIn = (credentials) => async (dispatch) => {
   }
 };
 
-// get user
+// get user name
 const getCurrentUser = () => (dispatch, getState) => {
   const {
     auth: { token: prsistedToken },
@@ -96,26 +96,27 @@ const getCurrentUser = () => (dispatch, getState) => {
 };
 
 // exit
-export const logout = () => async (dispatch) => {
+const logout = () => async (dispatch) => {
   dispatch(logoutRequest());
-  await axios.post('/users/logout');
 
   try {
+    await fetchLogout();
     token.unset();
     dispatch(logoutSuccess());
-  } catch (response) {
-    toast.error(response.response.status === 401 && 'Вы уже уходите!?', {
-      position: 'top-center',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    });
+  } catch ({ response }) {
+    token.unset();
+    dispatch(logoutSuccess());
 
-    dispatch(logoutError(response.message));
+    // toast.error(response.response.status === 401 && 'Вы уже уходите!?', {
+    //   position: 'top-center',
+    //   autoClose: 5000,
+    //   hideProgressBar: false,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // });
   }
 };
 
-export { register, logIn, getCurrentUser };
+export { register, logIn, getCurrentUser, logout };
