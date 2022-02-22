@@ -6,19 +6,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import styles from './DesktopTable.module.scss';
+import { format, isAfter } from 'date-fns';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.root}`]: {
-    '&:nth-of-type(6n-5)': {
-      // paddingLeft: 20,
-    },
-    '&:nth-of-type(6n)': {
-      // paddingRight: 20,
-    },
-    '&:nth-of-type(6n-4)': {
-      // paddingRight: 45,
-    },
-  },
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: '#ffffff',
     borderColor: 'transparent',
@@ -56,55 +46,43 @@ const columns = [
     label: 'Дата',
     align: 'left',
     pl: 20,
-    // maxWidth: 55,
-    format: (value) => {
-      const date = new Date(value);
-      const [month, day, year] = [
-        date.getMonth() >= 10 ? date.getMonth() : '0' + date.getMonth(),
-        date.getDate(),
-        `${date.getFullYear()}`.slice(-2),
-      ];
-      return `${month}.${day}.${year}`;
-    },
+    format: (value) => format(new Date(value), 'dd.MM.yy'),
   },
   {
     id: 'typeTx',
     label: 'Тип',
     align: 'center',
-    // minWidth: 35,
-    // maxWidth: 45,
     format: (value) => (value === 'income' ? '+' : '-'),
   },
   {
     id: 'categoryId',
     label: 'Категория',
-    // maxWidth: 115,
     align: 'left',
   },
   {
     id: 'comment',
     label: 'Комментарий',
-    // maxWidth: 120,
     align: 'left',
   },
   {
     id: 'sum',
     label: 'Сумма',
-    // minWidth: 65,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
   {
     id: 'balance',
     label: 'Баланс',
-    // minWidth: 70,
     align: 'right',
     format: (value) => value.toFixed(2),
   },
 ];
 
 export default function desktopTable({ data, categories }) {
-  const rows = data.map(
+  const sortedData = [...data].sort((a, b) =>
+    isAfter(new Date(a.date), new Date(b.date)) ? -1 : 1,
+  );
+  const rows = sortedData.map(
     ({ _id, date, typeTx, categoryId, comment, sum, balance }) => {
       const { nameCategory } = categories.find((el) => el._id === categoryId);
       return {
@@ -121,7 +99,7 @@ export default function desktopTable({ data, categories }) {
 
   return (
     <div sx={{ overflow: 'hidden' }}>
-      <TableContainer sx={{ maxHeight: 420, width: 688 }}>
+      <TableContainer sx={{ maxHeight: 540, width: 688 }}>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
