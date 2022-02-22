@@ -1,17 +1,11 @@
+import { isAfter, format } from 'date-fns/esm';
 import style from './MobileTable.module.scss';
 
-const formatDate = (value) => {
-  const date = new Date(value);
-  const [month, day, year] = [
-    date.getMonth() >= 10 ? date.getMonth() : '0' + date.getMonth(),
-    date.getDate(),
-    `${date.getFullYear()}`.slice(-2),
-  ];
-  return `${month}.${day}.${year}`;
-};
-
 export default function MobileTable({ data, categories }) {
-  return data.map(
+  const sortedData = [...data].sort((a, b) =>
+    isAfter(new Date(a.date), new Date(b.date)) ? -1 : 1,
+  );
+  return sortedData.map(
     ({ _id, date, typeTx, categoryId, comment, sum, balance }) => {
       const { nameCategory } = categories.find((el) => el._id === categoryId);
       return (
@@ -26,7 +20,9 @@ export default function MobileTable({ data, categories }) {
           <ul className={style.list}>
             <li className={style.listItem}>
               <span className={style.listKey}>Дата</span>
-              <span className={style.listValue}>{formatDate(date)}</span>
+              <span className={style.listValue}>
+                {format(new Date(date), 'dd.MM.yy')}
+              </span>
             </li>
             <li className={style.listItem}>
               <span className={style.listKey}>Тип</span>
