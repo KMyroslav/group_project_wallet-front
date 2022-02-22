@@ -26,7 +26,7 @@ import CustomNumberFormat from 'components/CustomNumberFormat';
 
 const transactionCreationSchema = Yup.object().shape({
   typeTx: Yup.string().required(),
-  date: Yup.date().required(),
+  date: Yup.string().required(),
   sum: Yup.string().required(),
   nameCategory: Yup.string().required(),
   comment: Yup.string(),
@@ -37,7 +37,7 @@ const ModalAddTransactions = () => {
   const [date, setDate] = useState(new Date());
   const [sum, setSum] = useState(null);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [nameCategory, setNameCategory] = useState('irregular');
+  const [nameCategory, setNameCategory] = useState('');
   const [comment, setComment] = useState('');
 
   const month = date.getMonth() + 1;
