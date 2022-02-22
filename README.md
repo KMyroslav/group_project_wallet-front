@@ -11,7 +11,13 @@
   **Transactions component**
 
 - [<img src="https://img.shields.io/badge/-Pavlo%20Oliinyk-ffff00" />](https://github.com/PavloOliinyk) -
-  **Transactions component**
+  **Statistic component**
+
+- [<img src="https://img.shields.io/badge/-Alexander%20Tkachuk-008000" />](https://github.com/tkauchuk) -
+  **Modal window transactions component**
+
+- [<img src="https://img.shields.io/badge/-Ruslan%20Kuzma-0000ff" />](https://github.com/ruslan3486) -
+  **Registration component**
 
 ## BACK-END
 
