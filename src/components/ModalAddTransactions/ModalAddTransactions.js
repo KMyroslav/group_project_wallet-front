@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import * as Yup from 'yup';
 import { fetchCategories } from 'redux/categories/categoriesOperations';
 import { fetchTransactions } from 'redux/transactionsTable/transactionsTableOperations';
 import categoriesActions from 'redux/categories/categoriesSelectors';
@@ -22,6 +23,14 @@ import TextField from '@mui/material/TextField';
 
 import Toggler from 'components/Toggler';
 import CustomNumberFormat from 'components/CustomNumberFormat';
+
+const transactionCreationSchema = Yup.object().shape({
+  typeTx: Yup.string().required(),
+  date: Yup.date().required(),
+  sum: Yup.string().required(),
+  nameCategory: Yup.string().required(),
+  comment: Yup.string(),
+});
 
 const ModalAddTransactions = () => {
   const [typeTx, setTypeTx] = useState('expense');
@@ -59,6 +68,7 @@ const ModalAddTransactions = () => {
   const formik = useFormik({
     initialValues: initial,
     enableReinitialize: true,
+    validationSchema: transactionCreationSchema,
     onSubmit: (values) => {
       dispatch(createTransaction(values));
       dispatch(fetchTransactions());
@@ -146,6 +156,9 @@ const ModalAddTransactions = () => {
               disableUnderline: true,
             }}
           />
+          {formik.touched.sum && formik.errors.sum ? (
+            <span className={styles.error}>{formik.errors.sum}</span>
+          ) : null}
           <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
             <DatePicker
               components={{ OpenPickerIcon: DateRangeIcon }}
