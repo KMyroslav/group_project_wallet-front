@@ -23,7 +23,11 @@ export default function Currency() {
     if (lastData && Date.now() - lastFetchTime < 600000) {
       setCurrencyData(lastData);
     } else {
-      axios
+      const instance = axios.create({
+        baseURL: '',
+        headers: '',
+      });
+      instance
         .get(
           'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
         )
