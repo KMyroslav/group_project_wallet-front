@@ -10,6 +10,9 @@
 - [<img src="https://img.shields.io/badge/-Miroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
   **Transactions component**
 
+- [<img src="https://img.shields.io/badge/-Pavlo%20Oliinyk-ffff00" />](https://github.com/PavloOliinyk) -
+  **Transactions component**
+
 ## BACK-END
 
 - [<img src="https://img.shields.io/badge/-Illiya%20Lunev-6360F8" />](https://github.com/Illiya-Lunev) -
