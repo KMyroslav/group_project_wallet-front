@@ -49,7 +49,6 @@ const RegistrationProressBar = ({ password }) => {
     const changeProgressStyle = () => ({
 
         height: "4px",
-        marginTop: "-20px",
 
     });
 

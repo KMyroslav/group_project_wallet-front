@@ -79,7 +79,7 @@ export default function RegistrationForm() {
               <h1 className={styles.logo}>Wallet</h1>
             </div>
 
-            <label htmlFor={`email`} className={styles.label}>
+            <div htmlFor={`email`} className={styles.label}>
               <IconEmail />
               <input
                 type="email"
@@ -91,13 +91,13 @@ export default function RegistrationForm() {
                 id="email"
                 className={styles.input}
               />
-            </label>
 
-            {touched.email && errors.email && (
-              <p className={styles.errors}>{errors.email}</p>
-            )}
 
-            <label htmlFor={`password`} className={styles.label}>
+              {touched.email && errors.email && (
+                <p className={styles.errors}>{errors.email}</p>
+              )}
+            </div>
+            <div className={styles.label}>
               <IconPass />
 
               <input
@@ -110,13 +110,13 @@ export default function RegistrationForm() {
                 className={styles.input}
                 onInput={(e) => setPassword(e.target.value)}
               />
-            </label>
 
-            {touched.password && errors.password && (
-              <p className={styles.errors}>{errors.password}</p>
-            )}
 
-            <label htmlFor={`confirmPassword`} className={styles.label}>
+              {touched.password && errors.password && (
+                <p className={styles.errors}>{errors.password}</p>
+              )}
+            </div>
+            <div className={styles.label}>
               <IconPass />
               <input
                 type="password"
@@ -127,13 +127,14 @@ export default function RegistrationForm() {
                 placeholder=" Подтвердите пароль"
                 className={styles.input}
               />
-            </label>
-            <RegistrationPrgressBar password={password} />
-            {touched.confirmPassword && errors.confirmPassword && (
-              <p className={styles.errors}>{errors.confirmPassword}</p>
-            )}
 
-            <label htmlFor={`name`} className={styles.label}>
+
+              {touched.confirmPassword && errors.confirmPassword && (
+                <p className={styles.errors}>{errors.confirmPassword}</p>
+              )}
+            </div>
+            <RegistrationPrgressBar password={password} />
+            <div className={styles.label}>
               <IconName />
               <input
                 type="name"
@@ -144,10 +145,11 @@ export default function RegistrationForm() {
                 placeholder="Ваше имя"
                 className={styles.input}
               />
-            </label>
-            {touched.name && errors.name && (
-              <p className={styles.errors}>{errors.name}</p>
-            )}
+
+              {touched.name && errors.name && (
+                <p className={styles.errors}>{errors.name}</p>
+              )}
+            </div>
             <div className={styles.btnContainer}>
               <ButtonRegister
                 className={styles.logoBtn}
