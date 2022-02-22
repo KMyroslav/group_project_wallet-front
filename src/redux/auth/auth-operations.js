@@ -61,7 +61,7 @@ const logIn = (credentials) => async (dispatch) => {
     dispatch(loginSuccess(response.data));
   } catch (response) {
     toast.error(
-      response.response.status === 401 && 'Неверно набраный пароль или имаил!',
+      response.response.status === 401 && 'Неверно набраные пароль или почта!',
       {
         position: 'top-center',
         autoClose: 5000,
