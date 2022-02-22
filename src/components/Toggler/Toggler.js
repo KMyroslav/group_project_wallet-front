@@ -3,8 +3,8 @@ import { ReactComponent as AddTransactionsIcon } from 'icons/AddTransactionsIcon
 import { ReactComponent as ExpensesTransactionIcon } from 'icons/ExpensesTransactionsIcon.svg';
 
 const Toggler = ({ selected, toggleSelected }) => {
-  const isTransactionPositive = selected === 'profit';
-  const isTransactionNegative = selected === 'expenses';
+  const isTransactionPositive = selected === 'income';
+  const isTransactionNegative = selected === 'expense';
 
   return (
     <div
