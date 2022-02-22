@@ -4,8 +4,8 @@
 
 ## FRONT-END
 
-<p align="center"> - [<img src="https://img.shields.io/badge/-Denys%20Filichkin-000080" />](https://github.com/DenysPhV) -
-  **Team Lead** </p>
+- [<img src="https://img.shields.io/badge/-Denys%20Filichkin-000080" />](https://github.com/DenysPhV) -
+  **Team Lead**
 
 - [<img src="https://img.shields.io/badge/-Miroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
   **Transactions component**
