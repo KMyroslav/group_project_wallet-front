@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from 'redux/categories/categoriesOperations';
+import { fetchTransactions } from 'redux/transactionsTable/transactionsTableOperations';
 import categoriesActions from 'redux/categories/categoriesSelectors';
+import { createTransaction } from 'redux/transaction/transactionOperations';
 import modalActions from 'redux/isModalOpen/isModalOpenActions';
 import styles from './ModalAddTransactions.module.scss';
 
@@ -22,13 +24,30 @@ import Toggler from 'components/Toggler';
 import CustomNumberFormat from 'components/CustomNumberFormat';
 
 const ModalAddTransactions = () => {
-  const [toggled, setToggled] = useState('expenses');
-  const [timestamp, setTimestamp] = useState(new Date());
-  const [amount, setAmount] = useState(null);
+  const [typeTx, setTypeTx] = useState('expense');
+  const [date, setDate] = useState(new Date());
+  const [sum, setSum] = useState(null);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
-  const [selected, setSelected] = useState(null);
+  const [nameCategory, setNameCategory] = useState('irregular');
+  const [comment, setComment] = useState('');
 
-  const initial = { toggled, timestamp, amount, selected };
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  const parsedDate = [
+    day < 10 ? '0' + day : day,
+    month < 10 ? '0' + month : month,
+    year,
+  ].join('.');
+
+  const initial = {
+    date: parsedDate,
+    typeTx,
+    sum: Number(sum),
+    comment,
+    nameCategory,
+  };
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -41,7 +60,8 @@ const ModalAddTransactions = () => {
     initialValues: initial,
     enableReinitialize: true,
     onSubmit: (values) => {
-      console.log(values);
+      dispatch(createTransaction(values));
+      dispatch(fetchTransactions());
     },
   });
 
@@ -49,12 +69,17 @@ const ModalAddTransactions = () => {
   const mask = '__.__.___';
 
   const handleToggle = () => {
-    toggled === 'expenses' ? setToggled('profit') : setToggled('expenses');
+    typeTx === 'expense' ? setTypeTx('income') : setTypeTx('expense');
+  };
+
+  const onCommentChange = (event) => {
+    const { value } = event.target;
+    setComment(value);
   };
 
   const onAmountChange = (event) => {
     const { value } = event.target;
-    setAmount(value);
+    setSum(value);
   };
 
   return (
@@ -67,21 +92,19 @@ const ModalAddTransactions = () => {
       </button>
       <p className={styles.formCall}>Добавить транзакцию</p>
       <form className={styles.form} onSubmit={formik.handleSubmit}>
-        <Toggler selected={toggled} toggleSelected={handleToggle} />
+        <Toggler selected={typeTx} toggleSelected={handleToggle} />
         <div className={styles.selectWrapper}>
           <input
             className={
-              toggled === 'expenses'
-                ? styles.transactionCategory
-                : styles.hidden
+              typeTx === 'expense' ? styles.transactionCategory : styles.hidden
             }
-            value={selected ? selected : ''}
+            value={nameCategory ? nameCategory : ''}
             placeholder="Выберите категорию"
             disabled
           />
           <button
             className={
-              toggled === 'expenses' ? styles.openSelectButton : styles.hidden
+              typeTx === 'expense' ? styles.openSelectButton : styles.hidden
             }
             type="button"
             onClick={() => setIsSelectOpen(!isSelectOpen)}
@@ -97,7 +120,7 @@ const ModalAddTransactions = () => {
                       className={styles.selectListItem}
                       key={category._id}
                       onClick={() => {
-                        setSelected(category.nameCategory);
+                        setNameCategory(category.nameCategory);
                         setIsSelectOpen(false);
                       }}
                     >
@@ -113,7 +136,7 @@ const ModalAddTransactions = () => {
             variant="standard"
             label=""
             placeholder="0.00"
-            value={amount === null ? '' : amount}
+            value={sum === null ? '' : sum}
             onChange={onAmountChange}
             name="numberformat"
             id="formatted-numberformat-input"
@@ -130,9 +153,9 @@ const ModalAddTransactions = () => {
               classes={{ notchedOutline: styles.noBorder }}
               mask={mask}
               minDate={new Date()}
-              value={timestamp}
+              value={date}
               onChange={(date) => {
-                setTimestamp(date);
+                setDate(date);
               }}
               renderInput={({ inputRef, InputProps, inputProps }) => (
                 <div className={styles.datepickerWrapper}>
@@ -149,6 +172,8 @@ const ModalAddTransactions = () => {
         </div>
         <textarea
           className={styles.transactionComment}
+          value={comment}
+          onChange={onCommentChange}
           id="comment"
           name="comment"
           placeholder="Комментарий"

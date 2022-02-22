@@ -7,7 +7,7 @@ const CustomNumberFormat = forwardRef((props, inputRef) => {
       {...props}
       getInputRef={inputRef}
       placeholder="0.00"
-      prefix="₴"
+      // prefix="₴"
       decimalSeparator="."
       decimalScale={2}
       fixedDecimalScale={true}
