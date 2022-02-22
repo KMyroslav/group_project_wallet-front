@@ -20,10 +20,14 @@ export default function Currency() {
     const lastData = JSON.parse(localStorage.getItem('currency'));
     const lastFetchTime = JSON.parse(localStorage.getItem('fetch time'));
 
-    if (lastData && Date.now() - lastFetchTime < 600000) {
+    if (lastData && Date.now() - lastFetchTime < 1800000) {
       setCurrencyData(lastData);
     } else {
-      axios
+      const instance = axios.create({
+        baseURL: '',
+        headers: '',
+      });
+      instance
         .get(
           'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
         )
