@@ -20,7 +20,7 @@ export default function Currency() {
     const lastData = JSON.parse(localStorage.getItem('currency'));
     const lastFetchTime = JSON.parse(localStorage.getItem('fetch time'));
 
-    if (lastData && Date.now() - lastFetchTime < 600000) {
+    if (lastData && Date.now() - lastFetchTime < 1800000) {
       setCurrencyData(lastData);
     } else {
       const instance = axios.create({
