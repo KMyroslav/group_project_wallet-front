@@ -159,6 +159,14 @@ export default function DesktopTable() {
           </TableBody>
         </Table>
       </TableContainer>
+      {data.length === 0 && (
+        <div className={styles.plug}>
+          <p className={styles.plugText}>
+            Для того чтобы вести учёт необходимо ввести данные после нажатия
+            кнопки "<span className={styles.plugPlus}>+</span>"
+          </p>
+        </div>
+      )}
     </div>
   );
 }
