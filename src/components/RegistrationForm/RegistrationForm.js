@@ -82,9 +82,9 @@ export default function RegistrationForm() {
             <div htmlFor={`email`} className={styles.label}>
               <IconEmail />
               <input
-
+                autoComplete="on"
                 type="email"
-                email="email"
+                name="email"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="E-mail"
@@ -103,7 +103,7 @@ export default function RegistrationForm() {
               <IconPass />
 
               <input
-                autoComplete="on"
+                autoComplete="new-password"
                 type="password"
                 name="password"
                 onChange={handleChange}
@@ -122,7 +122,7 @@ export default function RegistrationForm() {
             <div className={styles.label}>
               <IconPass />
               <input
-                autoComplete="on"
+                autoComplete="off"
                 type="password"
                 name="confirmPassword"
                 onChange={handleChange}
@@ -141,7 +141,7 @@ export default function RegistrationForm() {
             <div className={styles.label}>
               <IconName />
               <input
-
+                autoComplete="on"
                 type="name"
                 name="name"
                 onChange={handleChange}
