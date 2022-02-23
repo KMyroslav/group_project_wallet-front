@@ -47,7 +47,12 @@
 
   margin-right: 10px;
 
-  color: #808080;
+  fill: #bdbdbd;
+
+  &:hover,
+  &:focus {
+    fill: #4a56e2;
+  }
 }
 
 .logoIcon {
@@ -70,6 +75,11 @@
   font-family: $baseFont;
   font-weight: $regular;
   color: $light-gray;
+
+  &:hover,
+  &:focus {
+    color: #4a56e2;
+  }
 }
 
 //mobile
