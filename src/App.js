@@ -35,7 +35,6 @@ function App() {
           {isLoggedIn ? <Redirect to="/home/main" /> : <LoginPage />}
         </Route>
         <Route path="/home" component={DashBoardPage} />
-        <Route path="/currency" component={CurrencyPage} />
       </Switch>
       {isModalOpen && <ModalAddTransactions />}
       {isLoggedIn && <ButtonAddTransactions />}
