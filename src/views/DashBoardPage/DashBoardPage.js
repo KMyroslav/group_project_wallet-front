@@ -1,6 +1,6 @@
 import { Route, useRouteMatch, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories } from 'redux/categories/categoriesOperations';
 import Media from 'react-media';
 
@@ -11,11 +11,14 @@ import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
+import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
 
 export default function DashBoardPage() {
   const dispatch = useDispatch();
   const { url } = useRouteMatch();
   const { pathname } = useLocation();
+
+  const isModalOpen = useSelector(modalSelectors.getIsModalOpen);
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -26,7 +29,7 @@ export default function DashBoardPage() {
       <div className={styles.blur}>
         <Header />
         <div className="container">
-          <div className={styles.navTableWrap}>
+          <div className={isModalOpen ? styles.hidden : styles.navTableWrap}>
             <div className={styles.navBalanceCurrencyWrap}>
               <div className={styles.navBalanceWrap}>
                 <div className={styles.navigation}>
