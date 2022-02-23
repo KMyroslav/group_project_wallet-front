@@ -11,7 +11,6 @@ import TableHome from 'components/TableHome';
 import Currency from 'components/Currency';
 import Header from 'components/Header';
 import DiagramTab from '../../components/DiagramTab/DiagramTab';
-import { fetchBalance } from 'redux/balance/balanceOperations';
 
 export default function DashBoardPage() {
   const dispatch = useDispatch();
@@ -20,7 +19,6 @@ export default function DashBoardPage() {
 
   useEffect(() => {
     dispatch(fetchCategories());
-    dispatch(fetchBalance());
   }, [dispatch]);
 
   return (
