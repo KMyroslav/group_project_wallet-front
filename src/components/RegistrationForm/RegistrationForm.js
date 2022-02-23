@@ -82,6 +82,7 @@ export default function RegistrationForm() {
             <div htmlFor={`email`} className={styles.label}>
               <IconEmail />
               <input
+
                 type="email"
                 email="email"
                 onChange={handleChange}
@@ -90,6 +91,7 @@ export default function RegistrationForm() {
                 value={values.email}
                 id="email"
                 className={styles.input}
+
               />
 
 
@@ -101,6 +103,7 @@ export default function RegistrationForm() {
               <IconPass />
 
               <input
+                autoComplete="on"
                 type="password"
                 name="password"
                 onChange={handleChange}
@@ -119,6 +122,7 @@ export default function RegistrationForm() {
             <div className={styles.label}>
               <IconPass />
               <input
+                autoComplete="on"
                 type="password"
                 name="confirmPassword"
                 onChange={handleChange}
@@ -137,6 +141,7 @@ export default function RegistrationForm() {
             <div className={styles.label}>
               <IconName />
               <input
+
                 type="name"
                 name="name"
                 onChange={handleChange}
