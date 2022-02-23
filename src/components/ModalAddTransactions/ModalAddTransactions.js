@@ -79,12 +79,21 @@ const ModalAddTransactions = () => {
   const mask = '__.__.___';
 
   const handleToggle = () => {
-    typeTx === 'expense' ? setTypeTx('income') : setTypeTx('expense');
+    if (typeTx === 'expense') {
+      setNameCategory('Нерегулярный доход');
+      return setTypeTx('income');
+    }
+
+    setTypeTx('expense');
   };
 
   const onCommentChange = (event) => {
     const { value } = event.target;
     setComment(value);
+
+    if (value.toLowerCase() === 'зарплата') {
+      setNameCategory('Регулярный доход');
+    }
   };
 
   const onAmountChange = (event) => {
@@ -194,7 +203,11 @@ const ModalAddTransactions = () => {
         <button className={styles.addTransactionBtn} type="submit">
           Добавить
         </button>
-        <button className={styles.cancelTransactionBtn} type="button">
+        <button
+          className={styles.cancelTransactionBtn}
+          type="button"
+          onClick={() => dispatch(modalActions.hide())}
+        >
           Отмена
         </button>
       </form>
