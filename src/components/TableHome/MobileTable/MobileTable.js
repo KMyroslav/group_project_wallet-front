@@ -1,13 +1,18 @@
 import { isAfter, format } from 'date-fns/esm';
 import style from './MobileTable.module.scss';
+import { useSelector } from 'react-redux';
+import getTransactionsTable from 'redux/transactionsTable/transactionsTableSelectors';
+import categoriesActions from 'redux/categories/categoriesSelectors';
 
-export default function MobileTable({ data, categories }) {
+export default function MobileTable() {
+  const data = useSelector(getTransactionsTable);
+  const categories = useSelector(categoriesActions.getCategories);
   const sortedData = [...data].sort((a, b) =>
     isAfter(new Date(a.date), new Date(b.date)) ? -1 : 1,
   );
   return sortedData.map(
     ({ _id, date, typeTx, categoryId, comment, sum, balance }) => {
-      const { nameCategory } = categories.find((el) => el._id === categoryId);
+      const category = categories.find((el) => el._id === categoryId);
       return (
         <div
           className={
@@ -32,7 +37,7 @@ export default function MobileTable({ data, categories }) {
             </li>
             <li className={style.listItem}>
               <span className={style.listKey}>Категория</span>
-              <span className={style.listValue}>{nameCategory}</span>
+              <span className={style.listValue}>{category?.nameCategory}</span>
             </li>
             <li className={style.listItem}>
               <span className={style.listKey}>Комментарий</span>

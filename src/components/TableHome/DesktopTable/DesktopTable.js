@@ -5,8 +5,12 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import styles from './DesktopTable.module.scss';
 import { format, isAfter } from 'date-fns';
+import { useSelector } from 'react-redux';
+
+import styles from './DesktopTable.module.scss';
+import getTransactionsTable from 'redux/transactionsTable/transactionsTableSelectors';
+import categoriesActions from 'redux/categories/categoriesSelectors';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -78,18 +82,20 @@ const columns = [
   },
 ];
 
-export default function desktopTable({ data, categories }) {
+export default function DesktopTable() {
+  const data = useSelector(getTransactionsTable);
+  const categories = useSelector(categoriesActions.getCategories);
   const sortedData = [...data].sort((a, b) =>
     isAfter(new Date(a.date), new Date(b.date)) ? -1 : 1,
   );
   const rows = sortedData.map(
     ({ _id, date, typeTx, categoryId, comment, sum, balance }) => {
-      const { nameCategory } = categories.find((el) => el._id === categoryId);
+      const category = categories.find((el) => el._id === categoryId);
       return {
         _id,
         date,
         typeTx,
-        categoryId: nameCategory,
+        categoryId: category?.nameCategory,
         comment,
         sum,
         balance,
