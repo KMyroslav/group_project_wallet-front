@@ -19,19 +19,6 @@ import {
 
 import { token, fetchSignUp, fetchLogin, fetchLogout } from 'services/fetchApi';
 
-// const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/api';
-
-// axios.defaults.baseURL = BASE_URL;
-
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
-
 // registration
 const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
@@ -106,16 +93,6 @@ const logout = () => async (dispatch) => {
   } catch ({ response }) {
     token.unset();
     dispatch(logoutSuccess());
-
-    // toast.error(response.response.status === 401 && 'Вы уже уходите!?', {
-    //   position: 'top-center',
-    //   autoClose: 5000,
-    //   hideProgressBar: false,
-    //   closeOnClick: true,
-    //   pauseOnHover: true,
-    //   draggable: true,
-    //   progress: undefined,
-    // });
   }
 };
 
