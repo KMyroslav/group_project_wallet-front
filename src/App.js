@@ -9,7 +9,6 @@ import './App.scss';
 import RegistrationPage from './views/RegistrationPage/RegistrationPage';
 import LoginPage from './views/LoginPage/LoginPage';
 import DashBoardPage from 'views/DashBoardPage';
-import CurrencyPage from 'views/CurrencyPage';
 
 import { getIsAuth } from './redux/auth/auth-selectors';
 
