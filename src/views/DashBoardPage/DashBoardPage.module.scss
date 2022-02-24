@@ -1,5 +1,11 @@
 @import 'styles/shared';
 
+@media screen and (max-width: 767px) {
+  .hidden {
+    display: none;
+  }
+}
+
 @media screen and (min-width: 768px) {
   .blur {
     min-height: 100vh;

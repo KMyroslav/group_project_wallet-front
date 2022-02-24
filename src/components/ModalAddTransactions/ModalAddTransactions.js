@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { fetchCategories } from 'redux/categories/categoriesOperations';
-import { fetchTransactions } from 'redux/transactionsTable/transactionsTableOperations';
 import categoriesActions from 'redux/categories/categoriesSelectors';
 import { createTransaction } from 'redux/transaction/transactionOperations';
 import modalActions from 'redux/isModalOpen/isModalOpenActions';
@@ -71,7 +70,6 @@ const ModalAddTransactions = () => {
     validationSchema: transactionCreationSchema,
     onSubmit: (values) => {
       dispatch(createTransaction(values));
-      dispatch(fetchTransactions());
     },
   });
 
@@ -102,115 +100,119 @@ const ModalAddTransactions = () => {
   };
 
   return (
-    <div className={styles.formWrapper}>
-      <button
-        className={styles.closeModalButton}
-        onClick={() => dispatch(modalActions.hide())}
-      >
-        <CloseModalIcon />
-      </button>
-      <p className={styles.formCall}>Добавить транзакцию</p>
-      <form className={styles.form} onSubmit={formik.handleSubmit}>
-        <Toggler selected={typeTx} toggleSelected={handleToggle} />
-        <div className={styles.selectWrapper}>
-          <input
-            className={
-              typeTx === 'expense' ? styles.transactionCategory : styles.hidden
-            }
-            value={nameCategory ? nameCategory : ''}
-            placeholder="Выберите категорию"
-            disabled
-          />
-          <button
-            className={
-              typeTx === 'expense' ? styles.openSelectButton : styles.hidden
-            }
-            type="button"
-            onClick={() => setIsSelectOpen(!isSelectOpen)}
-          >
-            <OpenSelectIcon />
-          </button>
-          {isSelectOpen && (
-            <div className={styles.selectListWrapper}>
-              <ul className={styles.selectList}>
-                {categories &&
-                  categories.map((category) => (
-                    <li
-                      className={styles.selectListItem}
-                      key={category._id}
-                      onClick={() => {
-                        setNameCategory(category.nameCategory);
-                        setIsSelectOpen(false);
-                      }}
-                    >
-                      <p className={styles.option}>{category.nameCategory}</p>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          )}
-        </div>
-        <div className={styles.neighborInputsWrapper}>
-          <TextField
-            variant="standard"
-            label=""
-            placeholder="0.00"
-            value={sum === null ? '' : sum}
-            onChange={onAmountChange}
-            name="numberformat"
-            id="formatted-numberformat-input"
-            InputProps={{
-              inputComponent: CustomNumberFormat,
-              classes: { notchedOutline: styles.noBorder },
-              disableUnderline: true,
-            }}
-          />
-          {formik.touched.sum && formik.errors.sum ? (
-            <span className={styles.error}>{formik.errors.sum}</span>
-          ) : null}
-          <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
-            <DatePicker
-              components={{ OpenPickerIcon: DateRangeIcon }}
-              desktopModeMediaQuery="@media (min-width: 320px)"
-              classes={{ notchedOutline: styles.noBorder }}
-              mask={mask}
-              minDate={new Date()}
-              value={date}
-              onChange={(date) => {
-                setDate(date);
-              }}
-              renderInput={({ inputRef, InputProps, inputProps }) => (
-                <div className={styles.datepickerWrapper}>
-                  <input
-                    className={styles.datepickerInput}
-                    ref={inputRef}
-                    {...inputProps}
-                  />
-                  {InputProps?.endAdornment}
-                </div>
-              )}
-            />
-          </LocalizationProvider>
-        </div>
-        <textarea
-          className={styles.transactionComment}
-          value={comment}
-          onChange={onCommentChange}
-          id="comment"
-          name="comment"
-          placeholder="Комментарий"
-        ></textarea>
-        <button className={styles.addTransactionBtn} type="submit">
-          Добавить
-        </button>
+    <div className="container">
+      <div className={styles.formWrapper}>
         <button
-          className={styles.cancelTransactionBtn}
-          type="button"
+          className={styles.closeModalButton}
           onClick={() => dispatch(modalActions.hide())}
         >
-          Отмена
+          <CloseModalIcon />
         </button>
-      </form>
+        <p className={styles.formCall}>Добавить транзакцию</p>
+        <form className={styles.form} onSubmit={formik.handleSubmit}>
+          <Toggler selected={typeTx} toggleSelected={handleToggle} />
+          <div className={styles.selectWrapper}>
+            <input
+              className={
+                typeTx === 'expense'
+                  ? styles.transactionCategory
+                  : styles.hidden
+              }
+              value={nameCategory ? nameCategory : ''}
+              placeholder="Выберите категорию"
+              disabled
+            />
+            <button
+              className={
+                typeTx === 'expense' ? styles.openSelectButton : styles.hidden
+              }
+              type="button"
+              onClick={() => setIsSelectOpen(!isSelectOpen)}
+            >
+              <OpenSelectIcon />
+            </button>
+            {isSelectOpen && (
+              <div className={styles.selectListWrapper}>
+                <ul className={styles.selectList}>
+                  {categories &&
+                    categories.map((category) => (
+                      <li
+                        className={styles.selectListItem}
+                        key={category._id}
+                        onClick={() => {
+                          setNameCategory(category.nameCategory);
+                          setIsSelectOpen(false);
+                        }}
+                      >
+                        <p className={styles.option}>{category.nameCategory}</p>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            )}
+          </div>
+          <div className={styles.neighborInputsWrapper}>
+            <TextField
+              variant="standard"
+              label=""
+              placeholder="0.00"
+              value={sum === null ? '' : sum}
+              onChange={onAmountChange}
+              name="numberformat"
+              id="formatted-numberformat-input"
+              InputProps={{
+                inputComponent: CustomNumberFormat,
+                classes: { notchedOutline: styles.noBorder },
+                disableUnderline: true,
+              }}
+            />
+            {formik.touched.sum && formik.errors.sum ? (
+              <span className={styles.error}>{formik.errors.sum}</span>
+            ) : null}
+            <LocalizationProvider dateAdapter={DateAdapter} locale={locale}>
+              <DatePicker
+                components={{ OpenPickerIcon: DateRangeIcon }}
+                desktopModeMediaQuery="@media (min-width: 320px)"
+                classes={{ notchedOutline: styles.noBorder }}
+                mask={mask}
+                minDate={new Date()}
+                value={date}
+                onChange={(date) => {
+                  setDate(date);
+                }}
+                renderInput={({ inputRef, InputProps, inputProps }) => (
+                  <div className={styles.datepickerWrapper}>
+                    <input
+                      className={styles.datepickerInput}
+                      ref={inputRef}
+                      {...inputProps}
+                    />
+                    {InputProps?.endAdornment}
+                  </div>
+                )}
+              />
+            </LocalizationProvider>
+          </div>
+          <textarea
+            className={styles.transactionComment}
+            value={comment}
+            onChange={onCommentChange}
+            id="comment"
+            name="comment"
+            placeholder="Комментарий"
+          ></textarea>
+          <button className={styles.addTransactionBtn} type="submit">
+            Добавить
+          </button>
+          <button
+            className={styles.cancelTransactionBtn}
+            type="button"
+            onClick={() => dispatch(modalActions.hide())}
+          >
+            Отмена
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -12,7 +12,6 @@ import DashBoardPage from 'views/DashBoardPage';
 
 import { getIsAuth } from './redux/auth/auth-selectors';
 
-// import Header from 'components/Header';
 import ModalAddTransactions from 'components/ModalAddTransactions';
 import modalSelectors from 'redux/isModalOpen/isModalOpenSelectors';
 import ButtonAddTransactions from 'components/ButtonAddTransactions';
