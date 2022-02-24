@@ -42,3 +42,26 @@
 .income {
   color: #24cca7;
 }
+
+.plug {
+  background-color: #ffffffe1;
+  border: 2px solid #ff6596;
+  border-radius: 30px;
+  padding: 8px;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.plugText {
+  font-family: $baseFont;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.plugPlus {
+  font-weight: 400;
+  font-size: 24px;
+}
