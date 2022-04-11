@@ -91,9 +91,7 @@ export default function RegistrationForm() {
                 value={values.email}
                 id="email"
                 className={styles.input}
-
               />
-
 
               {touched.email && errors.email && (
                 <p className={styles.errors}>{errors.email}</p>
@@ -114,7 +112,6 @@ export default function RegistrationForm() {
                 onInput={(e) => setPassword(e.target.value)}
               />
 
-
               {touched.password && errors.password && (
                 <p className={styles.errors}>{errors.password}</p>
               )}
@@ -131,7 +128,6 @@ export default function RegistrationForm() {
                 placeholder=" Подтвердите пароль"
                 className={styles.input}
               />
-
 
               {touched.confirmPassword && errors.confirmPassword && (
                 <p className={styles.errors}>{errors.confirmPassword}</p>
@@ -165,7 +161,7 @@ export default function RegistrationForm() {
                 text="Регистрация"
               />
 
-              <NavLink to="/login" className={styles.mainBtn}>
+              <NavLink to="/" className={styles.mainBtn}>
                 Вход
               </NavLink>
             </div>
