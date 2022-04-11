@@ -40,7 +40,7 @@ export default function DashBoardPage() {
               <div className={styles.navBalanceWrap}>
                 <div className={styles.navigation}>
                   <Navigation />
-                </div>``
+                </div>
 
                 <Media
                   queries={{
