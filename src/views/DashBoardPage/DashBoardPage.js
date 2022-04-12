@@ -29,7 +29,13 @@ export default function DashBoardPage() {
       <div className={styles.blur}>
         <Header />
         <div className="container">
-          <div className={isModalOpen ? styles.hidden : styles.navTableWrap}>
+          <div
+            className={
+              isModalOpen
+                ? `${styles.hidden} ${styles.navTableWrap}`
+                : styles.navTableWrap
+            }
+          >
             <div className={styles.navBalanceCurrencyWrap}>
               <div className={styles.navBalanceWrap}>
                 <div className={styles.navigation}>

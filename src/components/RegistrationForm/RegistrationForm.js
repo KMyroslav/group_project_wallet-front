@@ -110,6 +110,7 @@ export default function RegistrationForm() {
                 className={styles.input}
                 onInput={(e) => setPassword(e.target.value)}
               />
+
               <LinearProgress
                 className={styles.progressBar}
                 variant="determinate"
@@ -124,6 +125,7 @@ export default function RegistrationForm() {
                   },
                 }}
               />
+
               {touched.password && errors.password && (
                 <p className={styles.errors}>{errors.password}</p>
               )}
@@ -196,7 +198,7 @@ export default function RegistrationForm() {
                 text="Регистрация"
               />
 
-              <NavLink to="/login" className={styles.mainBtn}>
+              <NavLink to="/" className={styles.mainBtn}>
                 Вход
               </NavLink>
             </div>
