@@ -1,5 +1,11 @@
 @import '../../styles/shared.scss';
 
+.progressBar {
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+}
+
 .formRegister {
   background-color: $white;
 }
@@ -39,15 +45,14 @@
 }
 
 .errors {
-   position: absolute;
+  position: absolute;
   left: 10px;
-  bottom: -25px;
+  top: 40px;
   color: $red;
-
+  line-height: 1.1;
 }
 
 .mainBtn {
- 
   border-radius: 20px;
   width: 280px;
   background-color: $white;
@@ -112,26 +117,12 @@
   position: relative;
 }
 
-.progress {
-  width: 280px;
- 
-  transform: translate(0, -41px);
-  background-color: #e5f1ef;
-  margin-left: 20px;
-}
-
 @media screen and (min-width: 320px) {
   .formRegister {
     width: 320px;
     padding-top: 36px;
     padding-bottom: 36px;
     margin: 0 auto;
-  }
-
-  .progressBar {
-    height: 4px;
-    background-color: #4a56e2;
-    border-radius: 4px;
   }
 }
 
@@ -143,19 +134,12 @@
     padding-top: 36px;
     margin: auto;
   }
-  .progress {
-    bottom: 310px;
-  }
   .label {
     margin-right: 65px;
     margin-left: 65px;
   }
   .input {
     margin-left: 22px;
-  }
-  .progress {
-    width: 409px;
-    margin-left: 65px;
   }
 }
 @media screen and (min-width: 1280px) {
