@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as yup from 'yup';
 
+import { LinearProgress } from '@mui/material';
+
 import ButtonRegister from '../ButtonRegister/ButtonRegister.js';
 
 import styles from './RegistrationForm.module.scss';
@@ -15,8 +17,6 @@ import { ReactComponent as IconPass } from '../../icons/IconPass.svg';
 import { ReactComponent as IconName } from '../../icons/IconName.svg';
 
 import { register } from '../../redux/auth/auth-operations.js';
-
-import RegistrationPrgressBar from './RegistrationProressBar.js';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -91,9 +91,7 @@ export default function RegistrationForm() {
                 value={values.email}
                 id="email"
                 className={styles.input}
-
               />
-
 
               {touched.email && errors.email && (
                 <p className={styles.errors}>{errors.email}</p>
@@ -101,7 +99,6 @@ export default function RegistrationForm() {
             </div>
             <div className={styles.label}>
               <IconPass />
-
               <input
                 autoComplete="new-password"
                 type="password"
@@ -114,6 +111,20 @@ export default function RegistrationForm() {
                 onInput={(e) => setPassword(e.target.value)}
               />
 
+              <LinearProgress
+                className={styles.progressBar}
+                variant="determinate"
+                value={((password.length >= 6 ? 6 : password.length) / 6) * 100}
+                sx={{
+                  position: 'absolute',
+                  backgroundColor: '#E5F1EF',
+                  opacity: password ? '1' : '0',
+                  '& .MuiLinearProgress-barColorPrimary': {
+                    backgroundColor: '#24CCA7',
+                    boxShadow: '0px 1px 8px rgba(36, 204, 167, 0.5)',
+                  },
+                }}
+              />
 
               {touched.password && errors.password && (
                 <p className={styles.errors}>{errors.password}</p>
@@ -132,12 +143,34 @@ export default function RegistrationForm() {
                 className={styles.input}
               />
 
+              <LinearProgress
+                className={styles.progressBar}
+                variant="determinate"
+                value={
+                  ((values.confirmPassword.length >= values.password.length
+                    ? values.password.length
+                    : values.confirmPassword.length) /
+                    (values.password.length || 6)) *
+                  100
+                }
+                sx={{
+                  position: 'absolute',
+                  backgroundColor: '#E5F1EF',
+                  opacity: values.confirmPassword ? '1' : '0',
+                  '& .MuiLinearProgress-barColorPrimary': {
+                    backgroundColor:
+                      values.confirmPassword === values.password
+                        ? '#24CCA7'
+                        : '#f44336',
+                    boxShadow: '0px 1px 8px rgba(36, 204, 167, 0.5)',
+                  },
+                }}
+              />
 
               {touched.confirmPassword && errors.confirmPassword && (
                 <p className={styles.errors}>{errors.confirmPassword}</p>
               )}
             </div>
-            <RegistrationPrgressBar password={password} />
             <div className={styles.label}>
               <IconName />
               <input
@@ -165,7 +198,7 @@ export default function RegistrationForm() {
                 text="Регистрация"
               />
 
-              <NavLink to="/login" className={styles.mainBtn}>
+              <NavLink to="/" className={styles.mainBtn}>
                 Вход
               </NavLink>
             </div>
