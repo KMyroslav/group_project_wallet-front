@@ -1,6 +1,6 @@
 <h1 align="center"> :rocket: Team project :rocket: </h1>
 
-<h1 align="center">[BACK-END link](https://github.com/KMyroslav/group_project_wallet-back)</h1>
+<h3 align="center"> [BACK-END link] (https://github.com/KMyroslav/group_project_wallet-back) </h1>
 
 # Developers
 
