@@ -1,7 +1,9 @@
 import styles from './Currency.module.scss';
 import { ReactComponent as Curve } from '../../icons/currencyCurve.svg';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrencyData } from 'redux/currency/currencySelectors';
+import { fetchCurrencyData } from 'redux/currency/currencyActions';
 
 const fixValue = (value) => {
   if (value.indexOf(0) === 0) {
@@ -12,34 +14,16 @@ const fixValue = (value) => {
 };
 
 export default function Currency() {
-  const [currencyData, setCurrencyData] = useState(() =>
-    JSON.parse(localStorage.getItem('currency')),
-  );
+  const dispatch = useDispatch();
+  const currencyData = useSelector(getCurrencyData);
 
   useEffect(() => {
-    const lastData = JSON.parse(localStorage.getItem('currency'));
     const lastFetchTime = JSON.parse(localStorage.getItem('fetch time'));
-
-    if (lastData && Date.now() - lastFetchTime < 1800000) {
-      setCurrencyData(lastData);
-    } else {
-      const instance = axios.create({
-        baseURL: '',
-        headers: '',
-      });
-      instance
-        .get(
-          'https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11',
-        )
-        .then((r) => {
-          const data = r.data.filter((el) => el.ccy !== 'BTC');
-          setCurrencyData(data);
-          localStorage.setItem('currency', JSON.stringify(data));
-          localStorage.setItem('fetch time', JSON.stringify(Date.now()));
-        })
-        .catch((error) => console.log(error)); // ADD NOTIFICATION
+    if (!currencyData.length && Date.now() - lastFetchTime > 1800000) {
+      localStorage.setItem('fetch time', JSON.stringify(Date.now()));
+      dispatch(fetchCurrencyData());
     }
-  }, [setCurrencyData]);
+  }, [currencyData.length, dispatch]);
 
   return (
     <div className={styles.tableWrapper}>
@@ -61,7 +45,7 @@ export default function Currency() {
           </tbody>
         </table>
       ) : (
-        <p>LOADER...</p> // ADD LOADER
+        <p>LOADING...</p> // ADD LOADER
       )}
       <Curve className={styles.curve}></Curve>
     </div>

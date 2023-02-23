@@ -47,7 +47,7 @@ export default function RegistrationForm() {
 
   const handleRegister = ({ name, email, password }) => {
     dispatch(register({ name, email, password }));
-    history.push('/login');
+    history.push('/');
   };
 
   return (
