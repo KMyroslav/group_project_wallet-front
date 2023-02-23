@@ -42,7 +42,14 @@ export default function RegistrationForm() {
       .oneOf([yup.ref('password')], 'Пароли не совпадают')
       .required('Обязательно'),
 
-    email: yup.string().email('Введите верный email').required('Обязательно'),
+    email: yup
+      .string()
+      .email('Введите верный email')
+      .matches(
+        /^\w+([.-]?\w+)+@\w+([.:]?\w+)+(\.[a-zA-Z0-9]{2,3})+$/,
+        'Введите верный email',
+      )
+      .required('Обязательно'),
   });
 
   const handleRegister = ({ name, email, password }) => {
