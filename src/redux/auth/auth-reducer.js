@@ -20,7 +20,11 @@ import {
   registerRequest,
 } from './auth-actions';
 
-const initialUserState = { name: null, email: null, balance: 0 };
+const initialUserState = {
+  name: null,
+  email: null,
+  balance: 0,
+};
 
 const user = createReducer(initialUserState, {
   [registerSuccess]: (_, { payload }) => payload.user,
@@ -89,12 +93,19 @@ const isRepeatEmailVerify = createReducer(null, {
   [repeatEmailVerifyOk]: () => null,
 });
 
+const isLoading = createReducer(false, {
+  [loginRequest]: () => true,
+  [loginSuccess]: () => false,
+  [loginError]: () => false,
+});
+
 const authReducer = combineReducers({
   user,
   isLogin,
   token,
   refreshToken,
   error,
+  isLoading,
   isFetchigCurrentUser,
   isRepeatEmailVerify,
 });

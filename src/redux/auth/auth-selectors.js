@@ -8,4 +8,13 @@ const getCurrentToken = (state) => state.auth.token;
 
 const getAuthError = (state) => state.auth.error;
 
-export { getIsAuth, getUserName, getUserEmail, getCurrentToken, getAuthError };
+const getIsLoading = (state) => state.auth.isLoading;
+
+export {
+  getIsAuth,
+  getUserName,
+  getUserEmail,
+  getCurrentToken,
+  getAuthError,
+  getIsLoading,
+};

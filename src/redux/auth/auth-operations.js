@@ -26,8 +26,8 @@ const register = (credentials) => async (dispatch) => {
     const response = await fetchSignUp(credentials);
     dispatch(registerSuccess(response.data));
   } catch (response) {
-    toast.error(response.response.status === 409 && 'Вы уже зарегистрированы', {
-      position: 'top-center',
+    toast.error(`Простите что-то пошло не так: ${response}`, {
+      position: 'top-right',
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
@@ -50,7 +50,7 @@ const logIn = (credentials) => async (dispatch) => {
     toast.error(
       response.response.status === 401 && 'Неверно набраные пароль или почта!',
       {
-        position: 'top-center',
+        position: 'top-right',
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

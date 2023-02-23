@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrencyData } from 'redux/currency/currencySelectors';
 import { fetchCurrencyData } from 'redux/currency/currencyActions';
+import { CircularProgress } from '@mui/material';
 
 const fixValue = (value) => {
   if (value.indexOf(0) === 0) {
@@ -45,7 +46,7 @@ export default function Currency() {
           </tbody>
         </table>
       ) : (
-        <p>LOADING...</p> // ADD LOADER
+        <CircularProgress sx={{ color: '#fff' }} />
       )}
       <Curve className={styles.curve}></Curve>
     </div>

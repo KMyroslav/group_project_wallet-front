@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 import { logIn } from '../../redux/auth/auth-operations';
+import { getIsLoading } from 'redux/auth/auth-selectors';
 
 import logoMobile from '../../icons/logo-mobile.svg';
 import logo from '../../icons/logo.svg';
@@ -11,6 +12,7 @@ import logo from '../../icons/logo.svg';
 import { ReactComponent as EmailIcon } from '../../icons/email.svg';
 import { ReactComponent as PasswordIcon } from '../../icons/lock.svg';
 
+import { CircularProgress } from '@mui/material';
 import style from './LoginForm.module.scss';
 
 const LoginSchema = Yup.object().shape({
@@ -25,6 +27,7 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(getIsLoading);
 
   return (
     <>
@@ -36,8 +39,6 @@ const LoginForm = () => {
           initialValues={{ email: '', password: '' }}
           validationSchema={LoginSchema}
           onSubmit={(values, { resetForm }) => {
-            // console.log({ actions });
-
             const data = {
               email: values.email,
               password: values.password,
@@ -99,7 +100,11 @@ const LoginForm = () => {
                 disabled={!dirty || !isValid}
                 className={style.button}
               >
-                ВХОД
+                {isLoading ? (
+                  <CircularProgress sx={{ color: '#fff' }} />
+                ) : (
+                  'ВХОД'
+                )}
               </button>
             </form>
           )}

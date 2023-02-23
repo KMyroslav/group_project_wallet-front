@@ -25,7 +25,7 @@ export default function RegistrationForm() {
   const validationsSchema = yup.object().shape({
     name: yup
       .string()
-      .min(1, 'Имя должно состоять минимум из 1 символа')
+      .min(2, 'Имя должно состоять минимум из 2 символов')
       .max(12, 'Имя должно состоять максимум из 12 символов')
       .typeError('Должно быть строкой')
       .required('Обязательно'),

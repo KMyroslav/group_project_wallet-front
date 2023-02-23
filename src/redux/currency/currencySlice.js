@@ -18,8 +18,8 @@ const currencySlice = createSlice({
       state.isLoading = false;
     },
     [fetchCurrencyData.rejected]: (state, { payload }) => {
-      state.isLoading = false;
       state.error = payload;
+      state.isLoading = false;
     },
   },
 });
