@@ -27,16 +27,17 @@ export const years = [
   { value: '2020', label: '2020' },
   { value: '2021', label: '2021' },
   { value: '2022', label: '2022' },
+  { value: '2023', label: '2023' },
 ];
 
 export const colorSheme = {
-  '620f7522df1b4c0baaed1e51': '#FED057',
-  '62091d56a2ad0a81fada858b': '#FFD8D0',
-  '62091cfea2ad0a81fada8589': '#FD9498',
-  '620f74aadf1b4c0baaed1e37': '#C5BAFF',
-  '620f74e0df1b4c0baaed1e3d': '#6E78E8',
-  '620f74f0df1b4c0baaed1e41': '#4A56E2',
-  '620f7500df1b4c0baaed1e45': '#81E1FF',
-  '620f7505df1b4c0baaed1e49': '#24CCA7',
-  '620f7515df1b4c0baaed1e4d': '#00AD84',
+  '63f76fa786397e6a06a030b2': '#FED057',
+  '63f7704186397e6a06a030b3': '#FFD8D0',
+  '63f7708e86397e6a06a030b4': '#FD9498',
+  '63f770a986397e6a06a030b5': '#C5BAFF',
+  '63f770b486397e6a06a030b6': '#6E78E8',
+  '63f770c586397e6a06a030b7': '#4A56E2',
+  '63f770d186397e6a06a030b8': '#81E1FF',
+  '63f770e086397e6a06a030b9': '#24CCA7',
+  '63f770fc86397e6a06a030ba': '#00AD84',
 };
