@@ -1,5 +1,7 @@
 <h1 align="center"> :rocket: Team project :rocket: </h1>
 
+###[BACK-END link](https://github.com/KMyroslav/group_project_wallet-back)
+
 # Developers
 
 ## FRONT-END
@@ -8,7 +10,7 @@
   **Team Lead/Header component**
 
 - [<img src="https://img.shields.io/badge/-Miroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
-  **Transactions component**
+  **Dashboard component**
 
 - [<img src="https://img.shields.io/badge/-Pavlo%20Oliinyk-ffff00" />](https://github.com/PavloOliinyk) -
   **Statistic component**
