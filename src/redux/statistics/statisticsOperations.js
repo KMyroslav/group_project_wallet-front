@@ -4,7 +4,7 @@ import {
   setCategories,
 } from './statisticsSlice';
 
-const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/';
+const BASE_URL = 'https://wallet-app-mudj.onrender.com/';
 
 axios.defaults.baseURL = BASE_URL;
 

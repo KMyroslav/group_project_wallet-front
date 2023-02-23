@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://dvf-project-group-2-back.herokuapp.com/api';
+const BASE_URL = 'https://wallet-app-mudj.onrender.com/api';
 
 axios.defaults.baseURL = BASE_URL;
 
