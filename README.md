@@ -2,6 +2,7 @@
 
 <h3 align='center'>
 BACK-END Link 
+
 https://github.com/KMyroslav/group_project_wallet-back
 </h3>
 
@@ -12,7 +13,7 @@ https://github.com/KMyroslav/group_project_wallet-back
 - [<img src="https://img.shields.io/badge/-Denys%20Filichkin-000080" />](https://github.com/DenysPhV) -
   **Team Lead/Header component**
 
-- [<img src="https://img.shields.io/badge/-Miroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
+- [<img src="https://img.shields.io/badge/-Myroslav%20Kukhtaruk-ff6347" />](https://github.com/KMyroslav) -
   **Dashboard component**
 
 - [<img src="https://img.shields.io/badge/-Pavlo%20Oliinyk-ffff00" />](https://github.com/PavloOliinyk) -
