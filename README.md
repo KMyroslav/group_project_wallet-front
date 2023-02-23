@@ -1,7 +1,8 @@
 <h1 align="center"> :rocket: Team project :rocket: </h1>
 
 <h3 align='center'>
-[BACK-END Link](https://github.com/KMyroslav/group_project_wallet-back "BACK-END Link")
+BACK-END Link 
+https://github.com/KMyroslav/group_project_wallet-back
 </h3>
 
 # Developers
