@@ -135,18 +135,22 @@ const ModalAddTransactions = () => {
               <div className={styles.selectListWrapper}>
                 <ul className={styles.selectList}>
                   {categories &&
-                    categories.map((category) => (
-                      <li
-                        className={styles.selectListItem}
-                        key={category._id}
-                        onClick={() => {
-                          setNameCategory(category.nameCategory);
-                          setIsSelectOpen(false);
-                        }}
-                      >
-                        <p className={styles.option}>{category.nameCategory}</p>
-                      </li>
-                    ))}
+                    categories
+                      .filter((el) => !el.nameCategory.includes('доход'))
+                      .map((category) => (
+                        <li
+                          className={styles.selectListItem}
+                          key={category._id}
+                          onClick={() => {
+                            setNameCategory(category.nameCategory);
+                            setIsSelectOpen(false);
+                          }}
+                        >
+                          <p className={styles.option}>
+                            {category.nameCategory}
+                          </p>
+                        </li>
+                      ))}
                 </ul>
               </div>
             )}
@@ -165,6 +169,7 @@ const ModalAddTransactions = () => {
                 classes: { notchedOutline: styles.noBorder },
                 disableUnderline: true,
               }}
+              sx={{ mt: '10px' }}
             />
             {formik.touched.sum && formik.errors.sum ? (
               <span className={styles.error}>{formik.errors.sum}</span>
